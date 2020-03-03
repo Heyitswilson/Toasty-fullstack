@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
+
+.toasty-title {
+    color: rgb(255, 92, 57);
+    font-family: 'Crimson Text', serif;
+    font-size: 50px;
+}

@@ -1,0 +1,10 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar {
+    display: inline-block;
+    padding: 25px;
+
+}
