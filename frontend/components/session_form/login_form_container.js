@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
-import LoginForm from './login_form' 
+// import LoginForm from './login_form' 
 import { login } from '../../actions/session_actions'
+import SessionForm from './session_form'
 import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mapStateToProps = state => ({
     errors: state.errors.session,
-    formType: "Sign In"
+    formType: "Sign In",
+    modal: state.ui.modal
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -14,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(closeModal())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

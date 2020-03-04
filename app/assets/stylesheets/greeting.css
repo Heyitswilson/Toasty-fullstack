@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+
+.splash{
+    display: flex;
+    justify-content: center;
+}
+
+.succulent-statement {
+    display: inline-block;
+    width: 20%;
+    height: 200px;
+    background-color: rgb(204, 255, 221);
+    font-family: 'Crimson Text', serif;
+    font-size: 25px;
+    overflow-wrap: break-word;
+    outline: none;
+    border: none
+}
+
+.ceramics-statement {
+    font-family: 'Crimson Text', serif;
+}
+
+.statement {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(204, 255, 221);
+    font-family: 'Crimson Text', serif;
+}
+
+.quote {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+
+.image {
+
+}
+
+.welcome {
+    font-family: 'Spartan', sans-serif;
+    font-size: 15px;
+}

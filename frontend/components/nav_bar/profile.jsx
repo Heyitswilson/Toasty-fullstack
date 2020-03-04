@@ -3,7 +3,7 @@ import React from 'react'
 class Profile extends React.Component{
     render(){
         return(
-            <button>Profile</button>
+            <button className="test">Profile</button>
         )
     }
 }
