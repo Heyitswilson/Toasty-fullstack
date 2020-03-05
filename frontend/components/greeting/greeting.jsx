@@ -1,7 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Greeting = ( {currentUser, logout}) =>{
-    const loggedOut = () => (
+class Greeting extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.loggedOut = this.loggedOut.bind(this)
+        this.loggedIn = this.loggedIn.bind(this)
+    }
+
+
+    loggedOut(){
+        return(
         <nav>
             <h3 className="quote">If it's handcrafted, vintage, custom, or unique, it's on Toasty.</h3>
             <div className="splash">
@@ -16,18 +26,27 @@ const Greeting = ( {currentUser, logout}) =>{
                 </div>
             </div>
         </nav>
-    )
+        )
+    }
 
-    const loggedIn = () => (
+    loggedIn(){
+        let { currentUser, logout } = this.props
+        return(
         <div>
-            <form>
-                <h2 className="welcome">{`Welcome back, ${currentUser.name}!`}</h2>
-                <input onClick={logout} type="submit" value="Log out"/>
-            </form>
-        </div>
-    )
+                
+            <h2 className="welcome">{`Welcome back, ${currentUser.name}!`}</h2>
 
-    return currentUser ? loggedIn() : loggedOut()
+            <Link to="/">
+                <button className="test" onClick={logout}>Logout</button>
+            </Link>
+        </div>
+        )
+    }
+
+    render(){
+        let { currentUser } = this.props
+        return currentUser ? this.loggedIn() : this.loggedOut()
+    }
 }
 
 export default Greeting

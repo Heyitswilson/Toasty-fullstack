@@ -37,3 +37,8 @@ export const signup = user => dispatch => (
         err => (dispatch(receiveErrors(err.responseJSON)))
     )
 )
+
+export const fetchUser = userId => dispatch => (
+    SessionAPIUtil.fetchUser(userId)
+        .then(user => dispatch(receiveUser(user)))
+)
