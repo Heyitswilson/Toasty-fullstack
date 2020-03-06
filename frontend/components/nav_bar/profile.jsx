@@ -14,9 +14,6 @@ class Profile extends React.Component{
                 <Link to={`/users/${currentUser.id}`}>
                     <button className="test">Profile</button>
                 </Link>
-
-
-            // <Link className="test" to={`/users/${currentUser.id}`}>{currentUser.name}</Link>
         )
     }
 

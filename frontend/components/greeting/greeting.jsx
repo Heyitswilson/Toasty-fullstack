@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProductIndexContainer from '../product_index/product_index_container'
 
 class Greeting extends React.Component {
     constructor(props) {
@@ -25,6 +26,11 @@ class Greeting extends React.Component {
                     <div className="statement">Catchy statement 2</div>
                 </div>
             </div>
+            {/* <ul>
+                {ProductIndexContainer}
+            </ul> */}
+
+            <button>Demo User</button>
         </nav>
         )
     }
@@ -39,6 +45,9 @@ class Greeting extends React.Component {
             <Link to="/">
                 <button className="test" onClick={logout}>Logout</button>
             </Link>
+            {/* <ul>
+                {ProductIndexContainer}
+            </ul> */}
         </div>
         )
     }

@@ -27,26 +27,31 @@ const receiveErrors = errors => ({
 
 export const getAllProducts = () => dispatch => (
     ProductAPIUtil.getAllProducts()
-        .then( products => dispatch(receiveProducts(products)))
+        .then(products => dispatch(receiveProducts(products))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const getProduct = () => dispatch => (
     ProductAPIUtil.getProduct()
-        .then( product => dispatch(receiveProduct(product)))
+        .then(product => dispatch(receiveProduct(product))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const createProduct = (product) => dispatch => (
     ProductAPIUtil.createProduct(product)
-        .then( product => dispatch(receiveProduct(product)))
+        .then(product => dispatch(receiveProduct(product))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const updateProduct = product => dispatch => (
     ProductAPIUtil.updateProduct(product) 
-        .then( product => dispatch(receiveProduct(product)))
+        .then(product => dispatch(receiveProduct(product))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const deleteProduct = productId => dispatch => (
     ProductAPIUtil.deleteProduct(productId)
-        .then( () => dispatch(removeProduct(productId)))
+        .then(() => dispatch(removeProduct(productId))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )
 

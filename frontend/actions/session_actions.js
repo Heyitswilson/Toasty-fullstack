@@ -40,5 +40,6 @@ export const signup = user => dispatch => (
 
 export const fetchUser = userId => dispatch => (
     SessionAPIUtil.fetchUser(userId)
-        .then(user => dispatch(receiveUser(user)))
+        .then(user => dispatch(receiveCurrentUser(user))),
+    err => (dispatch(receiveErrors(err.responseJSON)))
 )

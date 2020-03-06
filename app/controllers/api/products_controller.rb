@@ -1,26 +1,47 @@
 class Api::ProductsController < ApplicationController
     def index
-
+        @products = Product.all
+        render :index
     end
 
     def show
-
+        @product = Product.find(params[:id])
     end
 
     def create
+        @product = Product.new(product_params)
 
+        if @product.save
+            render :show
+        else
+            render json: @product.errors.full_messages
+        end
     end
 
     def update
+        @product = Product.find(params[:id])
 
+        if @product.update(product_params)
+            render :show
+        else
+            render json: @product.errors.full_messages
+        end
     end
 
     def destroy
+        @product = Product.find(params[:id])
 
+        if @product.destroy
+            render :show
+        else
+            render json: @product.errors.full_messages
+        end
     end
 
+    private
+
     def product_params
-        params.require(:product).permit(:name, :description, :price, :category)
+        params.require(:product).permit(:name, :description, :price, :artist_id)
     end
 
 end
