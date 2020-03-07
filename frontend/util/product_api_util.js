@@ -5,12 +5,14 @@ export const getAllProducts = () => (
     })
 )
 
-export const getProduct = (product) => (
+export const getProduct = (productId) => {
+    return(
     $.ajax({
         method: "GET",
-        url: `/api/products/${product.id}`
+        url: `/api/products/${productId}`
     })
-)
+    )
+}
 
 export const createProduct = (product) => (
     $.ajax({

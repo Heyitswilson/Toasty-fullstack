@@ -1,10 +1,22 @@
 import React from 'react'
-import { openModal } from '../../actions/modal_actions'
+import { Link } from 'react-router-dom'
 
-const SignIn = () => {
-    return (
-        <button className="test" onClick={() => (dispatch(openModal("Sign In")))}>Sign In</button>
-    )
+const SignIn = ({currentUser, openModal, logout}) => {
+    let loggedOut = () => {
+        return (
+            <button className="test" onClick={() => (openModal("Sign In"))}>Sign In</button>
+        )
+    }
+
+    let loggedIn = () => {
+        return (
+            <Link to="/">
+                <button className="test" onClick={logout}>Logout</button>
+            </Link>
+        )
+    }
+
+    return currentUser ? loggedIn() : loggedOut() 
 }
 
 export default SignIn

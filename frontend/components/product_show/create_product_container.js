@@ -5,7 +5,7 @@ import { createProduct } from '../../actions/product_actions'
 const mapStateToProps = state => ({
     formType: "Create Product Listing",
     product: { name: "", description: "", price: "" },
-    // artistId: state.session.id,
+    artistId: state.session.id,
     errors: state.errors.product
 })
 

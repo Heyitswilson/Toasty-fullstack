@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.header {
+    display: inline-block;
+    padding: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: rgb(179, 179, 179)
+}
+
+.products {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+}

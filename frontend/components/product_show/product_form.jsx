@@ -21,6 +21,7 @@ class ProductForm extends React.Component {
         e.preventDefault()
         let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
         this.props.processForm(newState)
+        
     }
 
     renderErrors() {

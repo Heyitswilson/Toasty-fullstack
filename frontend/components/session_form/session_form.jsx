@@ -125,7 +125,7 @@ class SessionForm extends React.Component {
     render() {
         let component;
         this.props.modal === "Sign Up" ? component = this.signup() : component = this.login()
-        return (<div>{component}</div>)
+        return component
     }
 
 }

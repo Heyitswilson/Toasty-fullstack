@@ -4,23 +4,20 @@ import NavBarContainer from './/nav_bar/nav_bar_container'
 import GreetingContainer from './greeting/greeting_container'
 import UserShowContainer from './profile/user_show_container'
 import ProductIndexContainer from './product_index/product_index_container'
-// import CreateProductContainer from './product_show/create_product_container'
-// import DeleteProductContainer from './product_show/delete_product_container'
-import UpdateProductContainer from './product_show/update_product_container'
 import { Switch, Route } from 'react-router'
+import ProductItemContainer from './product_show/product_item_container'
 import { Link } from 'react-router-dom'
 
 const App = () => (
     <div>
         <NavBarContainer />
         <Modal />
-        {/* <ProductIndexContainer /> */}
         <Switch>
-            <Route exact path="/" component={GreetingContainer}/>
             <Route path="/users/:userId" component={UserShowContainer} />
+            <Route exact path="/products/:productId" component={ProductItemContainer}/>
             <Route path="/products" component={ProductIndexContainer}/>
-            {/* <Route path="/products/:productId" component={DeleteProductContainer}/> */}
-            <Route path="/products/:productId/edit" component={UpdateProductContainer}/>
+            <Route exact path="/" component={GreetingContainer}/>
+            {/* <Route path="/products/:productId/edit" component={UpdateProductContainer}/> */}
         </Switch>
     </div>
 );

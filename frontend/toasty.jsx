@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { login, logout, signup } from './actions/session_actions'
 import configureStore from "./store/store";
 import Root from './components/root'
+// import {getAllProducts, getProduct} from './actions/product_actions'
+import { getProduct }from './util/product_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -20,7 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore()
     }
 
+    window.getProductAPI = getProduct
+    // window.getProduct = getProduct
 
+    // window.getAllProducts = getAllProducts
     // const store = configureStore()
     window.login = login
     window.logout = logout

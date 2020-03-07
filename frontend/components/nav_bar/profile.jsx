@@ -12,7 +12,7 @@ class Profile extends React.Component{
         let { currentUser } = this.props
         return (
                 <Link to={`/users/${currentUser.id}`}>
-                    <button className="test">Profile</button>
+                    <button className="test">Manage Store</button>
                 </Link>
         )
     }

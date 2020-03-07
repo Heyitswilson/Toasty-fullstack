@@ -5,7 +5,7 @@ import SignIn from './sign_in'
 import SearchBarContainer from './search_bar_container'
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, openModal, logout }) => {
 
     return(
         <div>
@@ -19,7 +19,11 @@ const NavBar = ({ currentUser }) => {
                     <SearchBarContainer />
                 </div>
                 <div className="button-divs">
-                    <SignIn currentUser={currentUser}/>
+                    <SignIn 
+                        openModal={openModal}
+                        logout={logout}
+                        currentUser={currentUser}
+                    />
                     <ProfileContainer />
                     <CartContainer />
                 </div>
