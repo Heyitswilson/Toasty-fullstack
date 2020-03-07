@@ -1000,7 +1000,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex(); // <div>
       //     <h1>All Products</h1>
       //     <ul>
@@ -1455,7 +1455,7 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
   _createClass(ProductItem, [{
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.product.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.product.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.product.price));
     }
   }]);
@@ -1516,14 +1516,13 @@ var ProductItemMiddleMan = /*#__PURE__*/function (_React$Component) {
   _createClass(ProductItemMiddleMan, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
-      this.props.getProduct(this.props.match.params.productId);
-      debugger;
+      // debugger;
+      this.props.getProduct(this.props.match.params.productId); // debugger;
     }
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       var product = this.props.product;
       if (!product) return null;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_product_item__WEBPACK_IMPORTED_MODULE_2__["default"], {

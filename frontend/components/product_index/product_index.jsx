@@ -67,7 +67,7 @@ class ProductIndex extends React.Component {
     }
 
     render(){
-        debugger;
+        // debugger;
         return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex()
             // <div>
             //     <h1>All Products</h1>
