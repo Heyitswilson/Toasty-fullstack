@@ -9,13 +9,10 @@ class ProductItemMiddleMan extends React.Component{
     }
 
     componentDidMount() {
-        // debugger;
         this.props.getProduct(this.props.match.params.productId)
-        // debugger;
     }
 
     render() {
-        // debugger;
         const { product } = this.props
         if (!product) return null 
         return(

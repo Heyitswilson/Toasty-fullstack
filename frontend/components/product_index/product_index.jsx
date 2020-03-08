@@ -1,44 +1,51 @@
 import React from 'react'
-import UserProductItem from './user_product_item'
-import PublicProductItem from './public_product_item'
+import UserProductIdxItem from './user_product_item'
+import PublicProductIdxItem from './public_product_item'
 import CreateProductContainer from '../product_show/create_product_container'
 import { Link } from 'react-router-dom'
+import { render } from 'react-dom'
 
 class ProductIndex extends React.Component {
     constructor(props){
         super(props)
+        this.state={displayCreate: false}
 
         this.publicProductIndex = this.publicProductIndex.bind(this)
         this.userProductIndex = this.userProductIndex.bind(this)
+        this.displayCreate = this.displayCreate.bind(this)
     }
 
     componentDidMount(){
         this.props.getAllProducts()
     }
 
+    displayCreate(){
+        this.setState({displayCreate: true})
+    }
+
     userProductIndex(){
+        if (this.state.displayCreate) {
+            return <CreateProductContainer />
+        }
 
         return (
             <div>
                 <h1 className="header">All Products</h1>
-                <ul className="products">
-                    {this.props.userProducts.map((product) => {
-                        // return <UserProductItem
-                        //     product={product}
-                        //     deleteProduct={this.props.deleteProduct}
-                        //     key={product.id}
-                        //     currentUserId={this.props.currentUserId}
-                        // />
-                        return (
-                            <Link to={`/products/${product.id}`}>
-                                {product.name}
-                                <br />
-                                ${product.price}
-                            </Link>
-                        )
-                    })}
-                </ul>
-                <div> <CreateProductContainer /> </div>
+                    <ul className="grid-container">
+                        {this.props.userProducts.map((product) => {
+                            return (
+                                <div className="grid-item">
+                                    <UserProductIdxItem 
+                                        product={product}
+                                        deleteProduct={this.props.deleteProduct}
+                                        key={product.id}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </ul>
+                        
+                <button onClick={() => this.displayCreate()}>Create Product Listing</button>   
             </div>
         )
     }
@@ -47,18 +54,15 @@ class ProductIndex extends React.Component {
         return(
             <div>
                 <h1 className="header">All Products</h1>
-                <ul className="products">
+                <ul className="grid-container">
                     {this.props.allProducts.map((product) => {
-                        // return <PublicProductItem
-                        //     product={product}
-                        //     key={product.id}
-                        // />
                         return(
-                            <Link to={`/products/${product.id}`}>
-                                {product.name}
-                                <br/>
-                                ${product.price}
-                            </Link>
+                            <div className="grid-item">
+                                <PublicProductIdxItem
+                                    product={product}
+                                    key={product.id}
+                                />
+                            </div>
                         )
                     })}
                 </ul>

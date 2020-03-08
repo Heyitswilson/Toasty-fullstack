@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class ProductForm extends React.Component {
     constructor(props){
@@ -8,7 +9,6 @@ class ProductForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.form = this.form.bind(this)
-
     }
     
     update(field) {
@@ -21,7 +21,6 @@ class ProductForm extends React.Component {
         e.preventDefault()
         let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
         this.props.processForm(newState)
-        
     }
 
     renderErrors() {
@@ -37,8 +36,8 @@ class ProductForm extends React.Component {
     form(){
         return(
             <div>
-                <div className="page">
                 <h3>Listing Details</h3>
+                <div className="page">
                     <form className="form-page"onSubmit={this.handleSubmit}>
                         {this.renderErrors()}
                         <label>Name</label>
@@ -71,7 +70,10 @@ class ProductForm extends React.Component {
                             <option onSelect={this.update("category")} value={this.state.category}>Jewelry & Accessories</option>
                         </select>
                         <br/> */}
-                        <input type="submit" value={this.props.formType}/>
+                        {/* <Link to="/products"> */}
+                            {/* <input type="submit" value={this.props.formType}/> */}
+                            <button>{this.props.formType}</button>
+                        {/* </Link> */}
                     </form>
                 </div>
             </div>

@@ -6,7 +6,8 @@ import UserShowContainer from './profile/user_show_container'
 import ProductIndexContainer from './product_index/product_index_container'
 import { Switch, Route } from 'react-router'
 import ProductItemContainer from './product_show/product_item_container'
-import { Link } from 'react-router-dom'
+import UserProductIndexContainer from './product_index/product_index_container'
+import UpdateProductForm from './product_show/update_product_container'
 
 const App = () => (
     <div>
@@ -15,9 +16,9 @@ const App = () => (
         <Switch>
             <Route path="/users/:userId" component={UserShowContainer} />
             <Route exact path="/products/:productId" component={ProductItemContainer}/>
-            <Route path="/products" component={ProductIndexContainer}/>
+            <Route path="/products/:productId/edit" component={UpdateProductForm}/>
+            <Route path="/products" component={UserProductIndexContainer}/>
             <Route exact path="/" component={GreetingContainer}/>
-            {/* <Route path="/products/:productId/edit" component={UpdateProductContainer}/> */}
         </Switch>
     </div>
 );

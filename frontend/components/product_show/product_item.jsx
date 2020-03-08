@@ -19,7 +19,7 @@ class ProductItem extends React.Component{
     // }
 
     render(){
-        // debugger;
+        debugger;
         return (
             <div>
                 <h1>{this.props.product.name}</h1>

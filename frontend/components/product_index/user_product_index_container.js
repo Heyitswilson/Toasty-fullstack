@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getAllProducts } from '../../actions/product_actions'
+import { getAllProducts, deleteProduct } from '../../actions/product_actions'
 import ProductIndex from './product_index'
 
 

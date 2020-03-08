@@ -4,6 +4,12 @@ export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT"
 export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS"
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
+export const RECEIVE_INDEX = "RECEIVE_INDEX"
+
+export const receiveIndex = type => ({
+    type: RECEIVE_INDEX,
+    type
+})
 
 const receiveProduct = (product) => ({
     type: RECEIVE_PRODUCT,
@@ -38,12 +44,6 @@ export const getProduct = productId => dispatch => {
         .then(product => dispatch(receiveProduct(product)))
     )
 }
-// export const getProduct = productId => dispatch => (
-//     ProductAPIUtil.getProduct(productId)
-//         .then(product => dispatch(receiveProduct(product)),
-//         err => dispatch(receiveErrors(err.responseJSON))
-//     )
-// )
 
 export const createProduct = (product) => dispatch => (
     ProductAPIUtil.createProduct(product)
