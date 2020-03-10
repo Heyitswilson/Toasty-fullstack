@@ -8,7 +8,10 @@ class ProductForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        this.form = this.form.bind(this)
+        // this.form = this.form.bind(this)
+        this.handleFile = this.handleFile.bind(this)
+        this.imagePreview = this.imagePreview.bind(this)
+        this.imageFile = this.imageFile.bind(this)
     }
     
     update(field) {
@@ -16,74 +19,138 @@ class ProductForm extends React.Component {
             [field]: e.currentTarget.value
         })
     }
+
+    imageFile(e){
+        this.imagePreview(e)
+        this.handleFile(e)
+    }
+
+    imagePreview(e) {
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+            this.setState({ photoUrl: reader.result, photoFile: file });
+    
+        if(file) {
+            reader.readAsDataURL(file);
+        } else {
+        this.setState({ photoUrl: "", photoFile: null });
+        }
+    }
+
     
     handleSubmit(e) {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('product[name]', this.state.name)
+        if (this.state.photoFile) {
+            formData.append('product[photo]', this.state.photoFile)
+        }
+        $.ajax({
+            url: '/api/products',
+            method: "POST",
+            data: formData,
+            contentType: false,
+            processData: false
+        })
         let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
         this.props.processForm(newState)
+    }
+
+    handleFile(e) {
+        const file = e.currentTarget.files[0]
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({photoFile: file, photoUrl: fileReader.result})
+        }
+        if (file) {
+            fileReader.readAsDataURL(file)
+        }
     }
 
     renderErrors() {
         return (
             this.props.errors.map((error, i) => {
-                return (<li key={i}>
+                return (<li className="errors" key={i}>
                     {error}
                 </li>)
             })
         )
     }
 
-    form(){
-        return(
-            <div>
-                <h3>Listing Details</h3>
-                <div className="page">
-                    <form className="form-page"onSubmit={this.handleSubmit}>
-                        {this.renderErrors()}
-                        <label>Name</label>
-                        <input 
-                            onChange={this.update("name")}
-                            type="text" 
-                            value={this.state.name}
-                        />
-                        <br/>
-                        <label>Description</label>
-                        <textarea 
-                            onChange={this.update("description")}
-                            value={this.state.description} 
-                            cols="30" 
-                            rows="10"
-                        />
-                        <br/>
-                        <label>Price</label>
-                        <input 
-                            onChange={this.update("price")}
-                            type="number" 
-                            value={this.state.price}
-                        />
-                        <br/>
-                        {/* <label >Category</label>
-                        <select>
-                            <option onSelect={this.update("category")} value={this.state.category}>Art & Collectibles</option>
-                            <option onSelect={this.update("category")} value={this.state.category}>Clothing & Shoes</option>
-                            <option onSelect={this.update("category")} value={this.state.category}>Home & Living</option>
-                            <option onSelect={this.update("category")} value={this.state.category}>Jewelry & Accessories</option>
-                        </select>
-                        <br/> */}
-                        {/* <Link to="/products"> */}
-                            {/* <input type="submit" value={this.props.formType}/> */}
-                            <button>{this.props.formType}</button>
-                        {/* </Link> */}
-                    </form>
-                </div>
-            </div>
-        )
-    }
 
 
     render() {
+        console.log(this.state)
+        const preview = this.state.photoUrl ? <img className="preview" src={this.state.photoUrl} /> : null
         return (
-            this.form()
+            <div >
+
+                <div className="page">
+                    <h3 className="add-listing">Add a new Listing</h3>
+                    <div className="form-page">
+
+                            <form className="product-form-flex" onSubmit={this.handleSubmit}>
+                                <div className="form-boxes">
+                                    {this.renderErrors()}
+                                    {/* {this.imagePreview()} */}
+                                    <div className="individual-input">
+                                        <label>Name</label>
+                                        <br/>
+                                        <input
+                                            className="product-form-inputs"
+                                            onChange={this.update("name")}
+                                            type="text"
+                                            value={this.state.name}
+                                        />
+                                    </div>
+                                    <br />
+                                    <div className="individual-input">
+                                        <label>Description</label>
+                                        <br/>
+                                        <textarea
+                                            className="product-form-inputs"
+                                            onChange={this.update("description")}
+                                            value={this.state.description}
+                                            cols="30"
+                                            rows="10"
+                                        />
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label>Price</label>
+                                        <br/>
+                                        <input
+                                            className="product-form-inputs"
+                                            onChange={this.update("price")}
+                                            type="number"
+                                            value={this.state.price}
+                                        />
+                                    </div>
+                                    <br />
+                                    <input type="file"
+                                        onChange={this.imageFile}
+                                    />
+                                    <br />
+                                    {/* <label >Category</label>
+                                    <select>
+                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Art & Collectibles</option>
+                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Clothing & Shoes</option>
+                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Home & Living</option>
+                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Vintage</option>
+                                    </select> */}
+                                    <br />
+                                    <button>{this.props.formType}</button>
+                                </div>
+                                <div className="image-input">
+                                    <h3>Preview</h3>
+                                    {preview}
+                                </div>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
         )
     }
 }

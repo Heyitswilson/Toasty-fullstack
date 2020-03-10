@@ -8,16 +8,18 @@ import { Switch, Route } from 'react-router'
 import ProductItemContainer from './product_show/product_item_container'
 import UserProductIndexContainer from './product_index/product_index_container'
 import UpdateProductForm from './product_show/update_product_container'
+import { ProtectedRoute, UserRoute } from '../util/route_util'
 
 const App = () => (
     <div>
         <NavBarContainer />
         <Modal />
         <Switch>
-            <Route path="/users/:userId" component={UserShowContainer} />
+            <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
+            {/* <UserRoute path="/users/:userId" component={UserShowContainer} /> */}
             <Route exact path="/products/:productId" component={ProductItemContainer}/>
-            <Route path="/products/:productId/edit" component={UpdateProductForm}/>
-            <Route path="/products" component={UserProductIndexContainer}/>
+            <ProtectedRoute path="/products/:productId/edit" component={UpdateProductForm}/>
+            <ProtectedRoute path="/products" component={UserProductIndexContainer}/>
             <Route exact path="/" component={GreetingContainer}/>
         </Switch>
     </div>

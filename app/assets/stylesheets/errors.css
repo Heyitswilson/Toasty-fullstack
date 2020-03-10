@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+
+.errors {
+    padding: 10px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 14px;
+    color: red
+}

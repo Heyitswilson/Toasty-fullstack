@@ -4,15 +4,30 @@ import { Link } from 'react-router-dom'
 class PublicProductIdxItem extends React.Component {
     constructor(props) {
         super(props)
+
+        this.showLess = this.showLess.bind(this)
+    }
+
+    showLess(content){
+        if (content.length > 20) {
+            return (
+                <h1 className="public-name">{content.slice(0, 20)+ "..."}</h1>
+            )
+        } else {
+            return(
+                <h1 className="public-name">{content}</h1>
+            )
+        }
     }
 
     render() {
         let { product } = this.props
         return (
-            <div>
-                <Link to={`/products/${product.id}`}> 
-                    <h1>{product.name}</h1>
-                    <h3>${product.price}</h3>
+            <div className="idx-item-div">
+                <Link className="public-product-links" to={`/products/${product.id}`}>
+                    <img className="idx-images" src={product.photoUrl} alt="" /> 
+                    {this.showLess(product.name)}
+                    <h3 className="public-price">${product.price}</h3>
                 </Link>
             </div>
         )

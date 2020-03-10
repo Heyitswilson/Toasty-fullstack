@@ -14,7 +14,7 @@ class Api::ProductsController < ApplicationController
         if @product.save
             render :show
         else
-            render json: @product.errors.full_messages
+            render json: @product.errors.full_messages, status: 422
         end
     end
 
@@ -24,7 +24,7 @@ class Api::ProductsController < ApplicationController
         if @product.update(product_params)
             render :show
         else
-            render json: @product.errors.full_messages
+            render json: @product.errors.full_messages, status: 422
         end
     end
 
@@ -34,14 +34,14 @@ class Api::ProductsController < ApplicationController
         if @product.destroy
             render :show
         else
-            render json: @product.errors.full_messages
+            render json: @product.errors.full_messages, status: 422
         end
     end
 
     private
 
     def product_params
-        params.require(:product).permit(:name, :description, :price, :artist_id)
+        params.require(:product).permit(:name, :description, :price, :artist_id, :photo, :photoUrl)
     end
 
 end

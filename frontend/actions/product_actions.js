@@ -3,7 +3,7 @@ import * as ProductAPIUtil from '../util/product_api_util'
 export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT"
 export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS"
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT"
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
+export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS"
 export const RECEIVE_INDEX = "RECEIVE_INDEX"
 
 export const receiveIndex = type => ({
@@ -27,7 +27,7 @@ const removeProduct = productId => ({
 })
 
 const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_PRODUCT_ERRORS,
     errors
 })
 

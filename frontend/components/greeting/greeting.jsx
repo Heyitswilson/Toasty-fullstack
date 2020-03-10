@@ -13,17 +13,20 @@ class Greeting extends React.Component {
 
     loggedOut(){
         return(
-        <nav>
+        <nav className="splash-nav">
             <h3 className="quote">If it's handcrafted, vintage, custom, or unique, it's on Toasty.</h3>
             <div className="splash">
                 {/* <div className="succulent-statement">It's always succulent season.</div> */}
-                <button className="succulent-statement">It's always succulent season.
-                    <div className="ceramics-statement">Shop ceramics</div>
-                </button>
-                <div className="image">Succulent image placeholder</div>
-                <div>
-                    <div>Image placeholder 2</div>
-                    <div className="statement">Catchy statement 2</div>
+                <div className="succulent-2">
+                    <img className="succulent-pots-image" src="https://toasty-dev.s3-us-west-1.amazonaws.com/succulent_pottery.jpg" alt=""/>
+                    {/* <button className="succulent-statement">It's always succulent season.
+                        <div className="ceramics-statement">Shop ceramics</div>
+                    </button> */}
+                </div>
+
+                <div className="wall-art-2">
+                    <img className="wall-art-image" src="https://toasty-dev.s3-us-west-1.amazonaws.com/ideas.jpg" alt=""/>
+                    <div className="statement">Ideas to make your home feel fresh.</div>
                 </div>
             </div>
             <ul>

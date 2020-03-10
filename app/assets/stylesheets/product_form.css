@@ -1,18 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+
 .page {
-    display: flex;
+    /* display: flex; */
     height: 100vh;
     width: 100vw;
-    background-color: rgb(255, 249, 229);
+    background-color: rgb(247, 243, 237)
     /* margin: 10px; */
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 .form-page {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     height: 90%;
     width: 95%;
-    margin: 20px;
+    margin: 15px;
+    margin-top: 5px;
     
+}
+
+.add-listing {
+    text-align: center;
+    font-family: 'Spartan', sans-serif;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.product-form-inputs {
+    padding: 5px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 15px;
+    width: 100%
+}
+
+.preview {
+    width: 450px;
+    height: 450px;
+}
+
+.product-form-flex {
+    display: flex;
+}
+
+.form-boxes {
+    width: 40%;
+    padding: 15px;
+}
+
+.individual-input{
+    padding: 5px;
+}
+
+.image-input {
+    padding: 15px;
 }

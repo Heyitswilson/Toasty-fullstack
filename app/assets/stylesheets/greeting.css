@@ -9,14 +9,14 @@
 
 .succulent-statement {
     display: inline-block;
-    width: 20%;
-    height: 200px;
+    width: 100%;
+    height: 400px;
     background-color: rgb(204, 255, 221);
     font-family: 'Crimson Text', serif;
     font-size: 25px;
     overflow-wrap: break-word;
     outline: none;
-    border: none
+    border: none;
 }
 
 .ceramics-statement {
@@ -24,11 +24,17 @@
 }
 
 .statement {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     background-color: rgb(204, 255, 221);
-    font-family: 'Crimson Text', serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    overflow-wrap: break-word;
+    outline: none;
+    border: none;
+    flex: 1;
 }
 
 .quote {
@@ -40,11 +46,35 @@
 }
 
 
-.image {
+.succulent-pots-image {
+    width: 100%;
+}
 
+.wall-art-image {
+    width: 100%;
+    flex: 2;
+    padding-bottom: 2.5%;
 }
 
 .welcome {
     font-family: 'Spartan', sans-serif;
     font-size: 15px;
+}
+
+.succulent-2 {
+    flex-direction: row-reverse;
+    flex-basis: 60%;
+    padding-right: 1.5%
+}
+
+.wall-art-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 40%;
+}
+
+.splash-nav {
+    display: inline-block;
+    padding: 2%
 }

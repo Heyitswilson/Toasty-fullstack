@@ -21,7 +21,7 @@ class UserShow extends React.Component{
     loggedIn(){
         return(
             <div>
-                <h1>hi {this.props.currentUser.name} </h1>
+                <h1 className="user-shop">Your Store</h1>
                 <div> <UserProductIndexContainer /> </div>
                 {/* <Link to="/products">Create Product Listing</Link> */}
             </div>

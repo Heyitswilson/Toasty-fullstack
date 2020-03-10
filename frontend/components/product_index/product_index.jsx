@@ -29,12 +29,12 @@ class ProductIndex extends React.Component {
         }
 
         return (
-            <div>
-                <h1 className="header">All Products</h1>
+            <div className="idx-div">
+                {/* <h1 className="header">All Products</h1> */}
                     <ul className="grid-container">
                         {this.props.userProducts.map((product) => {
                             return (
-                                <div className="grid-item">
+                                <div className="grid-item-user">
                                     <UserProductIdxItem 
                                         product={product}
                                         deleteProduct={this.props.deleteProduct}
@@ -45,7 +45,7 @@ class ProductIndex extends React.Component {
                         })}
                     </ul>
                         
-                <button onClick={() => this.displayCreate()}>Create Product Listing</button>   
+                <button className="test" onClick={() => this.displayCreate()}>Create Product Listing</button>   
             </div>
         )
     }
