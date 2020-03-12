@@ -3,18 +3,16 @@
 .idx-images {
     width: 150px;
     height: 150px;
-    padding: 10px;
+    padding: 2px;
 }
 
 .idx-images:hover {
-    box-shadow: 1px 1px 1px 1px rgb(230, 230, 230)
+    background-color: rgb(242, 242, 242);
 }
 
 .show-image {
-    /* display: flex; */
     height: 50%;
     width: 50%;
-    /* flex-basis: 50%; */
     border-radius: 2%;
     box-shadow: rgb(128, 128, 128);
     padding-left: 100px;

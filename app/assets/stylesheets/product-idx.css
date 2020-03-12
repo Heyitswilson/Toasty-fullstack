@@ -18,18 +18,23 @@
 }
 
 .grid-container {
+    /* box-sizing: border-box; */
+    /* border: 1px solid black; */
     display: flex;
-    /* grid-template-columns: repeat(5, 1fr); */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
 /* .grid-container {
+    display: flex
+} */
+
+/* .grid-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly; */
-}
+/* } */
 
 /* .grid-item {
     flex: 1;
@@ -99,6 +104,8 @@
 }
 
 .idx-div {
+    /* box-sizing: border-box; */
+    /* border: 1px solid black; */
     border: rgb(230, 230, 230) 1px solid;
     margin: 20px;
 }
