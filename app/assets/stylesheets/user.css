@@ -3,5 +3,10 @@
 .user-shop {
     font-family: 'Crimson Text', serif;
     font-size: 25px;
-    padding-left: 20px;
+    padding-left: 2%;
+}
+
+.create-button {
+    padding-left: 1%;
+    padding-top: 1%
 }

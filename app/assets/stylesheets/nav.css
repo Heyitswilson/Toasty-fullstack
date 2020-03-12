@@ -3,7 +3,7 @@
 
 .nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
 }
@@ -25,7 +25,7 @@
 }
 
 .search-div {
-    width: 70%;
+    width: 73%;
     padding-top: 9px;
 }
 
@@ -47,7 +47,8 @@
 .button-divs {
     display: flex;
     flex-shrink: 0;
-    padding-right: 15px;
+    padding-right: 1%;
+
 }
 
 .test {
@@ -59,6 +60,23 @@
 }
 
 .test:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.title-search {
+    display: flex;
+}
+
+.sign-in-test {
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    color: rgb(128, 128, 128)
+}
+
+.sign-in-test:hover {
     cursor: pointer;
     color: black;
 }

@@ -5,8 +5,7 @@ import ProductIndex from './product_index'
 
 const mapStateToProps = state => ({
     allProducts: Object.values(state.entities.products),
-    currentUserId: state.session.id,
-    indexType: "Public"
+    currentUserId: state.session.id
 })
 
 const mapDispatchToProps = dispatch => ({

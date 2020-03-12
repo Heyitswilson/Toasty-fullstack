@@ -5,7 +5,8 @@
 
 .header {
     display: inline-block;
-    padding: 15px;
+    padding-left: 2%;
+    padding-top: 2%;
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     color: rgb(179, 179, 179)
@@ -17,8 +18,11 @@
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(5, 1fr); */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .grid-container {
@@ -35,14 +39,16 @@
     border: none;
     outline: none;
     font-family: 'Crimson Text', serif;
-    font-size: 20px;
+    font-size: 20px;\
 } */
 
 .grid-item {
+    display: flex;
+    align-items: flex-start;
+    
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    font-size: 30px;
-    text-align: center;
+    margin: 20px;
     border: none;
     outline: none;
     font-family: 'Crimson Text', serif;
@@ -121,9 +127,11 @@
     justify-content: center;
     padding: 15%;
     min-width: 220px;
-    max-width: 400px;
+    max-width: 220px;
     min-height: 248px;
     max-height: 248px;
+    /* width: 40%;
+    height: 40% */
 }
 
 .user-product-idx-item {

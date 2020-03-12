@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resource :session, only: [:destroy, :create]
     resources :products, except: [:new]
-    # resources :cartItems, only: [:]
-    
+    resources :cart_items, only: [:index, :show, :create, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

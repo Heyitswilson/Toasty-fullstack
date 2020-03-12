@@ -6,7 +6,6 @@ import SearchBarContainer from './search_bar_container'
 import { Link } from 'react-router-dom'
 
 const NavBar = ({ currentUser, openModal, logout }) => {
-
     return(
         <div>
             <div className="nav">
@@ -19,13 +18,13 @@ const NavBar = ({ currentUser, openModal, logout }) => {
                     <SearchBarContainer />
                 </div>
                 <div className="button-divs">
+                    <ProfileContainer />
+                    <CartContainer />
                     <SignIn 
                         openModal={openModal}
                         logout={logout}
                         currentUser={currentUser}
                     />
-                    <ProfileContainer />
-                    <CartContainer />
                 </div>
             </div>
         </div>

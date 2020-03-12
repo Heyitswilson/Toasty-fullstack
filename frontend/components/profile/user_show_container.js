@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import UserShow from './user_show'
 import { fetchUser } from '../../actions/session_actions'
-// import { createProduct } from '../../actions/product_actions'
 import React from 'react'
 
 class UserShowMiddleMan extends React.Component {

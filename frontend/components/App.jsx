@@ -9,12 +9,14 @@ import ProductItemContainer from './product_show/product_item_container'
 import UserProductIndexContainer from './product_index/product_index_container'
 import UpdateProductForm from './product_show/update_product_container'
 import { ProtectedRoute, UserRoute } from '../util/route_util'
+import CartItemContainer from './cart_items/cart_items_container'
 
 const App = () => (
     <div>
         <NavBarContainer />
         <Modal />
         <Switch>
+            <ProtectedRoute path="/cart_items" component={CartItemContainer} />
             <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
             {/* <UserRoute path="/users/:userId" component={UserShowContainer} /> */}
             <Route exact path="/products/:productId" component={ProductItemContainer}/>

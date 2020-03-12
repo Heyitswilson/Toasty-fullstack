@@ -32,10 +32,6 @@ class Greeting extends React.Component {
             <ul>
                 <ProductIndexContainer />
             </ul>
-            <button 
-                className="test"
-                onClick={() => this.props.login({name: "", email: "bob@gmail.com", password: "password"})}
-            >Demo User</button>
             
         </nav>
         )
@@ -45,6 +41,9 @@ class Greeting extends React.Component {
         let { currentUser } = this.props
         return(
         <div>
+            {/* <div>
+                <img className="contemporary" src="https://toasty-dev.s3-us-west-1.amazonaws.com/contemporary_wall_art.jpg" alt=""/>
+            </div> */}
             <h2 className="welcome">{`Welcome back, ${currentUser.name}!`}</h2>
             <ul>
                 <ProductIndexContainer />

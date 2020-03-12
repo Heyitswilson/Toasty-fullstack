@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
             render json: @user.errors.full_messages, status: 422
         end
     end
-
+z
     def show
         @user = User.find(params[:id])
         if @user = current_user

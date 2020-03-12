@@ -2,8 +2,7 @@ import React from 'react'
 import UserProductIdxItem from './user_product_item'
 import PublicProductIdxItem from './public_product_item'
 import CreateProductContainer from '../product_show/create_product_container'
-import { Link } from 'react-router-dom'
-import { render } from 'react-dom'
+
 
 class ProductIndex extends React.Component {
     constructor(props){
@@ -30,6 +29,9 @@ class ProductIndex extends React.Component {
 
         return (
             <div className="idx-div">
+                <div className="create-button">
+                    <button className="test" onClick={() => this.displayCreate()}>Create Product Listing</button>
+                </div>
                 {/* <h1 className="header">All Products</h1> */}
                     <ul className="grid-container">
                         {this.props.userProducts.map((product) => {
@@ -44,8 +46,7 @@ class ProductIndex extends React.Component {
                             )
                         })}
                     </ul>
-                        
-                <button className="test" onClick={() => this.displayCreate()}>Create Product Listing</button>   
+                      
             </div>
         )
     }
@@ -71,7 +72,7 @@ class ProductIndex extends React.Component {
     }
 
     render(){
-        // debugger;
+        // ;
         return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex()
             // <div>
             //     <h1>All Products</h1>

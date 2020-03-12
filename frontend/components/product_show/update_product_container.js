@@ -10,7 +10,6 @@ class UpDateProductForm extends React.Component {
 
     render() {
         const { processForm, formType, product, errors } = this.props;
-
         if (!product) return null;
         return (
             <ProductForm
@@ -29,7 +28,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    processForm: product => dispatch(updateProduct(product)),
+    processForm: (product, id) => dispatch(updateProduct(product, id)),
     getProduct: productId => dispatch(getProduct(productId))
 })
 

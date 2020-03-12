@@ -1,0 +1,52 @@
+.cart-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+    border: rgb(230, 230, 230) 1px solid;
+    border-radius: 1%;
+}
+
+.cart-item-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2%;
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 248px;
+    max-height: 248px;
+    /* width: 40%;
+    height: 40% */
+}
+
+.quantity {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.quantity-word {
+    color: black;
+    font-size: 15px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: lighter;
+}
+
+.quantity-num {
+    padding-left: 1%;
+    color: black;
+    font-size: 15px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: lighter;
+}
+
+.cart-item-price {
+    color: black;
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.buy-page {
+    padding: 2%
+}

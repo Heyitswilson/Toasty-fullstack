@@ -8,7 +8,7 @@ class ProductForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        // this.form = this.form.bind(this)
+        
         this.handleFile = this.handleFile.bind(this)
         this.imagePreview = this.imagePreview.bind(this)
         this.imageFile = this.imageFile.bind(this)
@@ -43,18 +43,19 @@ class ProductForm extends React.Component {
         e.preventDefault()
         const formData = new FormData()
         formData.append('product[name]', this.state.name)
+        formData.append('product[description]', this.state.description)
+        formData.append('product[price]', this.state.price)
+        formData.append('product[artist_id]', this.state.artist_id)
         if (this.state.photoFile) {
             formData.append('product[photo]', this.state.photoFile)
         }
-        $.ajax({
-            url: '/api/products',
-            method: "POST",
-            data: formData,
-            contentType: false,
-            processData: false
-        })
-        let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
-        this.props.processForm(newState)
+        // if(this.props.formType === "update") {
+        //     formData.append("_method", "PATCH")
+        // }
+        // let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
+        // let newFormData = Object.assign({}, this.state, { artist_id: this.props.artistId })
+        // this.props.processForm(formData)
+        this.props.processForm(formData, this.props.product.id)
     }
 
     handleFile(e) {
@@ -93,7 +94,6 @@ class ProductForm extends React.Component {
                             <form className="product-form-flex" onSubmit={this.handleSubmit}>
                                 <div className="form-boxes">
                                     {this.renderErrors()}
-                                    {/* {this.imagePreview()} */}
                                     <div className="individual-input">
                                         <label>Name</label>
                                         <br/>

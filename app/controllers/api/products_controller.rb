@@ -1,7 +1,14 @@
 class Api::ProductsController < ApplicationController
     def index
-        @products = Product.all
-        render :index
+        # @products = Product.all
+        # render :index
+
+        if Product.all
+            @products = Product.all
+            render :index
+        else
+           render json: @products.errors.full_messages, status: 422 
+        end
     end
 
     def show
@@ -20,7 +27,6 @@ class Api::ProductsController < ApplicationController
 
     def update
         @product = Product.find(params[:id])
-
         if @product.update(product_params)
             render :show
         else
@@ -42,6 +48,7 @@ class Api::ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:name, :description, :price, :artist_id, :photo, :photoUrl)
+        # params.require(:product).permit(:name, :description, :price, :artist_id)
     end
 
 end

@@ -6,6 +6,10 @@
     padding: 10px;
 }
 
+.idx-images:hover {
+    box-shadow: 1px 1px 1px 1px rgb(230, 230, 230)
+}
+
 .show-image {
     /* display: flex; */
     height: 50%;
