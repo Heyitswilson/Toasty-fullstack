@@ -79,7 +79,6 @@ class ProductForm extends React.Component {
 
 
     render() {
-        console.log(this.state)
         const preview = this.state.photoUrl ? <img className="preview" src={this.state.photoUrl} /> : null
         return (
             <div >
