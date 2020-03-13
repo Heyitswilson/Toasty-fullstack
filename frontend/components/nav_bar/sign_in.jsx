@@ -11,7 +11,7 @@ const SignIn = ({currentUser, openModal, logout}) => {
     let loggedIn = () => {
         return (
             <Link to="/">
-                <button className="sign-in-test" onClick={logout}>Logout</button>
+                <button className="test" onClick={logout}>Logout</button>
             </Link>
         )
     }

@@ -72,21 +72,7 @@ class ProductIndex extends React.Component {
     }
 
     render(){
-        // ;
         return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex()
-            // <div>
-            //     <h1>All Products</h1>
-            //     <ul>
-            //         {this.props.allProducts.map((product) => {
-            //             return <ProductItem 
-            //                 product={product}
-            //                 deleteProduct={this.props.deleteProduct}
-            //                 key={product.id}
-            //                 currentUserId={this.props.currentUserId}
-            //             />
-            //         })}
-            //     </ul>
-            // </div>
     }
 }
 

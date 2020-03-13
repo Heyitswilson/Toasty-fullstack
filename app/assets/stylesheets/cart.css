@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
+
 .cart-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 60%;
+    width: 85%;
     border: rgb(230, 230, 230) 1px solid;
     border-radius: 1%;
 }
@@ -48,5 +50,47 @@
 }
 
 .buy-page {
+    display: flex;
+    justify-content: center;
     padding: 2%
+}
+
+.delete-item-in-cart {
+    display: flex;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    color: rgb(128, 128, 128)
+}
+
+.delete-item-in-cart:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.checkout {
+    outline: none;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 10px;
+    width: 40%;
+    height: 15%;
+    background-color: black;
+    font-family: 'Spartan', sans-serif;
+    font-size: 19px;
+    color: white;
+}
+
+.checkout:hover {
+    cursor: pointer;
+    background-color: rgb(102, 102, 102)
+}
+
+.checkout-div {
+    display: flex;
+    justify-content: center
+    /* padding-right: 7.5% */
+
 }

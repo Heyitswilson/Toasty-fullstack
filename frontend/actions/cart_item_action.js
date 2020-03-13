@@ -4,6 +4,7 @@ export const RECEIVE_CART_ITEM = 'RECEIVE_CART_ITEM'
 export const RECEIVE_CART_ITEMS = 'RECEIVE_CART_ITEMS'
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
 export const REMOVE_ALL_ITEMS = "REMOVE_ALL_ITEMS"
+export const DELETED_CART_ITEM = "DELETED_CART_ITEM"
 
 
 export const receiveCartItem = (cartItem) => ({
@@ -16,14 +17,14 @@ export const receiveCartItems = cartItems => ({
     cartItems
 })
 
-export const removeCartItem = id => ({
-    type: REMOVE_CART_ITEM,
-    id
+export const removeCartItem = () => ({
+    type: REMOVE_CART_ITEM
 })
 
-// export const removeAllItems = () => ({
-//     type: REMOVE_ALL_ITEMS
-// })
+export const deletedCartItem = (id) => ({
+    type: DELETED_CART_ITEM,
+    id
+})
 
 export const getAllCartItems = () =>  dispatch => {
     

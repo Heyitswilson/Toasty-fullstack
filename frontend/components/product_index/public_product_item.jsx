@@ -9,9 +9,9 @@ class PublicProductIdxItem extends React.Component {
     }
 
     showLess(content){
-        if (content.length > 20) {
+        if (content.length > 16) {
             return (
-                <h1 className="public-name">{content.slice(0, 20)+ "..."}</h1>
+                <h1 className="public-name">{content.slice(0, 16)+ "..."}</h1>
             )
         } else {
             return(

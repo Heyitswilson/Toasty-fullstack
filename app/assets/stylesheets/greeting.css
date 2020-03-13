@@ -28,7 +28,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgb(204, 255, 221);
+    background-color: white;
+    /* background-color: rgb(204, 255, 221); */
     font-family: 'Quicksand', sans-serif;
     font-size: 30px;
     overflow-wrap: break-word;

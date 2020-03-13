@@ -1,5 +1,4 @@
 import NavBar from './nav_bar'
-// import { fetchUser } from '../../actions/session_actions'
 import { connect } from 'react-redux'
 import { openModal } from '../../actions/modal_actions'
 import { logout } from '../../actions/session_actions'

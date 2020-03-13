@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import React from 'react'
 import ProductItem from './product_item'
 import { getProduct } from '../../actions/product_actions'
-// import { receiveCartItem } from '../../actions/cart_item_action'
 import { createCartItem } from '../../actions/cart_item_action'
 import { openModal } from '../../actions/modal_actions'
 

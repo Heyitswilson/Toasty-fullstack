@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+ import { Link } from 'react-router-dom'
 import ProductIndexContainer from '../product_index/product_index_container'
 
 class Greeting extends React.Component {

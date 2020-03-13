@@ -17,15 +17,15 @@ const NavBar = ({ currentUser, openModal, logout }) => {
                 <div className="search-div">
                     <SearchBarContainer />
                 </div>
-                <div className="button-divs">
-                    <ProfileContainer />
-                    <CartContainer />
-                    <SignIn 
-                        openModal={openModal}
-                        logout={logout}
-                        currentUser={currentUser}
-                    />
-                </div>
+                    <div className="button-divs">
+                        <ProfileContainer />
+                        <CartContainer />
+                        <SignIn 
+                            openModal={openModal}
+                            logout={logout}
+                            currentUser={currentUser}
+                        />
+                    </div>
             </div>
         </div>
     )

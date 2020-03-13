@@ -9,10 +9,11 @@ class UpDateProductForm extends React.Component {
     }
 
     render() {
-        const { processForm, formType, product, errors } = this.props;
+        const { currentUserId, processForm, formType, product, errors } = this.props;
         if (!product) return null;
         return (
             <ProductForm
+                currentUserId={currentUserId}
                 errors={errors}
                 processForm={processForm}
                 formType={formType}
@@ -24,7 +25,8 @@ class UpDateProductForm extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     formType: "Update Product Listing",
     errors: state.errors.product,
-    product: state.entities.products[ownProps.match.params.productId]
+    product: state.entities.products[ownProps.match.params.productId],
+    currentUserId: state.session.id
 })
 
 const mapDispatchToProps = dispatch => ({

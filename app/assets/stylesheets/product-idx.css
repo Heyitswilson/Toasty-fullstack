@@ -50,7 +50,7 @@
 .grid-item {
     display: flex;
     align-items: flex-start;
-    
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     margin: 20px;
@@ -116,6 +116,7 @@
 }
 
 .public-name {
+    padding-bottom: 2px;
     color: black;
     font-size: 19px;
     font-family: 'Maven Pro', sans-serif;

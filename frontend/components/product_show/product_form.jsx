@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+
 
 class ProductForm extends React.Component {
     constructor(props){
@@ -49,13 +51,8 @@ class ProductForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('product[photo]', this.state.photoFile)
         }
-        // if(this.props.formType === "update") {
-        //     formData.append("_method", "PATCH")
-        // }
-        // let newState = Object.assign({}, this.state, {artist_id: this.props.artistId})
-        // let newFormData = Object.assign({}, this.state, { artist_id: this.props.artistId })
-        // this.props.processForm(formData)
         this.props.processForm(formData, this.props.product.id)
+        this.props.history.push(`/users/${this.props.currentUserId}`)
     }
 
     handleFile(e) {
@@ -155,4 +152,4 @@ class ProductForm extends React.Component {
     }
 }
 
-export default ProductForm
+export default withRouter(ProductForm)
