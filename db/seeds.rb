@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+CartItem.delete_all
+Product.delete_all
+User.delete_all
+
 link1 = open('https://toasty-dev.s3-us-west-1.amazonaws.com/eggplant_bag_1.jpg')
 link2 = open("https://toasty-dev.s3-us-west-1.amazonaws.com/wall_wooden_map.jpg")
 link3 = open("https://toasty-dev.s3-us-west-1.amazonaws.com/ideas.jpg")
