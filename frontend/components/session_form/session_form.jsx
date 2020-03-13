@@ -1,5 +1,4 @@
 import React from 'react'
-import {openModal} from '../../actions/modal_actions'
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -84,7 +83,7 @@ class SessionForm extends React.Component {
                     <h3 className="header-form">{this.props.formType}</h3>
                     <input
                         className="signup-submit"
-                        onClick={() => dispatch(openModal("Sign Up"))}
+                        onClick={() => this.props.openModal("Sign Up"   )}
                         type="submit"
                         value={"Sign Up"}
                     />
