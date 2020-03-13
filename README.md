@@ -1,26 +1,15 @@
-<<<<<<< HEAD
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Toasty
 
-Things you may want to cover:
+Toasty is an e-commerce application which allows users to sell arts and crafts products to other users.
+It prioritizes minimialistic design to provide a clean, aesthetic user interface.
 
-* Ruby version
+## Live Site
+Check it out here! [Toasty](http://toasty-fullstack.herokuapp.com/?#/)
 
-* System dependencies
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
 =======
