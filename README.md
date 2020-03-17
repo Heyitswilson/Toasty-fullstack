@@ -7,11 +7,19 @@ It prioritizes minimialistic design to provide a clean, aesthetic user interface
 ## Live Site
 Check it out at [Toasty](http://toasty-fullstack.herokuapp.com/?#/)!
 
+## Built With 
+* Ruby on Rails -  the framework
+* React Redux - to provide a fast and smooth user interaction
+* Javascript - to add interactive elements to the app
+* jQuery library - to fetch backend data to the frontend
 
 
 
+## To-do
+* Functional searchbar
+* Product categories
+* Product comments and reviews
+* Checkout/Paypal API
 
-* ...
 =======
-# Etsy-Fullstack: Toasty
->>>>>>> 67326adad02ab7ef1f4a2ab00e460d4c311cf2a3
+
