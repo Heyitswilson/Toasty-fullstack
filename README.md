@@ -5,7 +5,7 @@ Toasty is an e-commerce application which allows users to sell arts and crafts p
 It prioritizes minimialistic design to provide a clean, aesthetic user interface.
 
 ## Live Site
-Check it out here! [Toasty](http://toasty-fullstack.herokuapp.com/?#/)
+Check it out at [Toasty](http://toasty-fullstack.herokuapp.com/?#/)!
 
 
 
