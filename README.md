@@ -1,7 +1,7 @@
 # Toasty
 
 Toasty is an e-commerce application which allows users to sell arts and crafts products to other users.
-It prioritizes minimalist design to provide a clean, aesthetic user interface.
+It prioritizes a minimalist design to provide a clean, aesthetic user interface.
 
 ![Toasty Homepage](/resized_home.png)
 
