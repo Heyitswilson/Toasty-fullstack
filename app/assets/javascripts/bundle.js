@@ -2573,7 +2573,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.props.login({
             name: "",
-            email: "jack@gmail.com",
+            email: "wilson@gmail.com",
             password: "password"
           });
         }

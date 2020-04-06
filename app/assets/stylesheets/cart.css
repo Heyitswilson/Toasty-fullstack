@@ -28,6 +28,7 @@
 }
 
 .quantity-word {
+    padding-top: 1%;
     color: black;
     font-size: 15px;
     font-family: 'Maven Pro', sans-serif;
@@ -35,6 +36,7 @@
 }
 
 .quantity-num {
+    padding-top: 1%;
     padding-left: 1%;
     color: black;
     font-size: 15px;
