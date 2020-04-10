@@ -1,28 +1,23 @@
-<<<<<<< HEAD
-# README
+# Toasty
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Toasty is an e-commerce application which allows users to sell arts and crafts products to other users.
+It prioritizes a minimalist design to provide a clean, aesthetic user interface.
 
-Things you may want to cover:
+![Toasty Homepage](/resized_home.png)
 
-* Ruby version
+## Live Site
+Check it out at [Toasty](http://toasty-fullstack.herokuapp.com/?#/)!
 
-* System dependencies
+## Built With 
+* Ruby on Rails -  the framework
+* React Redux - to provide a fast and smooth user interaction
+* Javascript - to add interactive elements to the app
+* jQuery library - to fetch backend data to the frontend
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
-# Etsy-Fullstack: Toasty
->>>>>>> 67326adad02ab7ef1f4a2ab00e460d4c311cf2a3
+## To-do
+* Functional searchbar
+* Product categories
+* Product comments and reviews
+* Checkout/Paypal API
