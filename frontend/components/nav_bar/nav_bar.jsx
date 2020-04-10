@@ -1,8 +1,8 @@
 import React from 'react'
-import ProfileContainer from './profile_container'
-import CartContainer from './cart_container'
+import ProfileContainer from '../profile/profile_container'
+import CartContainer from '../cart/cart_container'
 import SignIn from './sign_in'
-import SearchBarContainer from './search_bar_container'
+import SearchBarContainer from '../search/search_bar_container'
 import { Link } from 'react-router-dom'
 
 const NavBar = ({ currentUser, openModal, logout }) => {
