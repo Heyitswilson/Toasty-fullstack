@@ -44,13 +44,6 @@ class Api::ProductsController < ApplicationController
         end
     end
 
-    def search
-        respond_to do |format|
-            format.html { render :search }
-            format.json { render :search }
-        end
-    end
-
     private
 
     def product_params
