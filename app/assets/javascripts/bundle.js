@@ -2308,6 +2308,14 @@ var Root = function Root(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -2330,15 +2338,30 @@ var SearchBar = function SearchBar(props) {
       searchList = _useState2[0],
       searching = _useState2[1];
 
+  var initialList = [];
+
+  var updateSearchList = function updateSearchList(product) {
+    searching(function (searchList) {
+      return [].concat(_toConsumableArray(searchList), [product.name]);
+    });
+  };
+
   var searchProducts = function searchProducts(input) {
     // debugger
+    if (input === '') {
+      return searching(initialList);
+    }
+
+    searching(initialList);
+
     for (var i = 0; i < productsNames.length; i += 1) {
       var product = productsNames[i];
 
       if (product.name.toLowerCase().includes(input.toLowerCase())) {
-        searching(product.name); // debugger
+        // searching(product.name)
+        updateSearchList(product); // debugger
 
-        console.log(product.name);
+        console.log(searchList);
       }
     } // debugger
 

@@ -6,15 +6,25 @@ const SearchBar = (props) => {
     // let productsNames = Object.keys(products)
     // let searchList;
     const [searchList, searching] = useState([]);
+    const initialList = [];
+
+    const updateSearchList = (product) => {
+        searching(searchList => [...searchList, product.name])
+    }
 
     const searchProducts = (input) => {
         // debugger
+        if (input === '') {
+            return searching(initialList)
+        }
+        searching(initialList)
         for(let i = 0; i < productsNames.length; i += 1) {
             let product = productsNames[i]
             if (product.name.toLowerCase().includes(input.toLowerCase())) {
-                searching(product.name)
+                // searching(product.name)
+                updateSearchList(product)
                 // debugger
-                console.log(product.name)
+                console.log(searchList)
             }
         }
         // debugger
