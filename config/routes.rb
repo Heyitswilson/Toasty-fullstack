@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace :api, defaults:{format: :json} do
     resources :users, only: [:create, :show]
     resource :session, only: [:destroy, :create]
-    resources :products, except: [:new]
+    resources :products, except: [:new] do
+      get "search", on: :collection
+    end
     resources :cart_items, only: [:index, :show, :create, :destroy]
   end
 

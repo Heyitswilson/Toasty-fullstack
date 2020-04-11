@@ -41,3 +41,12 @@ export const deleteProduct = (productId) => (
     })
 )
 
+export const searchProducts = (queryVal) => {
+    debugger
+    return( $.ajax({
+        url: '/api/products/search',
+        dataType: 'json',
+        method: 'GET',
+        data: { queryVal }
+    }))
+}
