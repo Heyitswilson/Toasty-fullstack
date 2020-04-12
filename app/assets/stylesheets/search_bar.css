@@ -1,0 +1,29 @@
+.list {
+  border: 1px solid rgb(217, 217, 217);
+  background-color: rgb(242, 242, 242);
+  opacity: .99;
+  border-radius: 5px;
+  /* min-width: 30%; */
+  display: flex;
+  /* margin-bottom:10px; */
+  flex-direction: column;
+  align-items: space-around;
+  position: relative;
+  left: 13px;
+  padding: 5px;
+}
+
+.search-form {
+  height: 76px;
+}
+
+.search-link {
+  text-decoration: none;
+  color: black;
+  /* padding: 2px; */
+  margin: 5px;
+}
+
+.search-link:hover {
+  background-color: rgb(217, 217, 217)
+}

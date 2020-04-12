@@ -5,6 +5,7 @@ class ProductItem extends React.Component{
         super(props)
         this.state = {quantity: 1}
 
+        // this.props.getAllProducts()
         this.addToCart = this.addToCart.bind(this)
     }
 
