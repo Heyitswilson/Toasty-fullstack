@@ -31,12 +31,13 @@ const receiveErrors = errors => ({
     errors
 })
 
-export const getAllProducts = () => dispatch => (
+export const getAllProducts = () => dispatch => {
+    debugger
     ProductAPIUtil.getAllProducts()
         .then(products => dispatch(receiveProducts(products)),
             err => dispatch(receiveErrors(err.responseJSON))
         )
-)
+}
 
 export const getProduct = productId => dispatch => {
     return(

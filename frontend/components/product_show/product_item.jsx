@@ -1,13 +1,24 @@
 import React from 'react'
+import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
 
 class ProductItem extends React.Component{
     constructor(props) {
         super(props)
-        this.state = {quantity: 1}
+        this.state = {
+            quantity: 1,
+            inProp: false
+        }
 
         // this.props.getAllProducts()
         this.addToCart = this.addToCart.bind(this)
+        this.popUp = this.popUp.bind(this)
+        this.clearPopUp = this.clearPopUp.bind(this)
     }
+    
+    // componentDidMount() {
+    //     debugger
+    //     this.props.getAllProducts();
+    // }
 
     addToCart(e) {
         e.preventDefault()
@@ -17,7 +28,7 @@ class ProductItem extends React.Component{
             this.props.openModal()
         }
 
-        this.setState({quantity: this.state.quantity + 1})
+        this.setState({quantity: this.state.quantity + 1, inProp: true})
 
         this.props.createCartItem({customer_id: sessionId, product_id: product.id, quantity: this.state.quantity})
     }
@@ -26,6 +37,28 @@ class ProductItem extends React.Component{
         return e => this.setState({
             [field]: e.currentTarget.value
         })
+    }
+
+    clearPopUp() {
+        this.setState({ inProp: false })
+    }
+
+    popUp() {
+        // setTimeout(this.clearPopUp, 5000)
+            setTimeout(this.clearPopUp, 5000)
+            return (
+              <ReactCSSTransitionGroup
+                transitionName="pop-up"
+                // in={this.state.inProp}
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={1000}
+                // unmountOnExit
+              >
+                {this.state.inProp && this.props.sessionId ? <div key={1} className="added-cart">Added to cart!</div> : null }
+                {/* <div key={1} className="added-cart">Added to cart!</div> */}
+              </ReactCSSTransitionGroup>
+            );
+        
     }
 
     render(){
@@ -37,7 +70,14 @@ class ProductItem extends React.Component{
                     <div className="name-product">{product.name}</div>
                     <h2 className="price-product">${product.price}</h2>
                     {/* <input onChange={this.update("quantity")} type="text" value={this.state.quantity}/> */}
-                    <button onClick={this.addToCart} className="signin-submit">Add to Cart</button>
+                    <button 
+                        onClick={this.addToCart} 
+                        className="signin-submit"
+                        >
+                        Add to Cart
+                    </button>
+                    {this.popUp()}
+                    {/* <button onClick={this.clearPopUp}>clear</button> */}
                     <div>
                             <label className="label-description">Description</label>
                         <h2 className="description-product">{product.description}</h2>

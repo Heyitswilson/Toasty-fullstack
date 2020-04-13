@@ -12,10 +12,11 @@ class ProductItemMiddleMan extends React.Component{
 
     componentDidMount() {
         this.props.getProduct(this.props.match.params.productId)
+        this.props.getAllProducts()
     }
 
     render() {
-        const { openModal, sessionId ,product, createCartItem, cartItem } = this.props
+        const { openModal, sessionId ,product, createCartItem, cartItem, products } = this.props
         if (!product) return null 
         return(
             <ProductItem 
@@ -30,12 +31,12 @@ class ProductItemMiddleMan extends React.Component{
 }
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return ({
-        product: state.entities.products[ownProps.match.params.productId],
+        // product: state.entities.products[ownProps.match.params.productId],
+        product: state.entities.product,
         cartItem: { customer_id: null, product_id: null },
         sessionId: state.session.id,
-        products: state.entities.products
+        // products: state.entities.products
     })
 }
 
