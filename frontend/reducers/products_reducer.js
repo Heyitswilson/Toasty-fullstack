@@ -2,7 +2,6 @@ import { RECEIVE_INDEX, RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT } from
 
 const productsReducer = (state={}, action) => {
     Object.freeze(state)
-    debugger
     let newState = Object.assign({}, state)
     switch(action.type){
         case RECEIVE_PRODUCTS:
