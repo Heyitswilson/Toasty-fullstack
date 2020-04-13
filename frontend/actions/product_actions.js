@@ -32,7 +32,6 @@ const receiveErrors = errors => ({
 })
 
 export const getAllProducts = () => dispatch => {
-    debugger
     ProductAPIUtil.getAllProducts()
         .then(products => dispatch(receiveProducts(products)),
             err => dispatch(receiveErrors(err.responseJSON))

@@ -4,6 +4,7 @@ import CartContainer from '../cart/cart_container'
 import SignIn from './sign_in'
 import SearchBarContainer from '../search/search_bar_container'
 import { Link } from 'react-router-dom'
+import Categories from '../categories/categories'
 
 const NavBar = ({ currentUser, openModal, logout }) => {
     return(
@@ -27,6 +28,7 @@ const NavBar = ({ currentUser, openModal, logout }) => {
                         />
                     </div>
             </div>
+            <Categories />
         </div>
     )
 }

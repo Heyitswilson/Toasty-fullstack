@@ -1,6 +1,6 @@
 .list {
   border: 1px solid rgb(217, 217, 217);
-  background-color: rgb(242, 242, 242);
+  background-color: white;
   opacity: .99;
   border-radius: 5px;
   /* min-width: 30%; */
@@ -29,7 +29,7 @@
 }
 
 .search-link:hover {
-  background-color: rgb(217, 217, 217)
+  background-color: rgb(242, 242, 242)
 }
 
 .display-enter {
