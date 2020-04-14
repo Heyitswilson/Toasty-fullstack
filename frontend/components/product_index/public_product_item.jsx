@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 class PublicProductIdxItem extends React.Component {
     constructor(props) {
         super(props)
-
+        // this.state = {
+        //     user: props.fetchUser(props.product.artist_id)
+        // }
         this.showLess = this.showLess.bind(this)
+
     }
 
     showLess(content){
@@ -22,6 +25,7 @@ class PublicProductIdxItem extends React.Component {
 
     render() {
         let { product } = this.props
+        debugger
         return (
             <div className="idx-item-div">
                 <Link className="public-product-links" to={`/products/${product.id}`}>

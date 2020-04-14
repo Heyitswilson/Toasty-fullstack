@@ -30,7 +30,6 @@ export const logout = () => dispatch => (
         .then( () => dispatch(logoutCurrentUser()))
 )
 
-
 export const signup = user => dispatch => (
     SessionAPIUtil.signup(user)
         .then ( currentUser => dispatch(receiveCurrentUser(currentUser)),

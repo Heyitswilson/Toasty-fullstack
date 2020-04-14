@@ -14,10 +14,6 @@
     flex-direction: column;
     justify-content: center;
     padding: 2%;
-    min-width: 220px;
-    max-width: 220px;
-    min-height: 248px;
-    max-height: 248px;
     /* width: 40%;
     height: 40% */
 }

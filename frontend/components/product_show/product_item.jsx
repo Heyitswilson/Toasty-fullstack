@@ -26,11 +26,11 @@ class ProductItem extends React.Component{
 
         if (sessionId === null) {
             this.props.openModal()
+        } else {
+            this.setState({quantity: this.state.quantity + 1, inProp: true})
+            this.props.createCartItem({customer_id: sessionId, product_id: product.id, quantity: this.state.quantity})
         }
 
-        this.setState({quantity: this.state.quantity + 1, inProp: true})
-
-        this.props.createCartItem({customer_id: sessionId, product_id: product.id, quantity: this.state.quantity})
     }
 
     update(field) {
@@ -44,13 +44,12 @@ class ProductItem extends React.Component{
     }
 
     popUp() {
-        // setTimeout(this.clearPopUp, 5000)
             setTimeout(this.clearPopUp, 5000)
             return (
               <ReactCSSTransitionGroup
                 transitionName="pop-up"
                 // in={this.state.inProp}
-                transitionEnterTimeout={1000}
+                transitionEnterTimeout={1500}
                 transitionLeaveTimeout={1000}
                 // unmountOnExit
               >
@@ -65,7 +64,7 @@ class ProductItem extends React.Component{
         let { product } = this.props
         return (
             <div className="show-div">
-                <img className="show-image" src={product.photoUrl} alt="" />
+                    <img className="show-image" src={product.photoUrl} alt="" />
                 <div className="info-div">
                     <div className="name-product">{product.name}</div>
                     <h2 className="price-product">${product.price}</h2>
@@ -76,8 +75,8 @@ class ProductItem extends React.Component{
                         >
                         Add to Cart
                     </button>
-                    {this.popUp()}
                     {/* <button onClick={this.clearPopUp}>clear</button> */}
+                        {this.popUp()}
                     <div>
                             <label className="label-description">Description</label>
                         <h2 className="description-product">{product.description}</h2>

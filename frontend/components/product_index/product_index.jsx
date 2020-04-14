@@ -1,6 +1,7 @@
 import React from 'react'
 import UserProductIdxItem from './user_product_item'
-import PublicProductIdxItem from './public_product_item'
+// import PublicProductIdxItem from './public_product_item'
+import PublicProductIdxContainer from './public_product_idx_container'
 import CreateProductContainer from '../product_show/create_product_container'
 
 
@@ -33,7 +34,7 @@ class ProductIndex extends React.Component {
                     <button className="test" onClick={() => this.displayCreate()}>Create Product Listing</button>
                 </div>
                 {/* <h1 className="header">All Products</h1> */}
-                    <ul className="grid-container">
+                    <ul className="grid-user-container">
                         {this.props.userProducts.map((product) => {
                             return (
                                 <div className="grid-item-user">
@@ -59,7 +60,7 @@ class ProductIndex extends React.Component {
                     {this.props.allProducts.map((product) => {
                         return(
                             <div className="grid-item">
-                                <PublicProductIdxItem
+                                <PublicProductIdxContainer
                                     product={product}
                                     key={product.id}
                                 />

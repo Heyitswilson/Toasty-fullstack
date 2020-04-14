@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 .idx-images {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     padding: 2px;
 }
 
@@ -15,7 +15,7 @@
     width: 50%;
     border-radius: 2%;
     box-shadow: rgb(128, 128, 128);
-    padding-left: 100px;
+    margin-left: 100px;
     min-width: 450px;
     max-width: 450px;
     min-height: 450px;
@@ -70,7 +70,8 @@
 .pop-up-enter {
   /* opacity: .01; */
   	opacity: .01;
-	transform: scaleX(0) translateY(25px) translateX(-500px);
+	transform: scaleX(0) translateY(25px) 
+	/* transform: scaleX(0) translateY(25px) translateX(-500px); */
 }
 
 .pop-up-enter.pop-up-enter-active {
@@ -91,13 +92,28 @@
   /* opacity: .01;
   transition: opacity 500ms ease-in-out; */
   	opacity: 01;
-	transform: scaleX(0) translateY(25px) translateX(-500px);
+	transform: scaleX(0) translateY(25px);
+	/* transform: scaleX(0) translateY(25px) translateX(-500px); */
 	transition: all 300ms ease-in-out
 }
 
 .added-cart {
-    border: 1px solid black;
-    background-color: gray;
+    border: 1px solid rgb(242, 242, 242);
+    /* rgb(255, 193, 179) */
+    background-color: white;
+    /* rgb(255, 92, 57) */
     border-radius: 5px;
     padding: 10px;
+    /* opacity: .99; */
+    /* z-index: 99; */
+    width: 130px;
+    position: absolute;
+    margin-left: 10%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    /* position: relative; */
+    top: 300px;
+    text-align: center
+    /* bottom: 3000px */
 }

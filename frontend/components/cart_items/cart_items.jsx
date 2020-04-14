@@ -1,17 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class CartItems extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
             render: [false],
-            grandTotal: 0
+            grandTotal: 0,
+            popup: false
         }        
 
-        this.uniqueProducts = this.uniqueCartItems.bind(this)
-        this.deleteItem = this.deleteItem.bind(this)
-        this.total = this.total.bind(this)
+        this.uniqueProducts = this.uniqueCartItems.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
+        this.total = this.total.bind(this);
+        this.clearPopUp = this.clearPopUp.bind(this);
+        this.popUp = this.popUp.bind(this)
+    }
+
+    clearPopUp() {
+        this.setState({ inProp: false })
+    }
+
+    popUp() {
+        setTimeout(this.clearPopUp, 5000)
+        return (
+            <ReactCSSTransitionGroup
+                transitionName="pop-up"
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={1000}
+            >
+                {this.state.inProp && this.props.sessionId ? <div key={1} className="added-cart">Added to cart!</div> : null}
+            </ReactCSSTransitionGroup>
+        );
+
     }
 
     componentDidMount(){

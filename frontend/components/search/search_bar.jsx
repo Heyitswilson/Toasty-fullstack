@@ -10,6 +10,7 @@ const SearchBar = (props) => {
     // let searchList;
     const [inProp, setInProp] = useState(false)
     const [searchList, searching] = useState([]);
+    const [display, setDisplay] = useState(false)
     const initialList = [];
 
     // document.addEventListener("keydown", (e) => {
@@ -22,6 +23,7 @@ const SearchBar = (props) => {
     const clearSearch = () => {
         searching([])
         $('input.search-bar').val('')
+        setDisplay(false)
     }
 
     const updateSearchList = (product) => {
@@ -45,25 +47,54 @@ const SearchBar = (props) => {
     const displaySearch = () => {
         if (searchList.length != 0) {
             return (
-              <ReactCSSTransitionGroup
-                // classNames="display"
-                // // enter: "list-enter",
-                // // enterActive: "list-enter-active",
-                // // exit: 'list-exit',
-                // // exitActive: 'list-exit-active'
-                // in={inProp}
-                // timeout={200}
-              >
                 <div className="search-background">
-                  <div className="close" onClick={() => clearSearch()}>
-                    X
-                  </div>
-                  <ul className="list" onClick={(e) => e.stopPropagation()}>
-                    {searchList}
-                  </ul>
+                    <div className="close" onClick={() => clearSearch()}>
+                        X
+                                </div>
+                    <ul className="list" onClick={(e) => e.stopPropagation()}>
+                        {searchList}
+                    </ul>
                 </div>
-              </ReactCSSTransitionGroup>
-            );
+            )
+
+    //         return (
+    //           <ReactCSSTransitionGroup
+    //             // classNames="display"
+    //             // in={inProp}
+    //             // timeout={200}
+    //             transitionName="display"
+    //             transitionEnterTimeout={1000}
+    //             transitionLeaveTimeout={1000}
+    //           >
+    //                 {/* {display ? <div className="search-background">
+    //                     <div className="close" onClick={() => clearSearch()}>
+    //                         X
+    //                 </div>
+    //                     <ul className="list" onClick={(e) => e.stopPropagation()}>
+    //                         {searchList}
+    //                     </ul>
+    //                 </div> : null
+    //             } */}
+    // {/* dont use a hook inside an if statement */}
+    //             {useEffect(() => {
+    //                 if (display) {
+    //                     return (
+    //                         <div className="search-background">
+    //                             <div className="close" onClick={() => clearSearch()}>
+    //                                 X
+    //                             </div>
+    //                             <ul className="list" onClick={(e) => e.stopPropagation()}>
+    //                                 {searchList}
+    //                             </ul>
+    //                         </div>
+    //                     )
+    //                 } else {
+    //                     return null
+    //                 }
+    //             }, [display])}
+    //           </ReactCSSTransitionGroup>
+            
+    //         );
         }
     }
 
@@ -85,6 +116,12 @@ const SearchBar = (props) => {
         }
     }
 
+    const givenInput = e => {
+        updateInput(e.currentTarget.value),
+        searchProducts(e.currentTarget.value)
+        setDisplay(true)
+    }
+
     const [searchInput, updateInput] = useState('');
     return (
         <div >
@@ -96,8 +133,7 @@ const SearchBar = (props) => {
                     name="product"
                     placeholder="Search for products"
                     onChange={
-                        e => updateInput(e.currentTarget.value),
-                        e => searchProducts(e.currentTarget.value)
+                        (e) => givenInput(e)
                     }
                     autoComplete="off"
                 />
