@@ -25,7 +25,6 @@ class PublicProductIdxItem extends React.Component {
 
     render() {
         let { product } = this.props
-        debugger
         return (
             <div className="idx-item-div">
                 <Link className="public-product-links" to={`/products/${product.id}`}>

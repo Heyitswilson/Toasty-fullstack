@@ -35,7 +35,7 @@
     margin: 10px;
     height: 50px;
     flex-grow: 1;
-    min-width: 84%;
+    min-width: 95%;
     border-radius: 25px;
     background-color: rgb(241, 243, 244);
     outline: none;
@@ -45,7 +45,14 @@
     padding-left: 18px;
 }
 
+.search-bar:focus {
+    background-color: white;
+    border: 1px solid black
+}
+
 .button-divs {
+    display: inline-block;
+    width: 300px;
     /* display: flex; */
     /* flex-shrink: 0; */
     padding-right: 1%;

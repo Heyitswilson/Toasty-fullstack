@@ -19,6 +19,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 15px;
 }
 
 .label-input {
@@ -44,6 +45,10 @@
   width: 91%
 }
 
+.form-input:focus {
+  border: 1px solid black
+}
+
 .signin-submit {
   outline: none;
   border-radius: 5px;
@@ -55,6 +60,24 @@
   font-family: 'Spartan', sans-serif;
   font-size: 15px;
   color: white;
+}
+
+.signup-button {
+  outline: none;
+  border-radius: 5px;
+  /* margin-left: 27%; */
+  padding: 10px;
+  width: 40%;
+  height: 15%;
+  background-color: black;
+  font-family: 'Spartan', sans-serif;
+  font-size: 15px;
+  color: white;
+}
+
+.signup-button:hover {
+  cursor: pointer;
+  background-color: rgb(102, 102, 102)
 }
 
 .signin-submit:hover {
@@ -111,7 +134,8 @@
 
 .sign-demo {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%
 }
 
 .demo-submit {
@@ -131,4 +155,15 @@
 .demo-submit:hover {
   cursor: pointer;
   background-color: rgb(179, 179, 179);
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-div {
+  width: 100%
 }

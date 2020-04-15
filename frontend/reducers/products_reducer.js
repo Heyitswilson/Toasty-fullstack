@@ -8,6 +8,7 @@ const productsReducer = (state={}, action) => {
             return action.products 
         case REMOVE_PRODUCT:
             delete newState[action.id]
+            return action.products
         case RECEIVE_INDEX:
             return action.type
         default: 

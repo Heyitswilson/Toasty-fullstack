@@ -79,6 +79,7 @@
 .product-delete {
     border: none;
     outline: none;
+    text-decoration: none;
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     color:rgb(115, 115, 115);
@@ -133,4 +134,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 1300px) {
+    .grid-container {
+        grid-template-columns: 15% 15% 15% 15% 15%;
+        padding-left: 8%;
+        column-gap: 50px;
+    }
+}
+
+@media only screen and (max-width: 1153px) {
+        .grid-container {
+        grid-template-columns: 15% 15% 15% 15% ;
+        padding-left: 9%;
+        column-gap: 100px;
+    }
 }

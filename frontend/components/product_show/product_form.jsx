@@ -80,6 +80,7 @@ class ProductForm extends React.Component {
 
     render() {
         const preview = this.state.photoUrl ? <img className="preview" src={this.state.photoUrl} /> : null
+        debugger
         return (
             <div >
 
@@ -128,15 +129,7 @@ class ProductForm extends React.Component {
                                         onChange={this.imageFile}
                                     />
                                     <br />
-                                    {/* <label >Category</label>
-                                    <select>
-                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Art & Collectibles</option>
-                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Clothing & Shoes</option>
-                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Home & Living</option>
-                                        <option onChange={this.update("category")} onSelect={this.update("category")} value={this.state.category}>Vintage</option>
-                                    </select> */}
-                                    <br />
-                                    <button>{this.props.formType}</button>
+                                    <button onClick={() => {this.props.history.push("/")}} type="submit">{this.props.formType}</button>
                                 </div>
                                 <div className="image-input">
                                     <h3>Preview</h3>
