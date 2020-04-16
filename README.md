@@ -14,10 +14,8 @@ Check it out at [Toasty](http://toasty-fullstack.herokuapp.com/?#/)!
 * Javascript - to add interactive elements to the app
 * jQuery library - to fetch backend data to the frontend
 
-
-
 ## To-do
-* Functional searchbar
-* Product categories
-* Product comments and reviews
-* Checkout/Paypal API
+* Additional search bar functionality
+* Additional categories functionality
+* Comments and reviews
+* Database efficiency
