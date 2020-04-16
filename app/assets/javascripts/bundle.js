@@ -414,6 +414,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_show_update_product_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./product_show/update_product_container */ "./frontend/components/product_show/update_product_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _cart_items_cart_items_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./cart_items/cart_items_container */ "./frontend/components/cart_items/cart_items_container.js");
+/* harmony import */ var _search_search_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./search/search_page */ "./frontend/components/search/search_page.jsx");
+/* harmony import */ var _search_search_page__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_search_search_page__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -1843,32 +1846,42 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         className: "form-boxes"
       }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "individual-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-form-labels"
+      }, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "product-form-inputs",
         onChange: this.update("name"),
         type: "text",
         value: this.state.name
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "individual-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-form-labels"
+      }, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "product-form-inputs",
         onChange: this.update("description"),
         value: this.state.description,
         cols: "30",
         rows: "10"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-form-labels"
+      }, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "product-form-inputs",
         onChange: this.update("price"),
         type: "number",
         value: this.state.price
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "product-form-button",
         type: "file",
         onChange: this.imageFile
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "product-form-button",
         type: "submit"
       }, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Preview"), preview)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "product-form-labels"
+      }, "Preview"), preview)))));
     }
   }]);
 
@@ -2543,6 +2556,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var SearchBar = function SearchBar(props) {
   var products = props.products;
   var productsNames = Object.keys(products).map(function (num) {
@@ -2563,9 +2577,15 @@ var SearchBar = function SearchBar(props) {
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
       display = _useState6[0],
-      setDisplay = _useState6[1];
+      setDisplay = _useState6[1]; // const [redirectList, setRedirectList] = useState([])
+
 
   var initialList = [];
+  jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).keypress(function (event) {
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+  });
 
   var clearSearch = function clearSearch() {
     searching([]);
@@ -2574,14 +2594,17 @@ var SearchBar = function SearchBar(props) {
   };
 
   var updateSearchList = function updateSearchList(product) {
+    // setRedirectList(redirectList => [...redirectList], product)
     searching(function (searchList) {
-      return [].concat(_toConsumableArray(searchList), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return [].concat(_toConsumableArray(searchList), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "link-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: function onClick() {
           return clearSearch();
         },
         className: "search-link",
         to: "/products/".concat(product.id)
-      }, showLess(product.name))]);
+      }, showLess(product.name)))]);
     });
   };
 
@@ -2634,7 +2657,10 @@ var SearchBar = function SearchBar(props) {
   var givenInput = function givenInput(e) {
     updateInput(e.currentTarget.value), searchProducts(e.currentTarget.value);
     setDisplay(true);
-  };
+  }; // const redirectTo = () => {
+  //     props.history.push('/search')
+  // }
+
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState8 = _slicedToArray(_useState7, 2),
@@ -2656,7 +2682,7 @@ var SearchBar = function SearchBar(props) {
   }), displaySearch()));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SearchBar);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar));
 
 /***/ }),
 
@@ -2681,6 +2707,38 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, null)(_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/search/search_page.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/search/search_page.jsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// import React from 'react'
+// import PublicProductIdxContainer from '../product_index/product_index_container'
+// const SearchPage = (props) => {
+//     return (
+//         <div>
+//             <h1 className="header">All Products</h1>
+//             <ul className="grid-container">
+//                 {/* {this.props.allProducts.map((product) => {
+//                     return (
+//                         <div className="grid-item">
+//                             <PublicProductIdxContainer
+//                                 product={product}
+//                                 key={product.id}
+//                             />
+//                         </div>
+//                     )
+//                 })} */}
+//             </ul>
+//         </div> 
+//     )
+// }
+// export default SearchPage
 
 /***/ }),
 
@@ -3035,12 +3093,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import searchResultsReducer from './search_results_reducer'
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   cartItems: _cart_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  product: _product_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  product: _product_reducer__WEBPACK_IMPORTED_MODULE_4__["default"] // searchResults: searchResultsReducer
+
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -3573,7 +3633,7 @@ var Auth = function Auth(_ref2) {
     path: path,
     exact: exact,
     render: function render(props) {
-      return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__["Redirect"], {
+      return loggedIn ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__["Redirect"], {
         to: "/"
       });
     }

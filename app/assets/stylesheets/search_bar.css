@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
 .list {
   border: 1px solid rgb(217, 217, 217);
   background-color: white;
@@ -19,14 +21,16 @@
 .search-link {
   text-decoration: none;
   color: black;
-  /* padding: 2px; */
   margin: 5px;
   display: flex;
   height: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
 }
 
-.search-link:hover {
+.link-div:hover {
   background-color: rgb(242, 242, 242);
+  cursor: pointer;
 }
 
 .display-enter {
@@ -48,13 +52,17 @@
 }
 
 .search-background {
-  /* position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0; */
-  /* background: rgba(0, 0, 0, 0.529); */
-  /* height: 100%; */
   z-index: 10;
-  /* transition: height 2s */
 }
+
+.link-div {
+  display: flex;
+  align-items: center;
+}
+
+/* .link-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  padding: 5px;
+} */
