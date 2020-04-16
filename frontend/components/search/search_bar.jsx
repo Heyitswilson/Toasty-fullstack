@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 const SearchBar = (props) => {
     const { products } = props;
     let productsNames = Object.keys(products).map(num => products[num]);
     // let productsNames = Object.keys(products)
     // let searchList;
-    const [inProp, setInProp] = useState(false)
+    const [inProp, setInProp] = useState(false);
     const [searchList, searching] = useState([]);
+    const [display, setDisplay] = useState(false);
     const initialList = [];
-
-    // document.addEventListener("keydown", (e) => {
-    //     let code = e.keyCode;
-    //     if (code === "38") {
-
-    //     }
-    // })
 
     const clearSearch = () => {
         searching([])
         $('input.search-bar').val('')
+        setDisplay(false)
     }
 
     const updateSearchList = (product) => {
@@ -37,7 +31,6 @@ const SearchBar = (props) => {
             let product = productsNames[i]
             if (product.name.toLowerCase().includes(input.toLowerCase())) {
                 updateSearchList(product)
-                console.log(searchList)
             }
         }
     }
@@ -45,33 +38,17 @@ const SearchBar = (props) => {
     const displaySearch = () => {
         if (searchList.length != 0) {
             return (
-              <ReactCSSTransitionGroup
-                // classNames="display"
-                // // enter: "list-enter",
-                // // enterActive: "list-enter-active",
-                // // exit: 'list-exit',
-                // // exitActive: 'list-exit-active'
-                // in={inProp}
-                // timeout={200}
-              >
                 <div className="search-background">
-                  <div className="close" onClick={() => clearSearch()}>
-                    X
-                  </div>
-                  <ul className="list" onClick={(e) => e.stopPropagation()}>
-                    {searchList}
-                  </ul>
+                    <div className="close" onClick={() => clearSearch()}>
+                        X
+                                </div>
+                    <ul className="list" onClick={(e) => e.stopPropagation()}>
+                        {searchList}
+                    </ul>
                 </div>
-              </ReactCSSTransitionGroup>
-            );
+            )
         }
     }
-
-    // const checkKey = e => {
-    //     if (e.keyCode === '40') {
-            
-    //     }
-    // }
 
     const showLess = content => {
         if (content.length > 16) {
@@ -85,10 +62,16 @@ const SearchBar = (props) => {
         }
     }
 
+    const givenInput = e => {
+        updateInput(e.currentTarget.value),
+        searchProducts(e.currentTarget.value)
+        setDisplay(true)
+    }
+
     const [searchInput, updateInput] = useState('');
     return (
         <div >
-            <form className="search-form" onSubmit={() => searchProducts()}>
+            <form className="search-form">
                 <input 
                     // onClick={() => setInProp(true)}
                     className="search-bar" 
@@ -96,8 +79,7 @@ const SearchBar = (props) => {
                     name="product"
                     placeholder="Search for products"
                     onChange={
-                        e => updateInput(e.currentTarget.value),
-                        e => searchProducts(e.currentTarget.value)
+                        (e) => givenInput(e)
                     }
                     autoComplete="off"
                 />

@@ -10,8 +10,8 @@ const cartItemsReducer = (state={}, action) => {
         case RECEIVE_CART_ITEMS:
             return action.cartItems
         case REMOVE_CART_ITEM:
-            delete newState.id 
-            return newState
+            delete newState[action.id]
+            return action.allCartItems
         case DELETED_CART_ITEM:
             newState[action.id].deleted = true
             return newState

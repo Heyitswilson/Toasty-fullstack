@@ -3,18 +3,13 @@
   background-color: white;
   opacity: .99;
   border-radius: 5px;
-  /* min-width: 30%; */
-  display: flex;
-  /* margin-bottom:10px; */
+  display: inline-block;
   flex-direction: column;
-  align-items: space-around;
-  position: relative;
-  left: 13px;
   padding: 5px;
-  width: 55%;
-  position: relative;
-  top: 79px;
-  left: 188px;
+  width: 94%;
+  margin-left: 20px;
+  /* height: 200px;
+  transition: height 2s */
 }
 
 .search-form {
@@ -26,10 +21,12 @@
   color: black;
   /* padding: 2px; */
   margin: 5px;
+  display: flex;
+  height: 25px;
 }
 
 .search-link:hover {
-  background-color: rgb(242, 242, 242)
+  background-color: rgb(242, 242, 242);
 }
 
 .display-enter {
@@ -51,11 +48,13 @@
 }
 
 .search-background {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 0; */
   /* background: rgba(0, 0, 0, 0.529); */
+  /* height: 100%; */
   z-index: 10;
+  /* transition: height 2s */
 }

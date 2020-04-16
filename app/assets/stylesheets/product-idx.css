@@ -17,35 +17,19 @@
     font-size: 20px;
 }
 
-.grid-container {
-    /* box-sizing: border-box; */
-    /* border: 1px solid black; */
+.grid-user-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
-/* .grid-container {
-    display: flex
-} */
-
-/* .grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; */
-/* } */
-
-/* .grid-item {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    text-align: center;    
-    border: none;
-    outline: none;
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;\
-} */
+.grid-container {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    padding-left: 2.9%;
+    column-gap: 20px;
+}
 
 .grid-item {
     display: flex;
@@ -69,6 +53,7 @@
 .grid-item-user {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
+    padding-bottom: 30px;
     font-size: 30px;
     text-align: center;
     border: none;
@@ -77,6 +62,8 @@
     font-size: 20px;
     border: rgb(230, 230, 230) 1px solid;
     margin: 20px;
+    width: 200px;
+    height: 250px;
 }
 
 .product-links {
@@ -84,6 +71,7 @@
     color:rgb(115, 115, 115);
     font-family: 'Crimson Text', serif;
     font-size: 15px;
+    border: none;
 }
 
 .product-links:hover {
@@ -93,6 +81,7 @@
 .product-delete {
     border: none;
     outline: none;
+    text-decoration: none;
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     color:rgb(115, 115, 115);
@@ -123,6 +112,20 @@
     font-weight: lighter;
 }
 
+.public-name-link {
+    padding-bottom: 2px;
+    color: black;
+    font-size: 19px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: lighter;
+}
+
+.public-name-link:hover {
+    cursor: pointer;
+    color: rgb(115, 115, 115)
+}
+
+
 .public-price {
     color: black;
     font-size: 26px;
@@ -147,4 +150,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 1300px) {
+    .grid-container {
+        grid-template-columns: 15% 15% 15% 15% 15%;
+        padding-left: 8%;
+        column-gap: 50px;
+    }
+}
+
+@media only screen and (max-width: 1153px) {
+        .grid-container {
+        grid-template-columns: 15% 15% 15% 15% ;
+        padding-left: 9%;
+        column-gap: 100px;
+    }
 }

@@ -1,17 +1,19 @@
 import React from 'react'
 import UserProductIdxItem from './user_product_item'
-import PublicProductIdxItem from './public_product_item'
+// import PublicProductIdxItem from './public_product_item'
+import PublicProductIdxContainer from './public_product_idx_container'
 import CreateProductContainer from '../product_show/create_product_container'
-
 
 class ProductIndex extends React.Component {
     constructor(props){
-        super(props)
-        this.state={displayCreate: false}
+        super(props);
+        this.state={displayCreate: false};
 
-        this.publicProductIndex = this.publicProductIndex.bind(this)
-        this.userProductIndex = this.userProductIndex.bind(this)
-        this.displayCreate = this.displayCreate.bind(this)
+        this.publicProductIndex = this.publicProductIndex.bind(this);
+        this.userProductIndex = this.userProductIndex.bind(this);
+        this.displayCreate = this.displayCreate.bind(this);
+        this.admin = this.admin.bind(this);
+
     }
 
     componentDidMount(){
@@ -22,18 +24,27 @@ class ProductIndex extends React.Component {
         this.setState({displayCreate: true})
     }
 
+    admin() {
+        this.props.otherProducts.forEach(product => this.props.deleteProduct(product.id))
+    }
+
     userProductIndex(){
         if (this.state.displayCreate) {
             return <CreateProductContainer />
         }
+        if (this.props.userID === 44) {
+            return (
+                <button onClick={() => this.admin()}>DELETE ALL</button>
+            )
+        }
 
         return (
             <div className="idx-div">
+                
                 <div className="create-button">
                     <button className="test" onClick={() => this.displayCreate()}>Create Product Listing</button>
                 </div>
-                {/* <h1 className="header">All Products</h1> */}
-                    <ul className="grid-container">
+                    <ul className="grid-user-container">
                         {this.props.userProducts.map((product) => {
                             return (
                                 <div className="grid-item-user">
@@ -59,7 +70,7 @@ class ProductIndex extends React.Component {
                     {this.props.allProducts.map((product) => {
                         return(
                             <div className="grid-item">
-                                <PublicProductIdxItem
+                                <PublicProductIdxContainer
                                     product={product}
                                     key={product.id}
                                 />

@@ -4,11 +4,14 @@ import ProductIndex from './product_index'
 
 
 const mapStateToProps = state => {
-    return {
+    return ({
     userProducts: Object.values(state.entities.products).filter(product => 
         product.artist_id === state.session.id),
-    indexType: "User"
-    }
+    indexType: "User",
+    otherProducts: Object.values(state.entities.products).filter(product => 
+        !product.keep),
+    userID: state.session.id
+    })
 }
 
 const mapDispatchToProps = dispatch => ({

@@ -21,9 +21,10 @@ const receiveProducts = (products) => ({
     products
 })
 
-const removeProduct = productId => ({
+const removeProduct = (productId, products) => ({
     type: REMOVE_PRODUCT,
-    productId
+    productId,
+    products
 })
 
 const receiveErrors = errors => ({
@@ -61,7 +62,8 @@ export const updateProduct = (product, id) => dispatch => (
 
 export const deleteProduct = productId => dispatch => (
     ProductAPIUtil.deleteProduct(productId)
-        .then(() => dispatch(removeProduct(productId)),
+        .then(() => ProductAPIUtil.getAllProducts())
+        .then((products) => dispatch(removeProduct(productId, products)),
             err => dispatch(receiveErrors(err.responseJSON))
         )
 )

@@ -10,7 +10,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: user => dispatch(login(user)),
     processForm: user => dispatch(login(user)),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal())
