@@ -42,6 +42,7 @@
 
 .product-form-flex {
     display: flex;
+    justify-content: center;
 }
 
 .form-boxes {
@@ -55,4 +56,17 @@
 
 .image-input {
     padding: 15px;
+    height: 450px;
+    width: 450px;
+    display: inline-block
+}
+
+.product-form-labels {
+        font-family: 'Spartan', sans-serif;
+}
+
+.product-form-button ~ input {
+    font-family: 'Spartan', sans-serif;
+    padding: 3px;
+
 }

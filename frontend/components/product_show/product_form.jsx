@@ -91,7 +91,7 @@ class ProductForm extends React.Component {
                                 <div className="form-boxes">
                                     {this.renderErrors()}
                                     <div className="individual-input">
-                                        <label>Name</label>
+                                        <label className="product-form-labels">Name</label>
                                         <br/>
                                         <input
                                             className="product-form-inputs"
@@ -102,7 +102,7 @@ class ProductForm extends React.Component {
                                     </div>
                                     <br />
                                     <div className="individual-input">
-                                        <label>Description</label>
+                                    <label className="product-form-labels">Description</label>
                                         <br/>
                                         <textarea
                                             className="product-form-inputs"
@@ -114,7 +114,7 @@ class ProductForm extends React.Component {
                                     </div>
                                     <br />
                                     <div>
-                                        <label>Price</label>
+                                    <label className="product-form-labels">Price</label>
                                         <br/>
                                         <input
                                             className="product-form-inputs"
@@ -124,14 +124,16 @@ class ProductForm extends React.Component {
                                         />
                                     </div>
                                     <br />
-                                    <input type="file"
+                                    <input 
+                                        className="product-form-button"
+                                        type="file"
                                         onChange={this.imageFile}
                                     />
                                     <br />
-                                    <button type="submit">{this.props.formType}</button>
+                                <button className="product-form-button" type="submit">{this.props.formType}</button>
                                 </div>
                                 <div className="image-input">
-                                    <h3>Preview</h3>
+                                <h3 className="product-form-labels">Preview</h3>
                                     {preview}
                                 </div>
                             </form>

@@ -1,10 +1,10 @@
 import * as ProductAPIUtil from '../util/product_api_util'
 
-export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT"
-export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS"
-export const REMOVE_PRODUCT = "REMOVE_PRODUCT"
-export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS"
-export const RECEIVE_INDEX = "RECEIVE_INDEX"
+export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
+export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
+export const RECEIVE_INDEX = "RECEIVE_INDEX";
 
 export const receiveIndex = type => ({
     type: RECEIVE_INDEX,
@@ -67,4 +67,3 @@ export const deleteProduct = productId => dispatch => (
             err => dispatch(receiveErrors(err.responseJSON))
         )
 )
-
