@@ -49,7 +49,9 @@ export const getProduct = productId => dispatch => {
 export const createProduct = (product) => dispatch => (
     ProductAPIUtil.createProduct(product)
         .then(product => dispatch(receiveProduct(product)),
-            err => dispatch(receiveErrors(err.responseJSON))
+            err => dispatch(receiveErrors(err.responseJSON)),
+            ProductAPIUtil.getAllProducts()
+                .then(products => dispatch(receiveProducts(products)))
         )
 )
 

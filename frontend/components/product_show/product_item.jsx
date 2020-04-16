@@ -9,16 +9,10 @@ class ProductItem extends React.Component{
             inProp: false
         }
 
-        // this.props.getAllProducts()
         this.addToCart = this.addToCart.bind(this)
         this.popUp = this.popUp.bind(this)
         this.clearPopUp = this.clearPopUp.bind(this)
     }
-    
-    // componentDidMount() {
-    //     debugger
-    //     this.props.getAllProducts();
-    // }
 
     addToCart(e) {
         e.preventDefault()

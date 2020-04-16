@@ -8,33 +8,12 @@ class CartItems extends React.Component {
         this.state= {
             render: [false],
             grandTotal: 0
-            // popup: false
         }        
 
         this.uniqueProducts = this.uniqueCartItems.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.total = this.total.bind(this);
-        // this.clearPopUp = this.clearPopUp.bind(this);
-        // this.popUp = this.popUp.bind(this)
     }
-
-    // clearPopUp() {
-    //     this.setState({ inProp: false })
-    // }
-
-    // popUp() {
-    //     setTimeout(this.clearPopUp, 5000)
-    //     return (
-    //         <ReactCSSTransitionGroup
-    //             transitionName="pop-up"
-    //             transitionEnterTimeout={1000}
-    //             transitionLeaveTimeout={1000}
-    //         >
-    //             {this.state.inProp && this.props.sessionId ? <div key={1} className="added-cart">Added to cart!</div> : null}
-    //         </ReactCSSTransitionGroup>
-    //     );
-
-    // }
 
     componentDidMount(){
         this.props.getAllCartItems()
@@ -44,7 +23,6 @@ class CartItems extends React.Component {
         let deleteableId = cartItem[1].deleteableId
 
         this.props.deleteCartItem(deleteableId)
-        // this.props.deletedCartItem(deleteableId)
     }
 
     total(cartItem) {
@@ -54,9 +32,7 @@ class CartItems extends React.Component {
     uniqueCartItems(){
         let { userCartItems } = this.props
         let newCartItems = {}
-        // debugger
         userCartItems.forEach(userCartItem => {
-            // debugger
             if (newCartItems[userCartItem.product.id]) {
                 newCartItems[userCartItem.product.id].quantity += userCartItem.quantity
             } else {
@@ -89,7 +65,6 @@ class CartItems extends React.Component {
                         <div className="cart-div"> 
                             {cartItemsObj.map(cartItem => {
                                 let product = cartItem[1].product
-                                debugger
                                 return (
                                     <div className="cart-item-div">
                                         <Link className="public-product-links" to={`/products/${product.id}`}>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
 
@@ -52,7 +51,7 @@ class ProductForm extends React.Component {
             formData.append('product[photo]', this.state.photoFile)
         }
         this.props.processForm(formData, this.props.product.id)
-        this.props.history.push(`/products/${this.state.id}`)
+        this.props.history.push(`/`)
     }
 
     handleFile(e) {
@@ -84,7 +83,7 @@ class ProductForm extends React.Component {
             <div >
 
                 <div className="page">
-                    <h3 className="add-listing">Add a new Listing</h3>
+                    <h3 className="add-listing">Add a New Listing</h3>
                     <div className="form-page">
 
                             <form className="product-form-flex" onSubmit={this.handleSubmit}>

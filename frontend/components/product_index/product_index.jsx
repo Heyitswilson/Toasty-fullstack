@@ -1,6 +1,5 @@
 import React from 'react'
 import UserProductIdxItem from './user_product_item'
-// import PublicProductIdxItem from './public_product_item'
 import PublicProductIdxContainer from './public_product_idx_container'
 import CreateProductContainer from '../product_show/create_product_container'
 

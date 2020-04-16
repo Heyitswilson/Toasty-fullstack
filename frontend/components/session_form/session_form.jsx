@@ -39,7 +39,6 @@ class SessionForm extends React.Component {
                     <h3 className="header-form">{this.props.formType}</h3>
                     <input
                         className="signup-submit"
-                        // onClick={() => console.log(this.props)}
                         onClick={() => this.props.openModal("Sign In")}
                         type="submit"
                         value={"Sign In"}

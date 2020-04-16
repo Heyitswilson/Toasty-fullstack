@@ -6,12 +6,9 @@ import { withRouter } from 'react-router-dom';
 const SearchBar = (props) => {
     const { products } = props;
     let productsNames = Object.keys(products).map(num => products[num]);
-    // let productsNames = Object.keys(products)
-    // let searchList;
     const [inProp, setInProp] = useState(false);
     const [searchList, searching] = useState([]);
     const [display, setDisplay] = useState(false);
-    // const [redirectList, setRedirectList] = useState([])
     const initialList = [];
 
     $(document).keypress(
@@ -28,10 +25,8 @@ const SearchBar = (props) => {
     }
 
     const updateSearchList = (product) => {
-        // setRedirectList(redirectList => [...redirectList], product)
         searching(searchList => [...searchList, 
             <div className="link-div">
-                {/* <img className="link-img" src={product.photoUrl}/> */}
                 <Link onClick={() => clearSearch()} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
             </div>
         ])
@@ -82,17 +77,12 @@ const SearchBar = (props) => {
         searchProducts(e.currentTarget.value)
         setDisplay(true)
     }
-    
-    // const redirectTo = () => {
-    //     props.history.push('/search')
-    // }
 
     const [searchInput, updateInput] = useState('');
     return (
         <div >
             <form className="search-form">
                 <input 
-                    // onClick={() => setInProp(true)}
                     className="search-bar" 
                     type="text" 
                     name="product"
@@ -103,7 +93,6 @@ const SearchBar = (props) => {
                     autoComplete="off"
                 />
                 {displaySearch()}
-                {/* <button type="submit">Search</button> */}
             </form>
         </div>
     )

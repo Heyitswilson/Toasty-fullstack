@@ -4,6 +4,9 @@ const productsReducer = (state={}, action) => {
     Object.freeze(state)
     let newState = Object.assign({}, state)
     switch(action.type){
+        case RECEIVE_PRODUCT:
+            newState[action.product.id] = action.product;
+            return newState
         case RECEIVE_PRODUCTS:
             return action.products 
         case REMOVE_PRODUCT:
