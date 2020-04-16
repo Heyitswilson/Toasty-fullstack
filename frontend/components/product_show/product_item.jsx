@@ -27,7 +27,7 @@ class ProductItem extends React.Component{
         if (sessionId === null) {
             this.props.openModal()
         } else {
-            this.setState({quantity: this.state.quantity + 1, inProp: true})
+            this.setState({inProp: true})
             this.props.createCartItem({customer_id: sessionId, product_id: product.id, quantity: this.state.quantity})
         }
 
@@ -48,13 +48,10 @@ class ProductItem extends React.Component{
             return (
               <ReactCSSTransitionGroup
                 transitionName="pop-up"
-                // in={this.state.inProp}
                 transitionEnterTimeout={1500}
                 transitionLeaveTimeout={1000}
-                // unmountOnExit
               >
-                {this.state.inProp && this.props.sessionId ? <div key={1} className="added-cart">Added to cart!</div> : null }
-                {/* <div key={1} className="added-cart">Added to cart!</div> */}
+                {this.state.inProp && this.props.sessionId ? <div key={1} className="added-cart">+{this.state.quantity}</div> : null }
               </ReactCSSTransitionGroup>
             );
         
@@ -67,16 +64,24 @@ class ProductItem extends React.Component{
                     <img className="show-image" src={product.photoUrl} alt="" />
                 <div className="info-div">
                     <div className="name-product">{product.name}</div>
-                    <h2 className="price-product">${product.price}</h2>
-                    {/* <input onChange={this.update("quantity")} type="text" value={this.state.quantity}/> */}
+                    <h2 className="price-product">
+                        ${product.price}
+                    </h2>
+                    {/* <select>
+                        <option value="0" checked={this.update("quantity")} selected>Quantity</option>
+                        <option value="1" checked={this.update("quantity")}>1</option>
+                        <option value="2" checked={this.update("quantity")}>2</option>
+                        <option value="3" checked={this.update("quantity")}>3</option>
+                        <option value="4" checked={this.update("quantity")}>4</option>
+                        <option value="5" checked={this.update("quantity")}>5</option>
+                    </select> */}
+                    {this.popUp()}
                     <button 
                         onClick={this.addToCart} 
                         className="signin-submit"
                         >
                         Add to Cart
                     </button>
-                    {/* <button onClick={this.clearPopUp}>clear</button> */}
-                        {this.popUp()}
                     <div>
                             <label className="label-description">Description</label>
                         <h2 className="description-product">{product.description}</h2>

@@ -52,7 +52,7 @@ class ProductForm extends React.Component {
             formData.append('product[photo]', this.state.photoFile)
         }
         this.props.processForm(formData, this.props.product.id)
-        this.props.history.push(`/users/${this.props.currentUserId}`)
+        this.props.history.push(`/products/${this.state.id}`)
     }
 
     handleFile(e) {
@@ -80,7 +80,6 @@ class ProductForm extends React.Component {
 
     render() {
         const preview = this.state.photoUrl ? <img className="preview" src={this.state.photoUrl} /> : null
-        debugger
         return (
             <div >
 
@@ -129,7 +128,7 @@ class ProductForm extends React.Component {
                                         onChange={this.imageFile}
                                     />
                                     <br />
-                                    <button onClick={() => {this.props.history.push("/")}} type="submit">{this.props.formType}</button>
+                                    <button type="submit">{this.props.formType}</button>
                                 </div>
                                 <div className="image-input">
                                     <h3>Preview</h3>

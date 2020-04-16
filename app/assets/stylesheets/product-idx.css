@@ -53,6 +53,7 @@
 .grid-item-user {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
+    padding-bottom: 30px;
     font-size: 30px;
     text-align: center;
     border: none;
@@ -70,6 +71,7 @@
     color:rgb(115, 115, 115);
     font-family: 'Crimson Text', serif;
     font-size: 15px;
+    border: none;
 }
 
 .product-links:hover {
@@ -109,6 +111,20 @@
     font-family: 'Maven Pro', sans-serif;
     font-weight: lighter;
 }
+
+.public-name-link {
+    padding-bottom: 2px;
+    color: black;
+    font-size: 19px;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: lighter;
+}
+
+.public-name-link:hover {
+    cursor: pointer;
+    color: rgb(115, 115, 115)
+}
+
 
 .public-price {
     color: black;
