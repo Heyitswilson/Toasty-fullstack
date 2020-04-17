@@ -9,6 +9,7 @@ import UserProductIndexContainer from './product_index/product_index_container'
 import UpdateProductForm from './product_show/update_product_container'
 import { ProtectedRoute, AuthRoute } from '../util/route_util'
 import CartItemContainer from './cart_items/cart_items_container'
+import Info from './info/info'
 
 const App = () => (
     <div>
@@ -22,6 +23,7 @@ const App = () => (
             <ProtectedRoute path="/products" component={UserProductIndexContainer}/>
             <Route exact path="/" component={GreetingContainer}/>
         </Switch>
+        <Info />
     </div>
 );
 
