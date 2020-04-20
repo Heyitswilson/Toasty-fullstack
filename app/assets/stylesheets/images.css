@@ -150,8 +150,6 @@
     right: 10%;
     border-radius: 50%;
     color: white
-    /* margin-top: 1%; */
-    /* bottom: 3000px */
 }
 
 .disable-link {
@@ -161,6 +159,7 @@
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     color:rgb(115, 115, 115);
+    background-color: transparent
 }
 
 .disable-link:hover ~ .disable-div{

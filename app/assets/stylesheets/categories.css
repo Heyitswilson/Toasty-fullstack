@@ -203,81 +203,14 @@ ul.categories-bar li {
     height: 2px;
     width: 0;
     margin: 0;
-    /* margin-left: 1.3%; */
     background: black;
     border: none;
     transition: .3s ease-in-out;
-    /* position: relative; */
-    /* bottom: 5px; */
     grid-area: animation
 }
 
-@media only screen and (max-width: 1086px) {
-    /* .categories-bar {
-        padding-left: 10%;
-        grid-template-columns: 11% 11% 10% 11% 11% 11% 9% 8% 6%;
-    } */
-
-}
-
-/* @media only screen and (max-width: 1354px) {
-    .categories-bar {
-            padding-left: 6.5%;
-            column-gap: 35px;
-            grid-template-columns: 9% 9% 8% 9% 9% 9% 7% 6% 4%;
-    }
-
+@media only screen and (max-width: 1069px) {
     .categories-horizontal {
         margin-top: 18px
     }
-
-    .category-jewelry:hover ~ hr {
-        width: 9%;
-    } 
-
-    .category-clothing:hover  ~ hr {
-        margin-left: 12.7%;
-        width: 9%;
-    }
-
-    .category-home:hover ~ hr {
-        margin-left: 25.5%;
-        width: 8%;
-    }
-
-    .category-wedding:hover ~ hr {
-        margin-left: 37.4%;
-        width: 9%;
-    }
-
-    .category-toys:hover  ~ hr {
-        margin-left: 50%;
-        width: 11%;
-    }
-
-    .category-art:hover ~ hr {
-        margin-left: 62.6%;
-        width: 10%;
-    }
-
-    .category-crafting:hover ~ hr {
-        margin-left: 75.5%;
-        width: 7%;
-    }
-
-    .category-vintage:hover ~ hr {
-        margin-left: 86.4%;
-        width: 6.5%;
-    }
-
-    .gifts-div:hover ~ hr {
-        margin-left: 95.9%;
-        width: 6.5%;
-    }
-} */
-
-/* @media only screen and (max-width: 1203px) {
-    .categories-bar {
-        grid-template-columns: 9% 9% 8% 9% 11% 9% 6% 6% 4%;
-    }   
-} */
+}

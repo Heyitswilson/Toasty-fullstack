@@ -54,12 +54,12 @@
 }
 
 .button-divs {
-    display: inline-block;
     width: 300px;
-    /* display: flex; */
+    display: flex;
+    justify-content: space-around;
     /* flex-shrink: 0; */
     padding-right: 1%;
-    padding-left: 1%
+    padding-left: 1%;
 }
 
 .test {
@@ -67,7 +67,8 @@
     outline: none;
     font-family: 'Crimson Text', serif;
     font-size: 20px;
-    color: rgb(128, 128, 128)
+    color: rgb(128, 128, 128);
+    background-color: transparent
 }
 
 .test:hover {

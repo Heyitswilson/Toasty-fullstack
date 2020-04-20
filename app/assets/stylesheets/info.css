@@ -1,19 +1,18 @@
 .icons-div {
     display: flex;
     justify-content: center;
-    /* border: 1px solid rgb(191, 191, 191) */
     background-color: rgb(255, 92, 57);
+
 }
 
 .link-icons {
     height: 40px;
     width: 40px;
     padding: 10px;
-    outline: none
+    outline: none;
 }
 
 .link-icons:hover {
     position: relative;
     bottom: 5px;
-    /* padding-bottom: 10px; */
 }

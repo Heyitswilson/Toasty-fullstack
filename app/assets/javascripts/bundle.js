@@ -473,7 +473,9 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
         path: "/cart_items",
         component: _cart_items_cart_items_container__WEBPACK_IMPORTED_MODULE_10__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
@@ -493,7 +495,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         exact: true,
         path: "/",
         component: _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_info_info__WEBPACK_IMPORTED_MODULE_11__["default"], null));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_info_info__WEBPACK_IMPORTED_MODULE_11__["default"], null));
     }
   }]);
 

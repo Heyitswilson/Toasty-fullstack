@@ -25,7 +25,8 @@ class App extends React.Component {
              <div>
                 <NavBarContainer />
                 <Modal />
-                <Switch>
+                <div className="container">
+                <Switch >
                     <ProtectedRoute path="/cart_items" component={CartItemContainer} />
                     <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
                     <Route exact path="/products/:productId" component={ProductItemContainer}/>
@@ -33,6 +34,7 @@ class App extends React.Component {
                     <ProtectedRoute path="/products" component={UserProductIndexContainer}/>
                     <Route exact path="/" component={GreetingContainer}/>
                 </Switch>
+                </div>
                 <Info />
             </div>
         )
