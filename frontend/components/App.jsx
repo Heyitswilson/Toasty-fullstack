@@ -11,20 +11,34 @@ import { ProtectedRoute, AuthRoute } from '../util/route_util'
 import CartItemContainer from './cart_items/cart_items_container'
 import Info from './info/info'
 
-const App = () => (
-    <div>
-        <NavBarContainer />
-        <Modal />
-        <Switch>
-            <ProtectedRoute path="/cart_items" component={CartItemContainer} />
-            <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-            <Route exact path="/products/:productId" component={ProductItemContainer}/>
-            <AuthRoute path="/products/:productId/edit" component={UpdateProductForm}/>
-            <ProtectedRoute path="/products" component={UserProductIndexContainer}/>
-            <Route exact path="/" component={GreetingContainer}/>
-        </Switch>
-        <Info />
-    </div>
-);
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillUnmount() {
+        this.props.logout()
+    }
+
+    render () {
+        return (
+             <div>
+                <NavBarContainer />
+                <Modal />
+                <Switch>
+                    <ProtectedRoute path="/cart_items" component={CartItemContainer} />
+                    <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
+                    <Route exact path="/products/:productId" component={ProductItemContainer}/>
+                    <AuthRoute path="/products/:productId/edit" component={UpdateProductForm}/>
+                    <ProtectedRoute path="/products" component={UserProductIndexContainer}/>
+                    <Route exact path="/" component={GreetingContainer}/>
+                </Switch>
+                <Info />
+            </div>
+        )
+    }
+
+        
+};
 
 export default App;

@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 class PublicProductIdxItem extends React.Component {
     constructor(props) {
         super(props)
-        // this.state = {
-        //     user: props.fetchUser(props.product.artist_id)
-        // }
         this.showLess = this.showLess.bind(this)
 
     }

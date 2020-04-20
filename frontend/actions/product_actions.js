@@ -5,6 +5,7 @@ export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_INDEX = "RECEIVE_INDEX";
+export const UNMOUNT_PRODUCT = "UNMOUNT_PRODUCT";
 
 export const receiveIndex = type => ({
     type: RECEIVE_INDEX,
@@ -31,6 +32,12 @@ const receiveErrors = errors => ({
     type: RECEIVE_PRODUCT_ERRORS,
     errors
 })
+
+export const unmountProduct = () => {
+    return ({
+        type: UNMOUNT_PRODUCT
+    })
+}
 
 export const getAllProducts = () => dispatch => {
     ProductAPIUtil.getAllProducts()

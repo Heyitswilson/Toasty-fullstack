@@ -19,4 +19,4 @@ const SignIn = ({currentUser, openModal, logout}) => {
     return currentUser ? loggedIn() : loggedOut() 
 }
 
-export default SignIn
+export default SignIn;

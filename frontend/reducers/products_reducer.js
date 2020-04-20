@@ -10,7 +10,7 @@ const productsReducer = (state={}, action) => {
         case RECEIVE_PRODUCTS:
             return action.products 
         case REMOVE_PRODUCT:
-            delete newState[action.id]
+            delete newState[action.productId]
             return action.products
         case RECEIVE_INDEX:
             return action.type
