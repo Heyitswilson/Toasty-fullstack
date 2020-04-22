@@ -14,7 +14,7 @@
 
 .idx-images:hover {
     background-color: rgb(242, 242, 242);
-    padding: 3px;
+    /* padding: 3px; */
 }
 
 .show-image {
