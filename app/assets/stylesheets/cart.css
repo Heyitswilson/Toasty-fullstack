@@ -14,13 +14,10 @@
     flex-direction: column;
     justify-content: center;
     padding: 2%;
-    /* width: 40%;
-    height: 40% */
 }
 
 .quantity {
     display: flex;
-    /* justify-content: space-between; */
 }
 
 .quantity-word {
@@ -90,6 +87,4 @@
 .checkout-div {
     display: flex;
     justify-content: center
-    /* padding-right: 7.5% */
-
 }

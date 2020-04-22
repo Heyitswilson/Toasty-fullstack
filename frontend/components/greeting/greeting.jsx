@@ -16,16 +16,12 @@ class Greeting extends React.Component {
           If it's handcrafted, vintage, custom, or unique, it's on Toasty.
         </h3>
         <div className="splash">
-          {/* <div className="succulent-statement">It's always succulent season.</div> */}
           <div className="succulent-2">
             <img
               className="succulent-pots-image"
               src="https://toasty-dev.s3-us-west-1.amazonaws.com/succulent_pottery.jpg"
               alt=""
             />
-            {/* <button className="succulent-statement">It's always succulent season.
-                        <div className="ceramics-statement">Shop ceramics</div>
-                    </button> */}
           </div>
 
           <div className="wall-art-2">
@@ -48,9 +44,6 @@ class Greeting extends React.Component {
     let { currentUser } = this.props;
     return (
       <div>
-        {/* <div>
-                <img className="contemporary" src="https://toasty-dev.s3-us-west-1.amazonaws.com/contemporary_wall_art.jpg" alt=""/>
-            </div> */}
         <h2 className="welcome">{`Welcome back, ${currentUser.name}!`}</h2>
         <ul>
           <ProductIndexContainer />

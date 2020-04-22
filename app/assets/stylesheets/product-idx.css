@@ -93,8 +93,6 @@
 }
 
 .idx-div {
-    /* box-sizing: border-box; */
-    /* border: 1px solid black; */
     border: rgb(230, 230, 230) 1px solid;
     margin: 20px;
 }

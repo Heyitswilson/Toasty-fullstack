@@ -49,7 +49,6 @@
 .search-bar:focus {
     background-color: white;
     border: 1px solid black;
-    /* background-image: linear-gradient(to right, white 95%, black 5%); */
     transition: background-color 1s
 }
 
@@ -57,7 +56,6 @@
     width: 300px;
     display: flex;
     justify-content: space-around;
-    /* flex-shrink: 0; */
     padding-right: 1%;
     padding-left: 1%;
 }

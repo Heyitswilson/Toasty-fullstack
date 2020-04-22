@@ -10,8 +10,6 @@
   padding: 5px;
   width: 94%;
   margin-left: 20px;
-  /* height: 200px;
-  transition: height 2s */
 }
 
 .search-form {
@@ -59,10 +57,3 @@
   display: flex;
   align-items: center;
 }
-
-/* .link-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 5px;
-  padding: 5px;
-} */

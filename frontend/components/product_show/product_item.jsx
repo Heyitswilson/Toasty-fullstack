@@ -67,14 +67,6 @@ class ProductItem extends React.Component {
         <div className="info-div">
           <div className="name-product">{product.name}</div>
           <h2 className="price-product">${product.price}</h2>
-          {/* <select>
-                        <option value="0" checked={this.update("quantity")} selected>Quantity</option>
-                        <option value="1" checked={this.update("quantity")}>1</option>
-                        <option value="2" checked={this.update("quantity")}>2</option>
-                        <option value="3" checked={this.update("quantity")}>3</option>
-                        <option value="4" checked={this.update("quantity")}>4</option>
-                        <option value="5" checked={this.update("quantity")}>5</option>
-                    </select> */}
           {this.popUp()}
           <button onClick={this.addToCart} className="signin-submit">
             Add to Cart
