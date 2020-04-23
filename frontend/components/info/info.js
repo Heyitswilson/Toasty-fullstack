@@ -6,7 +6,7 @@ const Info = () => {
             <a href="https://github.com/Heyitswilson" target="_blank">
                 <img className="link-icons" src="https://toasty-dev.s3-us-west-1.amazonaws.com/black_github.png"/>
             </a>
-            <a href="https://www.linkedin.com/in/wilson-ngu-67a45a151/" target="_blank">
+            <a href="https://www.linkedin.com/in/wilson-ngu/" target="_blank">
                 <img className="link-icons" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png"/>
             </a>
             <a href="https://angel.co/u/wilson-ngu" target="_blank">
