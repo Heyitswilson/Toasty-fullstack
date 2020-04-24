@@ -23,6 +23,9 @@ Toasty is an e-commerce application for arts and crafts and prioritizes a minima
 
 #### Search Function
 This is a simple search function that compares a user's text input to a list of products and updates the state to include only products where their names includes the user's search string.
+
+![search]
+
 ```javascript
     const updateSearchList = (product) => {
         searching(searchList => [...searchList, 
