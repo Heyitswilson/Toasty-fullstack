@@ -713,7 +713,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
       }, "Your Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buy-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "cart-div"
+        className: "new-cart-div"
       }, cartItemsObj.map(function (cartItem) {
         var product = cartItem[1].product;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1008,7 +1008,7 @@ var Info = function Info() {
     className: "link-icons",
     src: "https://toasty-dev.s3-us-west-1.amazonaws.com/black_github.png"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://www.linkedin.com/in/wilson-ngu-67a45a151/",
+    href: "https://www.linkedin.com/in/wilson-ngu/",
     target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "link-icons",

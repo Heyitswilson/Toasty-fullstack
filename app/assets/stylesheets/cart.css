@@ -3,8 +3,19 @@
 .cart-div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     width: 85%;
+    border: rgb(230, 230, 230) 1px solid;
+    border-radius: 1%;
+}
+
+.new-cart-div {
+    padding: 5%;
+    /* padding-left: 7%; */
+    width: 85%;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: 20% 20% 20% 20% 20%;
     border: rgb(230, 230, 230) 1px solid;
     border-radius: 1%;
 }
@@ -14,10 +25,11 @@
     flex-direction: column;
     justify-content: center;
     padding: 2%;
+    text-align: center
 }
 
 .quantity {
-    display: flex;
+    display: inline-block;
 }
 
 .quantity-word {
@@ -26,6 +38,7 @@
     font-size: 15px;
     font-family: 'Maven Pro', sans-serif;
     font-weight: lighter;
+    display: inline-block
 }
 
 .quantity-num {
@@ -35,6 +48,8 @@
     font-size: 15px;
     font-family: 'Maven Pro', sans-serif;
     font-weight: lighter;
+    display: inline-block
+
 }
 
 .cart-item-price {
@@ -51,14 +66,16 @@
 }
 
 .delete-item-in-cart {
-    display: flex;
+    /* display: flex; */
     padding: 0px;
     border: none;
     outline: none;
     font-family: 'Crimson Text', serif;
     font-size: 16px;
     color: rgb(128, 128, 128);
-    background-color: transparent
+    background-color: transparent;
+    display: inline-block
+
 }
 
 .delete-item-in-cart:hover {
@@ -87,4 +104,36 @@
 .checkout-div {
     display: flex;
     justify-content: center
+}
+
+@media only screen and (max-width: 1300px) {
+    .new-cart-div {
+        padding: 5%;
+        padding-right: 2%;
+        width: 85%;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: 20% 20% 20% 20%;
+        border: rgb(230, 230, 230) 1px solid;
+        border-radius: 1%;
+        column-gap: 5%
+    }
+}
+
+@media only screen and (max-width: 1188px) {
+    .new-cart-div {
+        padding: 5%;
+        padding-right: 2%;
+        width: 85%;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: 20% 20% 20%;
+        border: rgb(230, 230, 230) 1px solid;
+        border-radius: 1%;
+        column-gap: 17%;
+    }
+
+    .cart-item-div {
+        width: 200px;
+    }
 }

@@ -62,7 +62,7 @@ class CartItems extends React.Component {
                 <h1 className="header">Your Cart</h1>
 
                 <div className="buy-page">
-                        <div className="cart-div"> 
+                        <div className="new-cart-div"> 
                             {cartItemsObj.map(cartItem => {
                                 let product = cartItem[1].product
                                 return (
