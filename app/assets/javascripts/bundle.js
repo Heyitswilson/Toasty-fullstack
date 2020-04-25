@@ -1002,7 +1002,7 @@ var Info = function Info() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "icons-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/Heyitswilson",
+    href: "https://github.com/Heyitswilson/Toasty-fullstack",
     target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "link-icons",
