@@ -23,6 +23,9 @@ Toasty is an e-commerce application for arts and crafts and prioritizes a minima
 
 #### Search Function
 This is a simple search function that compares a user's text input to a list of products and updates the state to include only products where their names includes the user's search string.
+
+![search](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/search4.gif)
+
 ```javascript
     const updateSearchList = (product) => {
         searching(searchList => [...searchList, 
@@ -47,6 +50,8 @@ This is a simple search function that compares a user's text input to a list of 
 
 #### Modal Interface
 The modal renders different components based on the string it receives.
+
+![modal](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/modal.gif)
 
 ```javascript
     switch(modal){
