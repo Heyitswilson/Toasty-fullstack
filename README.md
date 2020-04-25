@@ -68,6 +68,9 @@ The modal renders different components based on the string it receives.
 
 #### Shopping Cart
 When a user adds a product to the shopping cart, that product is compared to the cart items currently in the cart. If the product matches a cart item, the item's quantity is increased by one and the state is updated to reflect the change. Otherwise, a new cart item is created with a quantity value of one and the state is updated.
+
+![cart](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/cart.gif)
+
 ```javascript
 uniqueCartItems(){
         let { userCartItems } = this.props
