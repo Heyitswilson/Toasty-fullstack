@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import UserShow from './user_show'
-import { fetchUser } from '../../actions/session_actions'
+import { fetchAllUsers } from '../../actions/session_actions'
 import React from 'react'
 
 class UserShowMiddleMan extends React.Component {
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userId)
+        this.props.fetchAllUsers()
     }
     render () {
         const { currentUser } = this.props
@@ -21,11 +21,11 @@ class UserShowMiddleMan extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-    currentUser: state.entities.users[ownProps.match.params.userId]
+    currentUser: state.session.id
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: userId => dispatch(fetchUser(userId))
+    fetchAllUsers: () => dispatch(fetchAllUsers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShowMiddleMan)

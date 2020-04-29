@@ -20,6 +20,10 @@ class App extends React.Component {
         this.props.logout()
     }
 
+    // componentDidMount() {
+    //     this.props.fetchAllUsers()
+    // }
+
     render () {
         return (
              <div>

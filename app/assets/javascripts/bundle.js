@@ -328,7 +328,7 @@ var deleteProduct = function deleteProduct(productId) {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, login, logout, signup, fetchUser */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_ALL_USERS, login, logout, signup, fetchUser, fetchAllUsers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -336,15 +336,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
 var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 var RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
+
+var receiveAllUsers = function receiveAllUsers(users) {
+  debugger;
+  return {
+    type: RECEIVE_ALL_USERS,
+    users: users
+  };
+};
 
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -397,6 +408,15 @@ var fetchUser = function fetchUser(userId) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var fetchAllUsers = function fetchAllUsers() {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllUsers"]().then(function (users) {
+      return dispatch(receiveAllUsers(users));
+    }, function (err) {
+      return dispatch(receiveErrors)(err.responseJSON);
     });
   };
 };
@@ -469,7 +489,10 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.logout();
-    }
+    } // componentDidMount() {
+    //     this.props.fetchAllUsers()
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -592,7 +615,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.session.id
   };
 };
 
@@ -1171,7 +1194,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.session.id
   };
 };
 
@@ -2402,7 +2425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.session.id
   };
 };
 
@@ -2526,7 +2549,7 @@ var UserShowMiddleMan = /*#__PURE__*/function (_React$Component) {
   _createClass(UserShowMiddleMan, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchUser(this.props.match.params.userId);
+      this.props.fetchAllUsers();
     }
   }, {
     key: "render",
@@ -2544,14 +2567,14 @@ var UserShowMiddleMan = /*#__PURE__*/function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    currentUser: state.entities.users[ownProps.match.params.userId]
+    currentUser: state.session.id
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchUser: function fetchUser(userId) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUser"])(userId));
+    fetchAllUsers: function fetchAllUsers() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllUsers"])());
     }
   };
 };
@@ -3431,13 +3454,13 @@ __webpack_require__.r(__webpack_exports__);
 var usersReducer = function usersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
-  var newState = Object.assign({}, state);
+  Object.freeze(state); // let newState = Object.assign({}, state)
 
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      newState[action.currentUser.id] = action.currentUser;
-      return newState;
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USERS"]:
+      // newState[action.currentUser.id] = action.currentUser
+      // return newState
+      return action.users;
 
     default:
       return state;
@@ -3690,7 +3713,7 @@ var AuthRoute = Object(react_router__WEBPACK_IMPORTED_MODULE_0__["withRouter"])(
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
   \*******************************************/
-/*! exports provided: signup, login, logout, fetchUser */
+/*! exports provided: signup, login, logout, fetchUser, fetchAllUsers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3699,6 +3722,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 var signup = function signup(user) {
   return $.ajax({
     method: "POST",
@@ -3727,6 +3751,12 @@ var fetchUser = function fetchUser(userId) {
   return $.ajax({
     method: "GET",
     url: "/api/users/".concat(userId)
+  });
+};
+var fetchAllUsers = function fetchAllUsers() {
+  return $.ajax({
+    method: "GET",
+    url: '/api/users'
   });
 };
 

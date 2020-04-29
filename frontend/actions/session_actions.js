@@ -3,6 +3,15 @@ import * as SessionAPIUtil from '../util/session_api_util'
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER"
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
+export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS"
+
+const receiveAllUsers = (users) => {
+    debugger
+    return ({
+        type: RECEIVE_ALL_USERS,
+        users
+    })
+}
 
 const receiveCurrentUser = (currentUser) => {
     return ({
@@ -49,4 +58,11 @@ export const fetchUser = userId => dispatch => (
         .then(user => dispatch(receiveCurrentUser(user)),
         err => dispatch(receiveErrors(err.responseJSON))
     )
+)
+
+export const fetchAllUsers = () => dispatch => (
+    SessionAPIUtil.fetchAllUsers()
+        .then(users => dispatch(receiveAllUsers(users)),
+        err => dispatch(receiveErrors)(err.responseJSON)
+        )
 )
