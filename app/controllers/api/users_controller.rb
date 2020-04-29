@@ -19,6 +19,15 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def index 
+        if User.all 
+            @users = User.all
+            render :index
+        else 
+            render json: @users.errors.full_messages, status: 422
+        end
+    end
+
     private
 
     def user_params

@@ -15,14 +15,14 @@ class App extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount() {
+        this.props.fetchAllUsers()
+    }
 
     componentWillUnmount() {
         this.props.logout()
     }
 
-    // componentDidMount() {
-    //     this.props.fetchAllUsers()
-    // }
 
     render () {
         return (
