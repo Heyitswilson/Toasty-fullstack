@@ -16,17 +16,14 @@ class App extends React.Component {
         super(props);
     }
     componentDidMount() {
-        this.props.fetchAllUsers()
+        this.props.fetchAllUsers();
+        this.props.getAllProducts();
     }
-
-    componentWillUnmount() {
-        this.props.logout()
-    }
-
 
     render () {
         return (
-             <div>
+            <div>
+                {window.onunload = () => this.props.logout()}
                 <NavBarContainer />
                 <Modal />
                 <div className="container">

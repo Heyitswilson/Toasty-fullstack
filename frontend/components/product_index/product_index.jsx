@@ -15,10 +15,6 @@ class ProductIndex extends React.Component {
 
     }
 
-    componentDidMount(){
-        this.props.getAllProducts();
-    }
-
     displayCreate(){
         this.setState({displayCreate: true})
     }

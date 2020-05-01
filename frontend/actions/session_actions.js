@@ -6,7 +6,6 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS"
 
 const receiveAllUsers = (users) => {
-    debugger
     return ({
         type: RECEIVE_ALL_USERS,
         users

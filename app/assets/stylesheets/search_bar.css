@@ -5,8 +5,9 @@
   background-color: white;
   opacity: .99;
   border-radius: 5px;
-  display: inline-block;
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
   padding: 5px;
   width: 94%;
   margin-left: 20px;
@@ -22,11 +23,12 @@
   margin: 5px;
   display: flex;
   height: 25px;
+  width: 100%;
   font-family: 'Quicksand', sans-serif;
   font-size: 18px;
 }
 
-.link-div:hover {
+.search-link:hover {
   background-color: rgb(242, 242, 242);
   cursor: pointer;
 }
@@ -53,7 +55,7 @@
   z-index: 10;
 }
 
-.link-div {
+/* .link-div {
   display: flex;
   align-items: center;
-}
+} */
