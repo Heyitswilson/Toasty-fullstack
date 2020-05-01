@@ -18,17 +18,16 @@ const SearchBar = (props) => {
             }
         });
 
-    const clearSearch = () => {
+    const clearSearch = (product) => {
         searching([])
         $('input.search-bar').val('')
         setDisplay(false)
+        props.getProduct(product.id)
     }
 
     const updateSearchList = (product) => {
         searching(searchList => [...searchList, 
-            <div className="link-div">
-                <Link onClick={() => clearSearch()} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
-            </div>
+            <Link onClick={() => clearSearch(product)} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
         ])
     }
 
@@ -52,9 +51,9 @@ const SearchBar = (props) => {
                     <div className="close" onClick={() => clearSearch()}>
                         X
                                 </div>
-                    <ul className="list" onClick={(e) => e.stopPropagation()}>
+                    <div className="list" onClick={(e) => e.stopPropagation()}>
                         {searchList}
-                    </ul>
+                    </div>
                 </div>
             )
         }
@@ -63,11 +62,11 @@ const SearchBar = (props) => {
     const showLess = content => {
         if (content.length > 16) {
             return (
-                <h1 className="search-link">{content.slice(0, 80) + "..."}</h1>
+                content.slice(0, 80) + "..."
             )
         } else {
             return (
-                <h1 className="search-link">{content}</h1>
+                content
             )
         }
     }

@@ -15,14 +15,15 @@ class App extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    componentWillUnmount() {
-        this.props.logout()
+    componentDidMount() {
+        this.props.fetchAllUsers();
+        this.props.getAllProducts();
     }
 
     render () {
         return (
-             <div>
+            <div>
+                {window.onunload = () => this.props.logout()}
                 <NavBarContainer />
                 <Modal />
                 <div className="container">
