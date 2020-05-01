@@ -51,9 +51,9 @@ const SearchBar = (props) => {
                     <div className="close" onClick={() => clearSearch()}>
                         X
                                 </div>
-                    <ul className="list" onClick={(e) => e.stopPropagation()}>
+                    <div className="list" onClick={(e) => e.stopPropagation()}>
                         {searchList}
-                    </ul>
+                    </div>
                 </div>
             )
         }

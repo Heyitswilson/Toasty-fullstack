@@ -2737,7 +2737,7 @@ var SearchBar = function SearchBar(props) {
         onClick: function onClick() {
           return clearSearch();
         }
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list",
         onClick: function onClick(e) {
           return e.stopPropagation();
