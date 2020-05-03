@@ -6,6 +6,7 @@ export const getAllProducts = () => (
 )
 
 export const getProduct = (productId) => {
+    debugger
     return(
     $.ajax({
         method: "GET",

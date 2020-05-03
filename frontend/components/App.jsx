@@ -21,9 +21,9 @@ class App extends React.Component {
     }
 
     render () {
+        window.onunload = () => this.props.logout()
         return (
             <div>
-                {window.onunload = () => this.props.logout()}
                 <NavBarContainer />
                 <Modal />
                 <div className="container">

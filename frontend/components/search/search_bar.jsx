@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 
 const SearchBar = (props) => {
     const { products } = props;
+
     let productsNames = Object.keys(products).map(num => products[num]);
+
     const [inProp, setInProp] = useState(false);
     const [searchList, searching] = useState([]);
     const [display, setDisplay] = useState(false);
@@ -16,9 +18,11 @@ const SearchBar = (props) => {
             if (event.which == '13') {
                 event.preventDefault();
             }
-        });
+        }
+    );
 
     const clearSearch = (product) => {
+        debugger
         searching([])
         $('input.search-bar').val('')
         setDisplay(false)
@@ -26,12 +30,14 @@ const SearchBar = (props) => {
     }
 
     const updateSearchList = (product) => {
+        debugger
         searching(searchList => [...searchList, 
-            <Link onClick={() => clearSearch(product)} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
+            <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
         ])
     }
 
     const searchProducts = (input) => {
+        debugger
         if (input === '') {
             return searching(initialList)
         }
@@ -45,6 +51,7 @@ const SearchBar = (props) => {
     }
 
     const displaySearch = () => {
+        debugger
         if (searchList.length != 0) {
             return (
                 <div className="search-background">
@@ -72,6 +79,7 @@ const SearchBar = (props) => {
     }
 
     const givenInput = e => {
+        debugger 
         updateInput(e.currentTarget.value),
         searchProducts(e.currentTarget.value)
         setDisplay(true)

@@ -15,6 +15,10 @@ class ProductItem extends React.Component {
     this.clearPopUp = this.clearPopUp.bind(this);
   }
 
+  componentWillUnmount() {
+    setTimeout(this.clearPopUp, 5000);
+  }
+
   addToCart(e) {
     e.preventDefault();
     let { sessionId, product } = this.props;

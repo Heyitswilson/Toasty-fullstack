@@ -285,6 +285,7 @@ var getAllProducts = function getAllProducts() {
 };
 var getProduct = function getProduct(productId) {
   return function (dispatch) {
+    debugger;
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getProduct"](productId).then(function (product) {
       return dispatch(receiveProduct(product));
     });
@@ -495,9 +496,11 @@ var App = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, window.onunload = function () {
+      window.onunload = function () {
         return _this.props.logout();
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
         path: "/cart_items",
@@ -1414,10 +1417,10 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "grid-container"
       }, this.props.allProducts.map(function (product) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: product.id,
           className: "grid-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_public_product_idx_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          product: product,
-          key: product.id
+          product: product
         }));
       })));
     }
@@ -2071,6 +2074,11 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ProductItem, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      setTimeout(this.clearPopUp, 5000);
+    }
+  }, {
     key: "addToCart",
     value: function addToCart(e) {
       e.preventDefault();
@@ -2694,6 +2702,7 @@ var SearchBar = function SearchBar(props) {
   });
 
   var clearSearch = function clearSearch(product) {
+    debugger;
     searching([]);
     jquery__WEBPACK_IMPORTED_MODULE_2___default()('input.search-bar').val('');
     setDisplay(false);
@@ -2701,11 +2710,13 @@ var SearchBar = function SearchBar(props) {
   };
 
   var updateSearchList = function updateSearchList(product) {
+    debugger;
     searching(function (searchList) {
       return [].concat(_toConsumableArray(searchList), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: function onClick() {
           return clearSearch(product);
         },
+        key: product.id,
         className: "search-link",
         to: "/products/".concat(product.id)
       }, showLess(product.name))]);
@@ -2713,6 +2724,8 @@ var SearchBar = function SearchBar(props) {
   };
 
   var searchProducts = function searchProducts(input) {
+    debugger;
+
     if (input === '') {
       return searching(initialList);
     }
@@ -2729,6 +2742,8 @@ var SearchBar = function SearchBar(props) {
   };
 
   var displaySearch = function displaySearch() {
+    debugger;
+
     if (searchList.length != 0) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-background"
@@ -2755,6 +2770,7 @@ var SearchBar = function SearchBar(props) {
   };
 
   var givenInput = function givenInput(e) {
+    debugger;
     updateInput(e.currentTarget.value), searchProducts(e.currentTarget.value);
     setDisplay(true);
   };
@@ -2799,12 +2815,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
+  debugger;
   return {
     products: state.entities.products
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  debugger;
   return {
     getProduct: function getProduct(productId) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getProduct"])(productId));
@@ -3281,6 +3299,7 @@ __webpack_require__.r(__webpack_exports__);
 var productReducer = function productReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  debugger;
   Object.freeze(state);
 
   switch (action.type) {
@@ -3635,6 +3654,7 @@ var getAllProducts = function getAllProducts() {
   });
 };
 var getProduct = function getProduct(productId) {
+  debugger;
   return $.ajax({
     method: "GET",
     url: "/api/products/".concat(productId)
