@@ -285,7 +285,6 @@ var getAllProducts = function getAllProducts() {
 };
 var getProduct = function getProduct(productId) {
   return function (dispatch) {
-    debugger;
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["getProduct"](productId).then(function (product) {
       return dispatch(receiveProduct(product));
     });
@@ -780,6 +779,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
       }, cartItemsObj.map(function (cartItem) {
         var product = cartItem[1].product;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: product.id,
           className: "cart-item-div"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "public-product-links",
@@ -1400,11 +1400,11 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "grid-user-container"
       }, this.props.userProducts.map(function (product) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: product.id,
           className: "grid-item-user"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_product_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           product: product,
-          deleteProduct: _this3.props.deleteProduct,
-          key: product.id
+          deleteProduct: _this3.props.deleteProduct
         }));
       })));
     }
@@ -2075,9 +2075,7 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
 
   _createClass(ProductItem, [{
     key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      setTimeout(this.clearPopUp, 5000);
-    }
+    value: function componentWillUnmount() {}
   }, {
     key: "addToCart",
     value: function addToCart(e) {
@@ -2098,6 +2096,8 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
           quantity: this.state.quantity
         });
       }
+
+      setTimeout(this.clearPopUp, 5000);
     }
   }, {
     key: "update",
@@ -2118,7 +2118,6 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "popUp",
     value: function popUp() {
-      setTimeout(this.clearPopUp, 5000);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_addons_css_transition_group__WEBPACK_IMPORTED_MODULE_1___default.a, {
         transitionName: "pop-up",
         transitionEnterTimeout: 1500,
@@ -2672,46 +2671,36 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var SearchBar = function SearchBar(props) {
   var products = props.products;
-  var productsNames = Object.keys(products).map(function (num) {
+  var productsArray = Object.keys(products).map(function (num) {
     return products[num];
   });
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      inProp = _useState2[0],
-      setInProp = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      searchList = _useState4[0],
-      searching = _useState4[1];
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      display = _useState6[0],
-      setDisplay = _useState6[1];
-
   var initialList = [];
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initialList),
+      _useState2 = _slicedToArray(_useState, 2),
+      searchList = _useState2[0],
+      updateSearch = _useState2[1];
+
   jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).keypress(function (event) {
     if (event.which == '13') {
       event.preventDefault();
     }
   });
 
-  var clearSearch = function clearSearch(product) {
-    debugger;
-    searching([]);
+  var clearSearch = function clearSearch() {
+    var product = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    updateSearch(initialList);
     jquery__WEBPACK_IMPORTED_MODULE_2___default()('input.search-bar').val('');
-    setDisplay(false);
-    props.getProduct(product.id);
+
+    if (product) {
+      props.getProduct(product.id);
+    }
   };
 
   var updateSearchList = function updateSearchList(product) {
-    debugger;
-    searching(function (searchList) {
+    updateSearch(function (searchList) {
       return [].concat(_toConsumableArray(searchList), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: function onClick() {
           return clearSearch(product);
@@ -2724,16 +2713,14 @@ var SearchBar = function SearchBar(props) {
   };
 
   var searchProducts = function searchProducts(input) {
-    debugger;
-
     if (input === '') {
-      return searching(initialList);
+      return updateSearch(initialList);
     }
 
-    searching(initialList);
+    updateSearch(initialList);
 
-    for (var i = 0; i < productsNames.length; i += 1) {
-      var product = productsNames[i];
+    for (var i = 0; i < productsArray.length; i += 1) {
+      var product = productsArray[i];
 
       if (product.name.toLowerCase().includes(input.toLowerCase())) {
         updateSearchList(product);
@@ -2742,8 +2729,6 @@ var SearchBar = function SearchBar(props) {
   };
 
   var displaySearch = function displaySearch() {
-    debugger;
-
     if (searchList.length != 0) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-background"
@@ -2753,10 +2738,7 @@ var SearchBar = function SearchBar(props) {
           return clearSearch();
         }
       }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "list",
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        }
+        className: "list"
       }, searchList));
     }
   };
@@ -2770,15 +2752,8 @@ var SearchBar = function SearchBar(props) {
   };
 
   var givenInput = function givenInput(e) {
-    debugger;
-    updateInput(e.currentTarget.value), searchProducts(e.currentTarget.value);
-    setDisplay(true);
+    searchProducts(e.currentTarget.value);
   };
-
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      searchInput = _useState8[0],
-      updateInput = _useState8[1];
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "search-form"
@@ -2794,7 +2769,7 @@ var SearchBar = function SearchBar(props) {
   }), displaySearch()));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar));
+/* harmony default export */ __webpack_exports__["default"] = (SearchBar);
 
 /***/ }),
 
@@ -2815,14 +2790,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  debugger;
   return {
     products: state.entities.products
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  debugger;
   return {
     getProduct: function getProduct(productId) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getProduct"])(productId));
@@ -3056,7 +3029,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "demo-submit",
         onClick: function onClick() {
           return _this4.props.processForm({
-            name: "",
             email: "wilson@gmail.com",
             password: "password"
           });
@@ -3299,7 +3271,6 @@ __webpack_require__.r(__webpack_exports__);
 var productReducer = function productReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  debugger;
   Object.freeze(state);
 
   switch (action.type) {
@@ -3654,7 +3625,6 @@ var getAllProducts = function getAllProducts() {
   });
 };
 var getProduct = function getProduct(productId) {
-  debugger;
   return $.ajax({
     method: "GET",
     url: "/api/products/".concat(productId)

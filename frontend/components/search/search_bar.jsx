@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import { withRouter } from 'react-router-dom';
 
 const SearchBar = (props) => {
     const { products } = props;
-
-    let productsNames = Object.keys(products).map(num => products[num]);
-
-    const [inProp, setInProp] = useState(false);
-    const [searchList, searching] = useState([]);
-    const [display, setDisplay] = useState(false);
+    
+    let productsArray = Object.keys(products).map(num => products[num]);
+    
     const initialList = [];
+    const [searchList, updateSearch] = useState(initialList);
 
     $(document).keypress(
         function (event) {
@@ -21,44 +18,41 @@ const SearchBar = (props) => {
         }
     );
 
-    const clearSearch = (product) => {
-        debugger
-        searching([])
-        $('input.search-bar').val('')
-        setDisplay(false)
-        props.getProduct(product.id)
+    const clearSearch = (product=null) => {
+        updateSearch(initialList);
+        $('input.search-bar').val('');
+        if (product) {
+            props.getProduct(product.id);
+        }
     }
 
     const updateSearchList = (product) => {
-        debugger
-        searching(searchList => [...searchList, 
+        updateSearch(searchList => [...searchList, 
             <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
         ])
     }
 
     const searchProducts = (input) => {
-        debugger
         if (input === '') {
-            return searching(initialList)
+            return updateSearch(initialList);
         }
-        searching(initialList)
-        for(let i = 0; i < productsNames.length; i += 1) {
-            let product = productsNames[i]
+        updateSearch(initialList)
+        for(let i = 0; i < productsArray.length; i += 1) {
+            let product = productsArray[i];
             if (product.name.toLowerCase().includes(input.toLowerCase())) {
-                updateSearchList(product)
+                updateSearchList(product);
             }
         }
     }
 
     const displaySearch = () => {
-        debugger
         if (searchList.length != 0) {
             return (
                 <div className="search-background">
                     <div className="close" onClick={() => clearSearch()}>
                         X
-                                </div>
-                    <div className="list" onClick={(e) => e.stopPropagation()}>
+                    </div>
+                    <div className="list" >
                         {searchList}
                     </div>
                 </div>
@@ -79,13 +73,9 @@ const SearchBar = (props) => {
     }
 
     const givenInput = e => {
-        debugger 
-        updateInput(e.currentTarget.value),
-        searchProducts(e.currentTarget.value)
-        setDisplay(true)
+        searchProducts(e.currentTarget.value);
     }
 
-    const [searchInput, updateInput] = useState('');
     return (
         <div >
             <form className="search-form">
@@ -105,4 +95,4 @@ const SearchBar = (props) => {
     )
 }
 
-export default withRouter(SearchBar)
+export default SearchBar;

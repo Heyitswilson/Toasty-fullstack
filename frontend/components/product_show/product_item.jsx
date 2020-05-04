@@ -16,7 +16,6 @@ class ProductItem extends React.Component {
   }
 
   componentWillUnmount() {
-    setTimeout(this.clearPopUp, 5000);
   }
 
   addToCart(e) {
@@ -33,6 +32,7 @@ class ProductItem extends React.Component {
         quantity: this.state.quantity,
       });
     }
+    setTimeout(this.clearPopUp, 5000);
   }
 
   update(field) {
@@ -47,7 +47,7 @@ class ProductItem extends React.Component {
   }
 
   popUp() {
-    setTimeout(this.clearPopUp, 5000);
+    
     return (
       <ReactCSSTransitionGroup
         transitionName="pop-up"

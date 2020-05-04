@@ -42,11 +42,10 @@ class ProductIndex extends React.Component {
                     <ul className="grid-user-container">
                         {this.props.userProducts.map((product) => {
                             return (
-                                <div className="grid-item-user">
+                                <div key={product.id} className="grid-item-user">
                                     <UserProductIdxItem 
                                         product={product}
                                         deleteProduct={this.props.deleteProduct}
-                                        key={product.id}
                                     />
                                 </div>
                             )

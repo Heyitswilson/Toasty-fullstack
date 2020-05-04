@@ -66,7 +66,7 @@ class CartItems extends React.Component {
                             {cartItemsObj.map(cartItem => {
                                 let product = cartItem[1].product
                                 return (
-                                    <div className="cart-item-div">
+                                    <div key={product.id} className="cart-item-div">
                                         <Link className="public-product-links" to={`/products/${product.id}`}>
                                             <img className="idx-images" src={product.photoUrl} alt="" />
                                             {this.showLess(product.name)}
