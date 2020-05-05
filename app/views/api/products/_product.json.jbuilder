@@ -1,4 +1,4 @@
-json.extract! product, :id, :name, :description, :price, :artist_id, :keep
+json.extract! product, :id, :name, :description, :price, :artist_id, :keep, :category
 if product.photo.attached?
     json.photoUrl url_for(product.photo)
 end

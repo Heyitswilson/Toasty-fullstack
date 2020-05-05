@@ -86,9 +86,9 @@ class CartItems extends React.Component {
                             )}
                         </div>
                 </div>
-                <div className="checkout-div">
+                {/* <div className="checkout-div">
                     <button className="checkout">Checkout</button>
-                </div>
+                </div> */}
             </div>
         )
     }

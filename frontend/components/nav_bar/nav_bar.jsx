@@ -1,18 +1,18 @@
 import React from 'react'
 import ProfileContainer from '../profile/profile_container'
 import CartContainer from '../cart/cart_container'
-import SignIn from './sign_in'
+import SignInContainer from './sign_in_container'
 import SearchBarContainer from '../search/search_bar_container'
 import { Link } from 'react-router-dom'
-import Categories from '../categories/categories'
+import CategoriesContainer from '../categories/categories_container'
 
-const NavBar = ({ currentUser, openModal, logout }) => {
+const NavBar = ({ currentUser, openModal, logout, unmountCategory }) => {
     return(
         <div>
             <div className="nav">
                 <div>
                     <Link to="/">
-                        <header className="toasty-title">Toasty</header>
+                        <header className="toasty-title" onClick={() => unmountCategory()}>Toasty</header>
                     </Link>
                 </div >
                 <div className="search-div">
@@ -21,14 +21,14 @@ const NavBar = ({ currentUser, openModal, logout }) => {
                     <div className="button-divs">
                         <ProfileContainer />
                         <CartContainer />
-                        <SignIn 
+                        <SignInContainer 
                             openModal={openModal}
                             logout={logout}
                             currentUser={currentUser}
                         />
                     </div>
             </div>
-            <Categories />
+            <CategoriesContainer />
         </div>
     )
 }

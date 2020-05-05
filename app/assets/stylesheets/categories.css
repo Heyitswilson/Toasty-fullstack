@@ -21,7 +21,8 @@ ul.categories-bar li {
     font-size: 17px;
     padding-left: 1.5%;
     padding-right: 1.5%;
-    grid-area: jewelry;;
+    grid-area: jewelry;
+    text-decoration: none
 }
 
 .category-jewelry:hover ~ hr {
@@ -40,6 +41,7 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: clothing;
+    text-decoration: none
 }
 
 .category-clothing:hover  ~ hr {
@@ -58,7 +60,9 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: home;
+    text-decoration: none
 }
+
 
 .category-home:hover ~ hr {
     margin-left: 26.5%;
@@ -77,6 +81,8 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: wedding;
+    text-decoration: none
+
 }
 
 .category-wedding:hover ~ hr {
@@ -95,7 +101,9 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: toys;
+    text-decoration: none
 }
+
 
 .category-toys:hover  ~ hr {
     margin-left: 49.5%;
@@ -113,7 +121,9 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: art;
+    text-decoration: none
 }
+
 
 .category-art:hover ~ hr {
     margin-left: 64.25%;
@@ -131,6 +141,8 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 1.5%;
     grid-area: crafting;
+    text-decoration: none
+;
 }
 
 .category-crafting:hover ~ hr {
@@ -149,6 +161,8 @@ ul.categories-bar li {
     padding-left: 1.5%;
     padding-right: 2.5%;
     grid-area: vintage;
+    text-decoration: none
+
 }
 
 .category-vintage:hover ~ hr {
@@ -177,6 +191,8 @@ ul.categories-bar li {
     padding-left: 2.5%;
     padding-right: 1.5%;
     grid-area: gifts;
+    text-decoration: none
+
 }
 
 .gifts-div:hover {

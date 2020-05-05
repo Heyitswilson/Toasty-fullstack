@@ -6,14 +6,20 @@ import CreateProductContainer from '../product_show/create_product_container'
 class ProductIndex extends React.Component {
     constructor(props){
         super(props);
+        
         this.state={displayCreate: false};
 
         this.publicProductIndex = this.publicProductIndex.bind(this);
         this.userProductIndex = this.userProductIndex.bind(this);
+        this.categoryProductIndex = this.categoryProductIndex.bind(this);
         this.displayCreate = this.displayCreate.bind(this);
         this.admin = this.admin.bind(this);
 
     }
+
+    // componentWillUnmount() {
+    //     this.props.unmountCategory()
+    // }
 
     displayCreate(){
         this.setState({displayCreate: true})
@@ -75,8 +81,45 @@ class ProductIndex extends React.Component {
         )
     }
 
+    categoryProductIndex() {
+        const { category } = this.props;
+        let filteredProducts = this.props.allProducts.filter(product => 
+            // debugger
+            product.category === category
+        )
+        // debugger
+        return (
+            <div>
+                <h1 className="header">{this.props.category}</h1>
+                <ul className="grid-container">
+                    {filteredProducts.map((product) => {
+                        return (
+                            <div key={product.id} className="grid-item">
+                                <PublicProductIdxContainer
+                                    product={product}
+                                />
+                            </div>
+                        )
+                    })}
+                </ul>
+            </div> 
+        )
+    }
+
+    whichIndex() {
+
+    }
+
     render(){
-        return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex()
+        const { category } = this.props;
+        debugger
+        if (category === "All") {
+            debugger
+            return (this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex())
+        } else {
+            debugger
+            return this.categoryProductIndex()
+        }
     }
 }
 
