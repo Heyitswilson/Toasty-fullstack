@@ -1610,11 +1610,8 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     value: function categoryProductIndex() {
       var category = this.props.category;
       var filteredProducts = this.props.allProducts.filter(function (product) {
-        return (// debugger
-          product.category === category
-        );
-      }); // debugger
-
+        return product.category === category;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header"
       }, this.props.category), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1635,13 +1632,10 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var category = this.props.category;
-      debugger;
 
       if (category === "All") {
-        debugger;
         return this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex();
       } else {
-        debugger;
         return this.categoryProductIndex();
       }
     }
@@ -2023,7 +2017,8 @@ var mapStateToProps = function mapStateToProps(state) {
       description: "",
       price: "",
       photoFile: null,
-      artist_id: state.session.id
+      artist_id: state.session.id,
+      category: "Am category"
     },
     errors: state.errors.product,
     currentUserId: state.session.id
@@ -2092,6 +2087,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     _this.imagePreview = _this.imagePreview.bind(_assertThisInitialized(_this));
     _this.imageFile = _this.imageFile.bind(_assertThisInitialized(_this));
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2143,9 +2139,34 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       formData.append('product[description]', this.state.description);
       formData.append('product[price]', this.state.price);
       formData.append('product[artist_id]', this.state.artist_id);
+      formData.append('product[category]', this.state.category);
 
       if (this.state.photoFile) {
         formData.append('product[photo]', this.state.photoFile);
+      }
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var pair = _step.value;
+          console.log(pair[0] + ', ' + pair[1]);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
       }
 
       this.props.processForm(formData, this.props.product.id);
@@ -2224,7 +2245,31 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("price"),
         type: "number",
         value: this.state.price
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "product-form-labels"
+      }, "Category"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "product-form-select",
+        onChange: this.update("category") // value={this.state.category}
+
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Jewelry & Accessories"
+      }, "Jewelry & Accessories"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Clothing & Shoes"
+      }, "Clothing & Shoes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Home & Living"
+      }, "Home & Living"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Wedding & Party"
+      }, "Wedding & Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Toys & Entertainment"
+      }, "Toys & Entertainment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Art & Collectibles"
+      }, "Art & Collectibles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Craft Supplies"
+      }, "Craft Supplies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Vintage"
+      }, "Vintage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Gifts"
+      }, "Gifts"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "product-form-button",
         type: "file",
         onChange: this.imageFile
@@ -2659,7 +2704,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
 
       var currentUser = this.props.currentUser;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(currentUser.id),
+        to: "/users/".concat(currentUser),
         onClick: function onClick() {
           return _this2.props.unmountCategory();
         }
@@ -3241,8 +3286,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         value: "Sign Up"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "session-form",
-        onSubmit: this.handleSubmit
+        className: "session-form"
       }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {

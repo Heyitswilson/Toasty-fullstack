@@ -13,6 +13,7 @@ class ProductForm extends React.Component {
         this.handleFile = this.handleFile.bind(this)
         this.imagePreview = this.imagePreview.bind(this)
         this.imageFile = this.imageFile.bind(this)
+        this.update = this.update.bind(this)
     }
     
     update(field) {
@@ -43,12 +44,17 @@ class ProductForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         const formData = new FormData()
+
         formData.append('product[name]', this.state.name)
         formData.append('product[description]', this.state.description)
         formData.append('product[price]', this.state.price)
         formData.append('product[artist_id]', this.state.artist_id)
+        formData.append('product[category]', this.state.category)
         if (this.state.photoFile) {
             formData.append('product[photo]', this.state.photoFile)
+        }
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
         }
         this.props.processForm(formData, this.props.product.id)
         this.props.history.push(`/`)
@@ -113,7 +119,7 @@ class ProductForm extends React.Component {
                                     </div>
                                     <br />
                                     <div>
-                                    <label className="product-form-labels">Price</label>
+                                        <label className="product-form-labels">Price</label>
                                         <br/>
                                         <input
                                             className="product-form-inputs"
@@ -121,6 +127,26 @@ class ProductForm extends React.Component {
                                             type="number"
                                             value={this.state.price}
                                         />
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label className="product-form-labels">Category</label>
+                                        <br />
+                                        <select
+                                            className="product-form-select"
+                                            onChange={this.update("category")}  
+                                            // value={this.state.category}
+                                        >
+                                            <option value="Jewelry &amp; Accessories" >Jewelry &amp; Accessories</option>
+                                            <option value="Clothing &amp; Shoes">Clothing &amp; Shoes</option>
+                                            <option value="Home &amp; Living">Home &amp; Living</option>
+                                            <option value="Wedding &amp; Party" >Wedding &amp; Party</option>
+                                            <option value="Toys &amp; Entertainment" >Toys &amp; Entertainment</option>
+                                            <option value="Art &amp; Collectibles" >Art &amp; Collectibles</option>
+                                            <option value="Craft Supplies" >Craft Supplies</option>
+                                            <option value="Vintage" >Vintage</option>
+                                            <option value="Gifts" >Gifts</option>
+                                        </select>
                                     </div>
                                     <br />
                                     <input 

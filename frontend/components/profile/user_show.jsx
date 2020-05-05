@@ -10,7 +10,7 @@ class UserShow extends React.Component{
 
     loggedIn(){
         return(
-            <div>
+            <div >
                 <h1 className="user-shop">Your Store</h1>
                 <div> <UserProductIndexContainer /> </div>
             </div>

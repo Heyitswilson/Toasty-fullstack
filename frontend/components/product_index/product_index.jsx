@@ -84,10 +84,8 @@ class ProductIndex extends React.Component {
     categoryProductIndex() {
         const { category } = this.props;
         let filteredProducts = this.props.allProducts.filter(product => 
-            // debugger
             product.category === category
         )
-        // debugger
         return (
             <div>
                 <h1 className="header">{this.props.category}</h1>
@@ -112,12 +110,9 @@ class ProductIndex extends React.Component {
 
     render(){
         const { category } = this.props;
-        debugger
         if (category === "All") {
-            debugger
             return (this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex())
         } else {
-            debugger
             return this.categoryProductIndex()
         }
     }

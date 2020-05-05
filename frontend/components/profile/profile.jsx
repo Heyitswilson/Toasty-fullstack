@@ -11,7 +11,7 @@ class Profile extends React.Component{
     profile() {
         let { currentUser } = this.props
         return (
-                <Link to={`/users/${currentUser.id}`} onClick={() => this.props.unmountCategory()} >
+                <Link to={`/users/${currentUser}`} onClick={() => this.props.unmountCategory()} >
                     <button className="test">Manage Store</button>
                 </Link>
         )

@@ -102,7 +102,7 @@ class SessionForm extends React.Component {
                         value={"Sign Up"}
                     />
                 </div>
-                <form className="session-form" onSubmit={this.handleSubmit}>
+                <form className="session-form">
                     {this.renderErrors()}
                     <div className="session-div">
                         <label className="label-input">Email</label>
