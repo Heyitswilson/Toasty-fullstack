@@ -58,9 +58,6 @@ class ProductForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('product[photo]', this.state.photoFile)
         }
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
         this.toTop()
         this.props.processForm(formData, this.props.product.id)
         this.props.history.push(`/`)
