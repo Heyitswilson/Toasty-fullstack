@@ -5,6 +5,7 @@ import cartItemsReducer from './cart_items_reducer'
 import productReducer from './product_reducer'
 import categoryReducer from './category_reducer'
 import searchReducer from './search_reducer'
+import inputReducer from './input_reducer'
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
@@ -12,7 +13,8 @@ const entitiesReducer = combineReducers({
     cartItems: cartItemsReducer,
     product: productReducer,
     category: categoryReducer,
-    search: searchReducer
+    search: searchReducer,
+    input: inputReducer
 })
 
 export default entitiesReducer

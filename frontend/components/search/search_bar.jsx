@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 
 const SearchBar = (props) => {
-    const { products, receiveSearch } = props;
+    const { products, receiveSearch, receiveInput } = props;
     
     let productsArray = Object.keys(products).map(num => products[num]);
     
@@ -14,9 +14,9 @@ const SearchBar = (props) => {
 
     const handleSubmit = (e) => {
         event.preventDefault();
-        receiveSearch(searchListProducts)
-        clearSearch()
-        props.history.push('/search')
+        receiveSearch(searchListProducts);
+        clearSearch();
+        props.history.push('/search');
     }
 
     const clearSearch = (product=null) => {
@@ -43,10 +43,12 @@ const SearchBar = (props) => {
     const searchProducts = (input) => {
         if (input === '') {
             updateListProducts(initialList);
+            receiveInput(input);
             return updateSearch(initialList);
         }
         updateListProducts(initialList);
-        updateSearch(initialList)
+        updateSearch(initialList);
+        receiveInput(input);
         for(let i = 0; i < productsArray.length; i += 1) {
             let product = productsArray[i];
             if (product.name.toLowerCase().includes(input.toLowerCase())) {

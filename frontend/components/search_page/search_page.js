@@ -2,11 +2,11 @@ import PublicProductIdxContainer from '../product_index/public_product_idx_conta
 import React from 'react'
 
 const SearchPage = (props) => {
-    const { search } = props;
+    const { search, input } = props;
     
     return (
         <div>
-            <h1 className="header">Search</h1>
+            <h1 className="header">Searched for "{input}"</h1>
             <ul className="grid-container">
                 {search.map((product) => {
                     return (

@@ -202,6 +202,27 @@ var unmountCategory = function unmountCategory() {
 
 /***/ }),
 
+/***/ "./frontend/actions/input_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/input_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_INPUT, receiveInput */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_INPUT", function() { return RECEIVE_INPUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveInput", function() { return receiveInput; });
+var RECEIVE_INPUT = "RECEIVE_INPUT";
+var receiveInput = function receiveInput(input) {
+  return {
+    type: RECEIVE_INPUT,
+    input: input
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -2990,7 +3011,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var SearchBar = function SearchBar(props) {
   var products = props.products,
-      receiveSearch = props.receiveSearch;
+      receiveSearch = props.receiveSearch,
+      receiveInput = props.receiveInput;
   var productsArray = Object.keys(products).map(function (num) {
     return products[num];
   });
@@ -3045,11 +3067,13 @@ var SearchBar = function SearchBar(props) {
   var searchProducts = function searchProducts(input) {
     if (input === '') {
       updateListProducts(initialList);
+      receiveInput(input);
       return updateSearch(initialList);
     }
 
     updateListProducts(initialList);
     updateSearch(initialList);
+    receiveInput(input);
 
     for (var i = 0; i < productsArray.length; i += 1) {
       var product = productsArray[i];
@@ -3120,6 +3144,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_input_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/input_actions */ "./frontend/actions/input_actions.js");
+
 
 
 
@@ -3142,6 +3168,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     unmountSearch: function unmountSearch() {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["unmountSearch"])());
+    },
+    receiveInput: function receiveInput(input) {
+      return dispatch(Object(_actions_input_actions__WEBPACK_IMPORTED_MODULE_4__["receiveInput"])(input));
     }
   };
 };
@@ -3166,10 +3195,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchPage = function SearchPage(props) {
-  var search = props.search;
+  var search = props.search,
+      input = props.input;
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
     className: "header"
-  }, "Search"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+  }, "Searched for \"", input, "\""), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "grid-container"
   }, search.map(function (product) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -3201,7 +3231,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    search: state.entities.search
+    search: state.entities.search,
+    input: state.entities.input
   };
 };
 
@@ -3595,6 +3626,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _product_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./product_reducer */ "./frontend/reducers/product_reducer.js");
 /* harmony import */ var _category_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./category_reducer */ "./frontend/reducers/category_reducer.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+/* harmony import */ var _input_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./input_reducer */ "./frontend/reducers/input_reducer.js");
+
 
 
 
@@ -3608,7 +3641,8 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
   cartItems: _cart_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   product: _product_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
   category: _category_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
-  search: _search_reducer__WEBPACK_IMPORTED_MODULE_6__["default"]
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
+  input: _input_reducer__WEBPACK_IMPORTED_MODULE_7__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -3634,6 +3668,36 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
   product: _product_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/input_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/input_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_input_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/input_actions */ "./frontend/actions/input_actions.js");
+
+
+var inputReducer = function inputReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_input_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_INPUT"]:
+      return action.input;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (inputReducer);
 
 /***/ }),
 
