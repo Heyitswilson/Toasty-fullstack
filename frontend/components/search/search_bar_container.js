@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
 import SearchBar from './search_bar';
-import { getProduct } from '../../actions/product_actions'
+import { getProduct } from '../../actions/product_actions';
+import { receiveSearch, unmountSearch } from '../../actions/search_actions'; 
 
 const mapStateToProps = state => {
     return ({
-        products: state.entities.products
+        products: state.entities.products,
+        search: state.entities.search
     })
 }
 
 const mapDispatchToProps = dispatch => {
     return({
-        getProduct: (productId) => dispatch(getProduct(productId))
+        getProduct: (productId) => dispatch(getProduct(productId)),
+        receiveSearch: (search) => dispatch(receiveSearch(search)),
+        unmountSearch: () => dispatch(unmountSearch())
     })
 }
 

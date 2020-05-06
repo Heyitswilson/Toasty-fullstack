@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import { withRouter } from 'react-router-dom';
 
 const SearchBar = (props) => {
-    const { products } = props;
+    const { products, receiveSearch } = props;
     
     let productsArray = Object.keys(products).map(num => products[num]);
     
     const initialList = [];
+    const [searchListProducts, updateListProducts] = useState([])
     const [searchList, updateSearch] = useState(initialList);
 
-    $(document).keypress(
-        function (event) {
-            if (event.which == '13') {
-                event.preventDefault();
-            }
-        }
-    );
+    const handleSubmit = (e) => {
+        event.preventDefault();
+        receiveSearch(searchListProducts)
+        clearSearch()
+        props.history.push('/search')
+    }
 
     const clearSearch = (product=null) => {
         updateSearch(initialList);
@@ -24,8 +25,15 @@ const SearchBar = (props) => {
         if (product) {
             props.getProduct(product.id);
         }
+        
     }
-
+    
+    const updateSearchProducts = (product) => {
+        updateListProducts(searchListProducts => [...searchListProducts,
+            product
+        ])
+    }
+    
     const updateSearchList = (product) => {
         updateSearch(searchList => [...searchList, 
             <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
@@ -34,13 +42,16 @@ const SearchBar = (props) => {
 
     const searchProducts = (input) => {
         if (input === '') {
+            updateListProducts(initialList);
             return updateSearch(initialList);
         }
+        updateListProducts(initialList);
         updateSearch(initialList)
         for(let i = 0; i < productsArray.length; i += 1) {
             let product = productsArray[i];
             if (product.name.toLowerCase().includes(input.toLowerCase())) {
                 updateSearchList(product);
+                updateSearchProducts(product);
             }
         }
     }
@@ -78,7 +89,7 @@ const SearchBar = (props) => {
 
     return (
         <div >
-            <form className="search-form">
+            <form className="search-form" onSubmit={handleSubmit}>
                 <input 
                     className="search-bar" 
                     type="text" 
@@ -95,4 +106,4 @@ const SearchBar = (props) => {
     )
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

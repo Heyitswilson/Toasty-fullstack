@@ -4,6 +4,16 @@ import { Route } from 'react-router'
 import React from 'react'
 import { Redirect } from 'react-router'
 
+const Searched = ({ component: Component, path, search, exact }) => {
+    return (<Route path={path} exact={exact} render={(props) => (
+        search != "" ? ( <Component {...props} />) 
+        :
+            <Redirect to="/products" />
+    )}
+    
+    />)
+        
+}
 
 const Protected = ({ component: Component, path, loggedIn, exact }) => {
 
@@ -31,8 +41,11 @@ const Auth = ({ component: Component, path, loggedIn, exact}) => (
 
 
 const mapStateToProps = (state) => ({
-    loggedIn: Boolean(state.session.id)
+    loggedIn: Boolean(state.session.id),
+    search: state.entities.search
 });
+
+export const SearchedRoute = withRouter(connect(mapStateToProps, null)(Searched))
 
 export const ProtectedRoute = withRouter(
     connect(

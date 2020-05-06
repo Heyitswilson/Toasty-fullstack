@@ -7,6 +7,11 @@ class SessionForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderErrors = this.renderErrors.bind(this)
+        this.demoSubmit = this.demoSubmit.bind(this)
+    }
+
+    demoSubmit() {
+        this.setState({email: "wilson@gmail.com", password: "password"})
     }
 
     handleSubmit(e) {
@@ -102,7 +107,7 @@ class SessionForm extends React.Component {
                         value={"Sign Up"}
                     />
                 </div>
-                <form className="session-form">
+                <form className="session-form" onSubmit={this.handleSubmit}>
                     {this.renderErrors()}
                     <div className="session-div">
                         <label className="label-input">Email</label>
@@ -129,13 +134,13 @@ class SessionForm extends React.Component {
                     <div className="sign-demo">
                         <input 
                             className="signin-submit"
-                            onClick={this.handleSubmit} 
                             type="submit" 
                             value={this.props.formType} 
                         />
                         <button
                             className="demo-submit"
-                            onClick={() => this.props.processForm({ email: "wilson@gmail.com", password: "password" })}
+                            type="submit"
+                            onClick={() => this.demoSubmit()}
                         >Demo User</button>
                     </div>
                 </form>

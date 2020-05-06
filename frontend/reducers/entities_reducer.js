@@ -4,13 +4,15 @@ import productsReducer from './products_reducer'
 import cartItemsReducer from './cart_items_reducer'
 import productReducer from './product_reducer'
 import categoryReducer from './category_reducer'
+import searchReducer from './search_reducer'
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
     products: productsReducer,
     cartItems: cartItemsReducer,
     product: productReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    search: searchReducer
 })
 
 export default entitiesReducer

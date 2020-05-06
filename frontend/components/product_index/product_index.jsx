@@ -14,12 +14,7 @@ class ProductIndex extends React.Component {
         this.categoryProductIndex = this.categoryProductIndex.bind(this);
         this.displayCreate = this.displayCreate.bind(this);
         this.admin = this.admin.bind(this);
-
     }
-
-    // componentWillUnmount() {
-    //     this.props.unmountCategory()
-    // }
 
     displayCreate(){
         this.setState({displayCreate: true})
@@ -104,17 +99,16 @@ class ProductIndex extends React.Component {
         )
     }
 
-    whichIndex() {
-
-    }
-
     render(){
         const { category } = this.props;
-        if (category === "All") {
-            return (this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex())
-        } else {
+
+        if (category != "All") {
             return this.categoryProductIndex()
+        } else {
+            return (this.props.indexType === "User" ? this.userProductIndex() : this.publicProductIndex())
         }
+
+        
     }
 }
 
