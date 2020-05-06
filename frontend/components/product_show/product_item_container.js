@@ -5,6 +5,8 @@ import { getProduct, getAllProducts } from '../../actions/product_actions'
 import { createCartItem } from '../../actions/cart_item_action'
 import { openModal } from '../../actions/modal_actions'
 import { unmountProduct } from "../../actions/product_actions";
+import { receiveBuy } from '../../actions/demo_buy_action'
+
 
 
 class ProductItemMiddleMan extends React.Component {
@@ -27,6 +29,7 @@ class ProductItemMiddleMan extends React.Component {
       product,
       createCartItem,
       cartItem,
+      receiveBuy
     } = this.props;
     if (!product) return null;
     return (
@@ -36,6 +39,7 @@ class ProductItemMiddleMan extends React.Component {
         cartItem={cartItem}
         createCartItem={createCartItem}
         product={product}
+        receiveBuy={receiveBuy}
       />
     );
   }
@@ -55,6 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
     getProduct: (product) => dispatch(getProduct(product)),
     createCartItem: (product) => dispatch(createCartItem(product)),
     unmountProduct: () => dispatch(unmountProduct()),
+    receiveBuy: () => dispatch(receiveBuy())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItemMiddleMan)

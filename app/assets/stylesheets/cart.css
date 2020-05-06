@@ -9,6 +9,18 @@
     border-radius: 1%;
 }
 
+.empty-cart-div {
+    padding: 5%;
+    /* padding-left: 7%; */
+    width: 85%;
+    display: grid;
+    text-align: center;
+    flex-wrap: wrap;
+    /* grid-template-columns: 20% 20% 20% 20% 20%; */
+    border: rgb(230, 230, 230) 1px solid;
+    border-radius: 1%;
+}
+
 .new-cart-div {
     padding: 5%;
     /* padding-left: 7%; */

@@ -7,12 +7,18 @@ import { Link } from 'react-router-dom'
 import CategoriesContainer from '../categories/categories_container'
 
 const NavBar = ({ currentUser, openModal, logout, unmountCategory }) => {
+
+    const title = () => {
+            $('html,body').scrollTop(0)
+            unmountCategory()
+    }
+
     return(
         <div>
             <div className="nav">
                 <div>
                     <Link to="/">
-                        <header className="toasty-title" onClick={() => unmountCategory()}>Toasty</header>
+                        <header className="toasty-title" onClick={() => title()}>Toasty</header>
                     </Link>
                 </div >
                 <div className="search-div">

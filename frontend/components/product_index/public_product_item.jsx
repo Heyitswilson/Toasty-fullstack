@@ -5,7 +5,11 @@ class PublicProductIdxItem extends React.Component {
     constructor(props) {
         super(props)
         this.showLess = this.showLess.bind(this)
+        this.toTop = this.toTop.bind(this)
+    }
 
+    toTop() {
+        $('html,body').scrollTop(0);
     }
 
     showLess(content){
@@ -24,7 +28,7 @@ class PublicProductIdxItem extends React.Component {
         let { product } = this.props
         return (
             <div className="idx-item-div">
-                <Link className="public-product-links" to={`/products/${product.id}`}>
+                <Link onClick={() => this.toTop()} className="public-product-links" to={`/products/${product.id}`}>
                     <img className="idx-images" src={product.photoUrl} alt="" /> 
                     {this.showLess(product.name)}
                     <h3 className="public-price">${product.price}</h3>

@@ -14,6 +14,11 @@ class ProductForm extends React.Component {
         this.imagePreview = this.imagePreview.bind(this)
         this.imageFile = this.imageFile.bind(this)
         this.update = this.update.bind(this)
+        this.toTop = this.toTop.bind(this)
+    }
+
+    toTop () {
+        $('html, body').scrollTop(0);
     }
     
     update(field) {
@@ -56,6 +61,7 @@ class ProductForm extends React.Component {
         for (var pair of formData.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
+        this.toTop()
         this.props.processForm(formData, this.props.product.id)
         this.props.history.push(`/`)
     }

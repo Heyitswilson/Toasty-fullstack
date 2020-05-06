@@ -12,17 +12,28 @@ class UserProductIdxItem extends React.Component{
         this.showLess = this.showLess.bind(this);
         this.imageTag = this.imageTag.bind(this);
         this.keep = this.keep.bind(this);
+        this.toTop = this.toTop.bind(this);
+        this.redirect = this.redirect.bind(this);
+    }
+
+    toTop() {
+        $('html,body').scrollTop(0);
+    }
+
+    redirect(product) {
+        this.toTop();
+        this.props.history.push(`/products/${product.id}`);
     }
 
     showLess(product) {
         let name = product.name;
         if (name.length > 16) {
             return (
-                <h1 className="public-name-link" onClick={() => this.props.history.push(`/products/${product.id}`)}>{name.slice(0, 16) + "..."}</h1>
+                <h1 className="public-name-link" onClick={() => this.redirect(product)}>{name.slice(0, 16) + "..."}</h1>
             )
         } else {
             return (
-                <h1 className="public-name-link" onClick={() => this.props.history.push(`/products/${product.id}`)}>{name}</h1>
+                <h1 className="public-name-link" onClick={() => this.redirect(product)}>{name}</h1>
             )
         }
     }
@@ -52,7 +63,7 @@ class UserProductIdxItem extends React.Component{
                 <div className="user-product-idx-item">
                     {this.showLess(product)}
                     {this.imageTag()}
-                    <Link className="product-links" to={`/products/${product.id}/edit`}>Update Product Listing</Link>
+                    <Link onClick={() => this.toTop()} className="product-links" to={`/products/${product.id}/edit`}>Update Product Listing</Link>
                     <button className="product-delete" onClick={() => deleteProduct(product.id)}>Delete Product</button>
                 </div>
             )

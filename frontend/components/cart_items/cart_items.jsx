@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class CartItems extends React.Component {
     constructor(props) {
@@ -13,6 +12,13 @@ class CartItems extends React.Component {
         this.uniqueProducts = this.uniqueCartItems.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.total = this.total.bind(this);
+        this.emptyCart = this.emptyCart.bind(this);
+        this.filledCart = this.filledCart.bind(this);
+        this.toTop = this.toTop.bind(this);
+    }
+
+    toTop() {
+        $('html,body').scrollTop(0);
     }
 
     componentDidMount(){
@@ -54,20 +60,32 @@ class CartItems extends React.Component {
             )
         }
     }
- 
-    render() {
-        let cartItemsObj = Object.entries(this.uniqueCartItems())
+    
+    emptyCart() {
         return (
             <div>
                 <h1 className="header">Your Cart</h1>
-
                 <div className="buy-page">
-                        <div className="new-cart-div"> 
+                    <div className="empty-cart-div">
+                        <div className="header">There's nothing in your cart!</div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    filledCart(cartItemsObj) {
+        return (
+                <div>
+                    <h1 className="header">Your Cart</h1>
+    
+                    <div className="buy-page">
+                        <div className="new-cart-div">
                             {cartItemsObj.map(cartItem => {
                                 let product = cartItem[1].product
                                 return (
                                     <div key={product.id} className="cart-item-div">
-                                        <Link className="public-product-links" to={`/products/${product.id}`}>
+                                        <Link onClick={() => this.toTop()} className="public-product-links" to={`/products/${product.id}`}>
                                             <img className="idx-images" src={product.photoUrl} alt="" />
                                             {this.showLess(product.name)}
                                         </Link>
@@ -82,15 +100,23 @@ class CartItems extends React.Component {
                                         </div>
                                         <button className="delete-item-in-cart" onClick={() => this.props.deleteCartItem(cartItem[1].deleteableId)}>Delete Item</button>
                                     </div>
-                                )}
+                                )
+                            }
                             )}
                         </div>
+                    </div>
+                    {/* <div className="checkout-div">
+                        <button className="checkout">Checkout</button>
+                    </div> */}
                 </div>
-                {/* <div className="checkout-div">
-                    <button className="checkout">Checkout</button>
-                </div> */}
-            </div>
-        )
+            )
+
+    }
+ 
+    render() {
+        let cartItemsObj = Object.entries(this.uniqueCartItems());
+
+        return (cartItemsObj.length === 0 ? this.emptyCart() : this.filledCart(cartItemsObj))
     }
 }
 

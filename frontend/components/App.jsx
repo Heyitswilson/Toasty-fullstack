@@ -23,6 +23,7 @@ class App extends React.Component {
 
     render () {
         window.onunload = () => this.props.logout()
+
         return (
             <div>
                 <NavBarContainer />

@@ -3,11 +3,16 @@ import React from 'react'
 class SessionForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { name: "", email: "", password: "" }
+        this.state = { name: "", email: "", password: "", inProp: false }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.renderErrors = this.renderErrors.bind(this)
         this.demoSubmit = this.demoSubmit.bind(this)
+        this.toTop = this.toTop.bind(this)
+    }
+
+    toTop() {
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
     }
 
     demoSubmit() {
@@ -16,9 +21,16 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        let user = this.state
+        let user = {name: this.state.name, email: this.state.email, password: this.state.password}
 
+        this.toTop()
         this.props.processForm(user)
+        if (this.props.demoBuy) {
+            setTimeout( function () {
+                document.getElementsByClassName('signin-submit')[0].click()   
+                }, 500
+            )
+        }
     }
 
     update(field) {

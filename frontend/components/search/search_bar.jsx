@@ -12,6 +12,10 @@ const SearchBar = (props) => {
     const [searchListProducts, updateListProducts] = useState([])
     const [searchList, updateSearch] = useState(initialList);
 
+    const toTop = () => {
+        $('html,body').scrollTop(0);
+    }
+
     const handleSubmit = (e) => {
         event.preventDefault();
         receiveSearch(searchListProducts);
@@ -20,6 +24,7 @@ const SearchBar = (props) => {
     }
 
     const clearSearch = (product=null) => {
+        toTop()
         updateSearch(initialList);
         $('input.search-bar').val('');
         if (product) {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { receiveCategory } from '../../actions/category_actions';
 
 const Categories = (props) => {
-    const { receiveCategory, unmountCategory } = props
+    const { receiveCategory } = props
 
     function setCategory(category){
+      $('html,body').scrollTop(0);
       receiveCategory(category)
     }
 

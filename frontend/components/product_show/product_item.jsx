@@ -13,9 +13,11 @@ class ProductItem extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.popUp = this.popUp.bind(this);
     this.clearPopUp = this.clearPopUp.bind(this);
+    this.toTop = this.toTop.bind(this);
   }
 
-  componentWillUnmount() {
+  toTop() {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
   }
 
   addToCart(e) {
@@ -23,6 +25,7 @@ class ProductItem extends React.Component {
     let { sessionId, product } = this.props;
 
     if (sessionId === null) {
+      this.props.receiveBuy();
       this.props.openModal();
     } else {
       this.setState({ inProp: true });
@@ -32,6 +35,7 @@ class ProductItem extends React.Component {
         quantity: this.state.quantity,
       });
     }
+    this.toTop()
     setTimeout(this.clearPopUp, 5000);
   }
 
