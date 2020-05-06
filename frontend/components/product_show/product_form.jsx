@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-
+import $ from 'jquery'
 
 class ProductForm extends React.Component {
     constructor(props){
@@ -85,6 +85,9 @@ class ProductForm extends React.Component {
 
     render() {
         const preview = this.state.photoUrl ? <img className="preview" src={this.state.photoUrl} /> : null
+        if (this.state.category != "") {
+            $("select").val(this.state.category);
+        }
         return (
             <div >
 
@@ -135,7 +138,6 @@ class ProductForm extends React.Component {
                                         <select
                                             className="product-form-select"
                                             onChange={this.update("category")}  
-                                            // value={this.state.category}
                                         >
                                             <option value="Jewelry &amp; Accessories" >Jewelry &amp; Accessories</option>
                                             <option value="Clothing &amp; Shoes">Clothing &amp; Shoes</option>
