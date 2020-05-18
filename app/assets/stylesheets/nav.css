@@ -85,7 +85,8 @@
     outline: none;
     font-family: 'Crimson Text', serif;
     font-size: 20px;
-    color: rgb(128, 128, 128)
+    color: rgb(128, 128, 128);
+    background-color: white;
 }
 
 .sign-in-test:hover {
