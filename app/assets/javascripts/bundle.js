@@ -2415,10 +2415,12 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         className: "product-form-button",
         type: "submit"
       }, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "image-input"
+        className: "image-preview"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "product-form-labels"
-      }, "Preview"), preview)))));
+      }, "Preview"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image-input"
+      }, preview))))));
     }
   }]);
 

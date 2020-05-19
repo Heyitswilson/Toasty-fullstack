@@ -162,9 +162,11 @@ class ProductForm extends React.Component {
                                     <br />
                                 <button className="product-form-button" type="submit">{this.props.formType}</button>
                                 </div>
-                                <div className="image-input">
-                                <h3 className="product-form-labels">Preview</h3>
-                                    {preview}
+                                <div className="image-preview">
+                                    <h3 className="product-form-labels">Preview</h3>
+                                    <div className="image-input">
+                                        {preview}
+                                    </div>
                                 </div>
                             </form>
 

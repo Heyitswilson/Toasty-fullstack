@@ -34,8 +34,8 @@
 }
 
 .preview {
-    width: 450px;
-    height: 450px;
+    max-width: 100%;
+    height: auto
 }
 
 .product-form-flex {
@@ -54,9 +54,14 @@
 
 .image-input {
     padding: 15px;
-    height: 450px;
+    /* height: 450px; */
     width: 450px;
-    display: inline-block
+    /* height: 100%; */
+    display: flex;
+    background-color:rgb(232,232,232);
+    margin-left: 20px;
+    border-radius: 5px;
+    justify-content: center;
 }
 
 .product-form-labels {
@@ -76,4 +81,11 @@
     margin: 10px;
     display: inline-block;
     height: 25px;
+}
+
+.image-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 17px;
 }
