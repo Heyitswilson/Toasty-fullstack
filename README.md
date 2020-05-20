@@ -88,7 +88,5 @@ uniqueCartItems(){
 ```
 
 ## To-do
-* Additional search bar functionality
-* Additional categories functionality
-* Comments and reviews
-* Database efficiency
+* Add Stripe and Paypal checkout
+* Add order history
