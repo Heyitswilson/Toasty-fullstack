@@ -23,6 +23,7 @@
 
 .new-cart-div {
     padding: 5%;
+    /* padding-top: 3%; */
     /* padding-left: 7%; */
     width: 85%;
     display: grid;
@@ -30,6 +31,8 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
     border: rgb(230, 230, 230) 1px solid;
     border-radius: 1%;
+    overflow-y: auto;
+    height: 300px;
 }
 
 .cart-item-div {
@@ -85,8 +88,8 @@
     font-size: 16px;
     color: rgb(128, 128, 128);
     background-color: transparent;
-    display: inline-block
-
+    display: inline-block;
+    margin-bottom: 60px;
 }
 
 .delete-item-in-cart:hover {
@@ -129,7 +132,6 @@
         border: rgb(230, 230, 230) 1px solid;
         border-radius: 1%;
         column-gap: 5%;
-        overflow-y: auto;
     }
 }
 

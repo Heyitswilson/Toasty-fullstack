@@ -2945,7 +2945,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "test"
-      }, "Manage Store"));
+      }, "Store"));
     }
   }, {
     key: "render",

@@ -12,7 +12,7 @@ class Profile extends React.Component{
         let { currentUser } = this.props
         return (
                 <Link to={`/users/${currentUser}`} onClick={() => this.props.unmountCategory()} >
-                    <button className="test">Manage Store</button>
+                    <button className="test">Store</button>
                 </Link>
         )
     }
