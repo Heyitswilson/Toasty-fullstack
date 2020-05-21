@@ -75,6 +75,7 @@ class CartItems extends React.Component {
     }
 
     filledCart(cartItemsObj) {
+        let allTotal = 0;
         return (
                 <div>
                     <h1 className="header">Your Cart</h1>
@@ -83,31 +84,61 @@ class CartItems extends React.Component {
                         <div className="new-cart-div">
                             {cartItemsObj.map(cartItem => {
                                 let product = cartItem[1].product
+                                allTotal += this.total(cartItem);
                                 return (
-                                    <div key={product.id} className="cart-item-div">
-                                        <Link onClick={() => this.toTop()} className="public-product-links" to={`/products/${product.id}`}>
-                                            <img className="idx-images" src={product.photoUrl} alt="" />
-                                            {this.showLess(product.name)}
-                                        </Link>
-                                        <br />
-                                        <div className="quantity">
-                                            <label className="quantity-word">Quantity: </label>
-                                            <div className="quantity-num">{cartItem[1].quantity}</div>
-                                        </div>
-                                        <div className="quantity">
-                                            <div className="quantity-word">Total: </div>
-                                            <div className="quantity-num">${this.total(cartItem)}</div>
-                                        </div>
-                                        <button className="delete-item-in-cart" onClick={() => this.props.deleteCartItem(cartItem[1].deleteableId)}>Delete Item</button>
+                                  <div
+                                    key={product.id}
+                                    className="cart-item-div"
+                                  >
+                                    <Link
+                                      onClick={() => this.toTop()}
+                                      className="public-product-links"
+                                      to={`/products/${product.id}`}
+                                    >
+                                      <img
+                                        className="idx-images"
+                                        src={product.photoUrl}
+                                        alt=""
+                                      />
+                                      {this.showLess(product.name)}
+                                    </Link>
+                                    <br />
+                                    <div className="quantity">
+                                      <label className="quantity-word">
+                                        Quantity:{" "}
+                                      </label>
+                                      <div className="quantity-num">
+                                        {cartItem[1].quantity}
+                                      </div>
                                     </div>
-                                )
+                                    <div className="quantity">
+                                      <div className="quantity-word">
+                                        Total:{" "}
+                                      </div>
+                                      <div className="quantity-num">
+                                        ${this.total(cartItem)}
+                                      </div>
+                                    </div>
+                                    <button
+                                      className="delete-item-in-cart"
+                                      onClick={() =>
+                                        this.props.deleteCartItem(
+                                          cartItem[1].deleteableId
+                                        )
+                                      }
+                                    >
+                                      Delete Item
+                                    </button>
+                                  </div>
+                                );
                             }
                             )}
                         </div>
                     </div>
-                    {/* <div className="checkout-div">
-                        <button className="checkout">Checkout</button>
-                    </div> */}
+                    <div className="checkout-div">
+                        <div id="all-total" className="quantity-word">Item(s) total: ${allTotal} </div>
+                        <button className="checkout">Purchase</button>
+                    </div>
                 </div>
             )
 

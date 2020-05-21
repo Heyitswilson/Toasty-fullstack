@@ -74,11 +74,10 @@
 .buy-page {
     display: flex;
     justify-content: center;
-    padding: 2%
+    padding: 0.5%
 }
 
 .delete-item-in-cart {
-    /* display: flex; */
     padding: 0px;
     border: none;
     outline: none;
@@ -115,7 +114,8 @@
 
 .checkout-div {
     display: flex;
-    justify-content: center
+    flex-direction: column;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -128,8 +128,13 @@
         grid-template-columns: 20% 20% 20% 20%;
         border: rgb(230, 230, 230) 1px solid;
         border-radius: 1%;
-        column-gap: 5%
+        column-gap: 5%;
+        overflow-y: auto;
     }
+}
+
+#all-total {
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 1188px) {
