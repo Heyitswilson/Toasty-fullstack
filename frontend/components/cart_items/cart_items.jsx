@@ -15,6 +15,12 @@ class CartItems extends React.Component {
         this.emptyCart = this.emptyCart.bind(this);
         this.filledCart = this.filledCart.bind(this);
         this.toTop = this.toTop.bind(this);
+        this.purchase = this.purchase.bind(this);
+    }
+
+    purchase() {
+      this.props.removeAllItems();
+
     }
 
     toTop() {
@@ -23,6 +29,7 @@ class CartItems extends React.Component {
 
     componentDidMount(){
         this.props.getAllCartItems()
+        debugger
     }
 
     deleteItem(cartItem) {

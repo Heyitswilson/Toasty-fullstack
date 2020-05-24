@@ -13,5 +13,13 @@ class Product < ApplicationRecord
     through: :cart_items,
     source: :customer
 
+    has_many :order_items,
+    foreign_key: :order_item_id,
+    class_name: :OrderItem
+
+    has_many :orderers,
+    through: :order_items,
+    source: :orderer
+
     has_one_attached :photo
 end

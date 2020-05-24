@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/cart_item_action.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_CART_ITEM, RECEIVE_CART_ITEMS, REMOVE_CART_ITEM, REMOVE_ALL_ITEMS, DELETED_CART_ITEM, receiveCartItem, receiveCartItems, removeCartItem, deletedCartItem, getAllCartItems, getCartItem, createCartItem, deleteCartItem */
+/*! exports provided: RECEIVE_CART_ITEM, RECEIVE_CART_ITEMS, REMOVE_CART_ITEM, REMOVE_ALL_CART_ITEMS, removeAllItems, receiveCartItem, receiveCartItems, removeCartItem, getAllCartItems, getCartItem, createCartItem, deleteCartItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,12 +98,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CART_ITEM", function() { return RECEIVE_CART_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CART_ITEMS", function() { return RECEIVE_CART_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CART_ITEM", function() { return REMOVE_CART_ITEM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALL_ITEMS", function() { return REMOVE_ALL_ITEMS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETED_CART_ITEM", function() { return DELETED_CART_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALL_CART_ITEMS", function() { return REMOVE_ALL_CART_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAllItems", function() { return removeAllItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCartItem", function() { return receiveCartItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCartItems", function() { return receiveCartItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCartItem", function() { return removeCartItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletedCartItem", function() { return deletedCartItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllCartItems", function() { return getAllCartItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCartItem", function() { return getCartItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCartItem", function() { return createCartItem; });
@@ -113,8 +112,12 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CART_ITEM = 'RECEIVE_CART_ITEM';
 var RECEIVE_CART_ITEMS = 'RECEIVE_CART_ITEMS';
 var REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
-var REMOVE_ALL_ITEMS = "REMOVE_ALL_ITEMS";
-var DELETED_CART_ITEM = "DELETED_CART_ITEM";
+var REMOVE_ALL_CART_ITEMS = "REMOVE_ALL_CART_ITEMS";
+var removeAllItems = function removeAllItems() {
+  return {
+    type: REMOVE_ALL_CART_ITEMS
+  };
+};
 var receiveCartItem = function receiveCartItem(cartItem) {
   return {
     type: RECEIVE_CART_ITEM,
@@ -133,13 +136,11 @@ var removeCartItem = function removeCartItem(cartItemId, allCartItems) {
     cartItemId: cartItemId,
     allCartItems: allCartItems
   };
-};
-var deletedCartItem = function deletedCartItem(id) {
-  return {
-    type: DELETED_CART_ITEM,
-    id: id
-  };
-};
+}; // export const deletedCartItem = (id) => ({
+//     type: DELETED_CART_ITEM,
+//     id
+// })
+
 var getAllCartItems = function getAllCartItems() {
   return function (dispatch) {
     return _util_cart_item_api_util__WEBPACK_IMPORTED_MODULE_0__["getAllCartItems"]().then(function (cartItems) {
@@ -871,10 +872,16 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
     _this.emptyCart = _this.emptyCart.bind(_assertThisInitialized(_this));
     _this.filledCart = _this.filledCart.bind(_assertThisInitialized(_this));
     _this.toTop = _this.toTop.bind(_assertThisInitialized(_this));
+    _this.purchase = _this.purchase.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CartItems, [{
+    key: "purchase",
+    value: function purchase() {
+      this.props.removeAllItems();
+    }
+  }, {
     key: "toTop",
     value: function toTop() {
       $('html,body').scrollTop(0);
@@ -883,6 +890,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getAllCartItems();
+      debugger;
     }
   }, {
     key: "deleteItem",
@@ -1044,8 +1052,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteCartItem: function deleteCartItem(cartItemId) {
       return dispatch(Object(_actions_cart_item_action__WEBPACK_IMPORTED_MODULE_1__["deleteCartItem"])(cartItemId));
     },
-    deletedCartItem: function deletedCartItem(id) {
-      return dispatch(Object(_actions_cart_item_action__WEBPACK_IMPORTED_MODULE_1__["deletedCartItem"])(id));
+    // deletedCartItem: (id) => dispatch(deletedCartItem(id)),
+    removeAllItems: function removeAllItems() {
+      return dispatch(Object(_actions_cart_item_action__WEBPACK_IMPORTED_MODULE_1__["removeAllItems"])());
     }
   };
 };
@@ -3802,10 +3811,12 @@ var cartItemsReducer = function cartItemsReducer() {
     case _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CART_ITEM"]:
       delete newState[action.id];
       return action.allCartItems;
+    // case DELETED_CART_ITEM:
+    //     newState[action.id].deleted = true
+    //     return newState
 
-    case _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_0__["DELETED_CART_ITEM"]:
-      newState[action.id].deleted = true;
-      return newState;
+    case _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ALL_CART_ITEMS"]:
+      return {};
 
     default:
       return state;
@@ -3900,6 +3911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
 /* harmony import */ var _input_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./input_reducer */ "./frontend/reducers/input_reducer.js");
 /* harmony import */ var _demo_buy_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./demo_buy_reducer */ "./frontend/reducers/demo_buy_reducer.js");
+/* harmony import */ var _order_items__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./order_items */ "./frontend/reducers/order_items.js");
+
 
 
 
@@ -3917,7 +3930,8 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
   category: _category_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
   search: _search_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
   input: _input_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
-  demoBuy: _demo_buy_reducer__WEBPACK_IMPORTED_MODULE_8__["default"]
+  demoBuy: _demo_buy_reducer__WEBPACK_IMPORTED_MODULE_8__["default"] // orderItems: orderItemsReducer
+
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -4006,6 +4020,26 @@ var modalReducer = function modalReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modalReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/order_items.js":
+/*!******************************************!*\
+  !*** ./frontend/reducers/order_items.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var orderItemsReducer = function orderItemsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (orderItemsReducer);
 
 /***/ }),
 
