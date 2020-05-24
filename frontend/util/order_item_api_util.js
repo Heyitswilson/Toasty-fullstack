@@ -5,10 +5,14 @@ export const getAllOrderItems = () => (
     })
 )
 
-export const createORderItem = orderItem => (
-    $.ajax({
-        method: "POST",
-        url: "/api/order_items",
-        data: { orderItem }
-    })
-)
+export const createOrderItem = orderItem => {
+    debugger
+    return (
+        $.ajax({
+            method: "POST",
+            url: "/api/order_items",
+            data: { orderItem }
+        })
+
+    )
+}

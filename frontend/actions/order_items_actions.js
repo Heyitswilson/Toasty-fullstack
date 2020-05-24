@@ -8,13 +8,23 @@ export const receiveAllOrderItems = (items) => ({
     items
 })
 
-export const receiveOrderItem = (item) => ({
-    type: RECEIVE_ORDER_ITEM,
-    item
-})
+export const receiveOrderItem = (item) => {
+    return ({
+        type: RECEIVE_ORDER_ITEM,
+        item
+    })
+}
 
 export const getAllOrderItems = () => dispatch => {
     return (OrderItemAPIUtil.getAllOrderItems()
         .then(orderItems => dispatch(receiveAllOrderItems(orderItems))))
 }
 
+export const createOrderItem = (orderItem) => dispatch => {
+    debugger
+    return (
+        OrderItemAPIUtil.createOrderItem(orderItem)
+        .then(orderItem => dispatch(receiveOrderItem(orderItem)))
+            // .then(console.log("success"))
+    )
+}

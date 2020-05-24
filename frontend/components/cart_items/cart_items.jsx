@@ -19,8 +19,10 @@ class CartItems extends React.Component {
     }
 
     purchase() {
+      this.props.userCartItems.forEach(cartItem => {
+        this.props.createOrderItem(cartItem)
+      })
       this.props.removeAllItems();
-
     }
 
     toTop() {
@@ -29,7 +31,6 @@ class CartItems extends React.Component {
 
     componentDidMount(){
         this.props.getAllCartItems()
-        debugger
     }
 
     deleteItem(cartItem) {
@@ -144,7 +145,7 @@ class CartItems extends React.Component {
                     </div>
                     <div className="checkout-div">
                         <div id="all-total" className="quantity-word">Item(s) total: ${allTotal} </div>
-                        <button className="checkout">Purchase</button>
+                        <button onClick={() => this.purchase()} className="checkout">Purchase</button>
                     </div>
                 </div>
             )
