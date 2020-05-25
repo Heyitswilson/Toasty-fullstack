@@ -1,5 +1,5 @@
 class OrderItem < ApplicationRecord
-    validates :cart_item_id, :quantity, presence: true
+    validates :order_item_id, presence: true
 
     belongs_to :product,
     foreign_key: :order_item_id,

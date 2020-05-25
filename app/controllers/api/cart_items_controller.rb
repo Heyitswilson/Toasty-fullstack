@@ -7,6 +7,7 @@ class Api::CartItemsController < ApplicationController
 
     def create
         @cart_item = CartItem.new(cart_items_params)
+            # debugger
         if @cart_item.save
             render :show
         else

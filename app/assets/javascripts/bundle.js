@@ -307,6 +307,7 @@ var receiveAllOrderItems = function receiveAllOrderItems(items) {
   };
 };
 var receiveOrderItem = function receiveOrderItem(item) {
+  // debugger
   return {
     type: RECEIVE_ORDER_ITEM,
     item: item
@@ -321,10 +322,9 @@ var getAllOrderItems = function getAllOrderItems() {
 };
 var createOrderItem = function createOrderItem(orderItem) {
   return function (dispatch) {
-    debugger;
-    return _util_order_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createOrderItem"](orderItem).then(function (orderItem) {
-      return dispatch(receiveOrderItem(orderItem));
-    }) // .then(console.log("success"))
+    // debugger
+    return _util_order_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createOrderItem"](orderItem) // .then(console.log(orderItem))
+    // .then(orderItem => dispatch(receiveOrderItem(orderItem)))
     ;
   };
 };
@@ -932,8 +932,13 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       this.props.userCartItems.forEach(function (cartItem) {
-        _this2.props.createOrderItem(cartItem);
+        _this2.props.createOrderItem({
+          orderer_id: cartItem.customer_id,
+          order_item_id: cartItem.product.id,
+          quantity: cartItem.quantity
+        });
       });
+      this.props.receiveAllOrderItems();
       this.props.removeAllItems();
     }
   }, {
@@ -1117,8 +1122,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createOrderItem: function createOrderItem(orderItem) {
       return dispatch(Object(_actions_order_items_actions__WEBPACK_IMPORTED_MODULE_3__["createOrderItem"])(orderItem));
-    } // receiveAllOrderItems: () => dispatch(receiveAllOrderItems())
+    },
+    receiveAllOrderItems: function (_receiveAllOrderItems) {
+      function receiveAllOrderItems() {
+        return _receiveAllOrderItems.apply(this, arguments);
+      }
 
+      receiveAllOrderItems.toString = function () {
+        return _receiveAllOrderItems.toString();
+      };
+
+      return receiveAllOrderItems;
+    }(function () {
+      return dispatch(receiveAllOrderItems());
+    })
   };
 };
 
@@ -4101,16 +4118,15 @@ __webpack_require__.r(__webpack_exports__);
 var orderItemsReducer = function orderItemsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  debugger;
   Object.freeze(state);
-  var newState = Object.assign({}, state);
+  var newState = Object.assign({}, state); // debugger
 
   switch (action.type) {
     case _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_ORDER_ITEMS"]:
       return action.items;
 
     case _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ORDER_ITEM"]:
-      newState[action.item.id] = action.item;
+      newState[action.item.order_item_id] = action.item;
       return newState;
 
     default:
@@ -4459,7 +4475,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _frontend_util_session_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../frontend/util/session_api_util */ "./frontend/util/session_api_util.js");
+/* harmony import */ var _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/order_items_actions */ "./frontend/actions/order_items_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4485,6 +4503,8 @@ document.addEventListener("DOMContentLoaded", function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.getAllCartItems = _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_5__["getAllOrderItems"];
+  window.createOrderItem = _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_5__["createOrderItem"];
   window.getState = store.getState;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -4554,7 +4574,7 @@ var getAllOrderItems = function getAllOrderItems() {
   });
 };
 var createOrderItem = function createOrderItem(orderItem) {
-  debugger;
+  // debugger
   return $.ajax({
     method: "POST",
     url: "/api/order_items",

@@ -20,8 +20,13 @@ class CartItems extends React.Component {
 
     purchase() {
       this.props.userCartItems.forEach(cartItem => {
-        this.props.createOrderItem(cartItem)
+        this.props.createOrderItem({
+          orderer_id: cartItem.customer_id,
+          order_item_id: cartItem.product.id,
+          quantity: cartItem.quantity
+        })
       })
+      this.props.receiveAllOrderItems();
       this.props.removeAllItems();
     }
 
