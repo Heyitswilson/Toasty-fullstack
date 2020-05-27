@@ -26,6 +26,7 @@ class ProductItem extends React.Component {
   }
 
   checkCart(currentItem) {
+    // change to forLoop
     this.props.userCartItems.forEach(cartItem => {
       let that = this;
       // debugger
@@ -33,7 +34,7 @@ class ProductItem extends React.Component {
         // UPDATE ITEM]
         that.state.quantity += 1
         debugger
-        that.props.updateCartItem({quantity: that.state.quantity}, currentItem)
+        that.props.updateCartItem({ quantity: that.state.quantity }, cartItem.id)
       } else {
         that.props.createCartItem({
           customer_id: that.props.sessionId,

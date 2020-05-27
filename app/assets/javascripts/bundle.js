@@ -2974,6 +2974,7 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
     value: function checkCart(currentItem) {
       var _this2 = this;
 
+      // change to forLoop
       this.props.userCartItems.forEach(function (cartItem) {
         var that = _this2; // debugger
 
@@ -2983,7 +2984,7 @@ var ProductItem = /*#__PURE__*/function (_React$Component) {
           debugger;
           that.props.updateCartItem({
             quantity: that.state.quantity
-          }, currentItem);
+          }, cartItem.id);
         } else {
           that.props.createCartItem({
             customer_id: that.props.sessionId,
@@ -4911,13 +4912,13 @@ var deleteCartItem = function deleteCartItem(cartItemId) {
     url: "/api/cart_items/".concat(cartItemId)
   });
 };
-var updateCartItem = function updateCartItem(formData, id) {
+var updateCartItem = function updateCartItem(cartItem, id) {
   return $.ajax({
     method: "PATCH",
-    url: "/api/products/".concat(id),
-    data: formData,
-    contentType: false,
-    processData: false
+    url: "/api/cart_items/".concat(id),
+    data: {
+      cartItem: cartItem
+    }
   });
 };
 
