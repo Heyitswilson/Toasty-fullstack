@@ -19,15 +19,15 @@ class CartItems extends React.Component {
     }
 
     purchase() {
+      debugger
       this.props.userCartItems.forEach(cartItem => {
         this.props.createOrderItem({
           orderer_id: cartItem.customer_id,
           order_item_id: cartItem.product.id,
           quantity: cartItem.quantity
         })
+        this.props.deleteCartItem(cartItem.id)
       })
-      this.props.receiveAllOrderItems();
-      this.props.removeAllItems();
     }
 
     toTop() {
@@ -35,7 +35,7 @@ class CartItems extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getAllCartItems()
+        this.props.getAllCartItems();
     }
 
     deleteItem(cartItem) {

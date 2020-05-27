@@ -5,6 +5,7 @@ import SignInContainer from './sign_in_container'
 import SearchBarContainer from '../search/search_bar_container'
 import { Link } from 'react-router-dom'
 import CategoriesContainer from '../categories/categories_container'
+import OrdersContainer from '../orders/orders_container'
 
 const NavBar = ({ currentUser, openModal, logout, unmountCategory }) => {
 
@@ -27,6 +28,7 @@ const NavBar = ({ currentUser, openModal, logout, unmountCategory }) => {
                     <div className="button-divs">
                         <ProfileContainer />
                         <CartContainer />
+                        <OrdersContainer />
                         <SignInContainer 
                             openModal={openModal}
                             logout={logout}

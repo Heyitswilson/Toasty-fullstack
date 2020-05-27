@@ -22,10 +22,10 @@ export const getAllOrderItems = () => dispatch => {
 }
 
 export const createOrderItem = (orderItem) => dispatch => {
-    // debugger
+    debugger
     return (
         OrderItemAPIUtil.createOrderItem(orderItem)
         // .then(console.log(orderItem))
-        // .then(orderItem => dispatch(receiveOrderItem(orderItem)))
+        .then(orderItem => dispatch(receiveOrderItem(orderItem)))
     )
 }

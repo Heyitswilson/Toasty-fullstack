@@ -7,9 +7,9 @@ const orderItemsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_ALL_ORDER_ITEMS:
             return action.items
-        case RECEIVE_ORDER_ITEM:
-            newState[action.item.order_item_id] = action.item
-            return newState
+        // case RECEIVE_ORDER_ITEM:
+        //     newState[action.item.id] = action.item
+        //     return newState
         default: 
             return state
     }

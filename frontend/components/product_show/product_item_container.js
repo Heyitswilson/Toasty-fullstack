@@ -6,6 +6,7 @@ import { createCartItem } from '../../actions/cart_item_action'
 import { openModal } from '../../actions/modal_actions'
 import { unmountProduct } from "../../actions/product_actions";
 import { receiveBuy } from '../../actions/demo_buy_action'
+import { getAllCartItems, updateCartItem } from '../../actions/cart_item_action'
 
 
 
@@ -29,9 +30,13 @@ class ProductItemMiddleMan extends React.Component {
       product,
       createCartItem,
       cartItem,
-      receiveBuy
+      receiveBuy,
+      getAllCartItems,
+      userCartItems,
+      updateCartItem
     } = this.props;
     if (!product) return null;
+    
     return (
       <ProductItem
         openModal={openModal}
@@ -40,6 +45,9 @@ class ProductItemMiddleMan extends React.Component {
         createCartItem={createCartItem}
         product={product}
         receiveBuy={receiveBuy}
+        getAllCartItems={getAllCartItems}
+        userCartItems={userCartItems}
+        updateCartItem={updateCartItem}
       />
     );
   }
@@ -50,6 +58,7 @@ const mapStateToProps = (state, ownProps) => {
       product: state.entities.product,
       cartItem: { customer_id: null, product_id: null },
       sessionId: state.session.id,
+      userCartItems: Object.values(state.entities.cartItems)
     };
 }
 
@@ -59,7 +68,9 @@ const mapDispatchToProps = (dispatch) => ({
     getProduct: (product) => dispatch(getProduct(product)),
     createCartItem: (product) => dispatch(createCartItem(product)),
     unmountProduct: () => dispatch(unmountProduct()),
-    receiveBuy: () => dispatch(receiveBuy())
+    receiveBuy: () => dispatch(receiveBuy()),
+    getAllCartItems: () => dispatch(getAllCartItems()),
+    updateCartItem: (data, item) => dispatch(updateCartItem(data, item))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItemMiddleMan)

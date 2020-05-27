@@ -14,26 +14,47 @@ class ProductItem extends React.Component {
     this.popUp = this.popUp.bind(this);
     this.clearPopUp = this.clearPopUp.bind(this);
     this.toTop = this.toTop.bind(this);
+    this.checkCart = this.checkCart.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getAllCartItems();
   }
 
   toTop() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   }
 
+  checkCart(currentItem) {
+    this.props.userCartItems.forEach(cartItem => {
+      let that = this;
+      // debugger
+      if (cartItem.product.id === currentItem.id) {
+        // UPDATE ITEM]
+        that.state.quantity += 1
+        debugger
+        that.props.updateCartItem({quantity: that.state.quantity}, currentItem)
+      } else {
+        that.props.createCartItem({
+          customer_id: that.props.sessionId,
+          product_id: currentItem.id,
+          quantity: that.state.quantity,
+        });
+      }
+    })
+  }
+
   addToCart(e) {
     e.preventDefault();
     let { sessionId, product } = this.props;
-
+    debugger
     if (sessionId === null) {
       this.props.receiveBuy();
       this.props.openModal();
     } else {
       this.setState({ inProp: true });
-      this.props.createCartItem({
-        customer_id: sessionId,
-        product_id: product.id,
-        quantity: this.state.quantity,
-      });
+
+      this.checkCart(product)
     }
     this.toTop()
     setTimeout(this.clearPopUp, 5000);

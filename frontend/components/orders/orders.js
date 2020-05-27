@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Cart extends React.Component {
+class Orders extends React.Component {
     constructor(props) {
         super(props);
 
-        this.cart = this.cart.bind(this);
+        this.orders = this.orders.bind(this);
     }
-    cart() {
+    orders() {
         return (
-            <Link to="/cart_items">
+            <Link to="/orders">
                 <button className="test">Orders</button>
             </Link>
         )
     }
 
     render() {
-        return this.props.currentUser ? this.cart() : null;
+        return this.props.currentUser ? this.orders() : null;
     }
 }
 
-export default Cart;
+export default Orders;

@@ -11,6 +11,7 @@ import { ProtectedRoute, AuthRoute, SearchedRoute } from '../util/route_util'
 import CartItemContainer from './cart_items/cart_items_container'
 import Info from './info/info'
 import SearchPageContainer from './search_page/search_page_container'
+import OrderItemContainer from './order_items/order_items_container'
 
 class App extends React.Component {
     constructor(props) {
@@ -45,6 +46,7 @@ class App extends React.Component {
                     <Route path="/craft-supplies" component={ProductIndexContainer}/>
                     <Route path="/vintage" component={ProductIndexContainer}/>
                     <Route path="/gifts" component={ProductIndexContainer}/>
+                    <Route path="/orders" component={OrderItemContainer}/>
                     <Route exact path="/" component={GreetingContainer}/>
                 </Switch>
                 </div>
