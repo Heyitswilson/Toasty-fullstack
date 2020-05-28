@@ -73,7 +73,7 @@
 .product-form-button ~ input {
     font-family: 'Spartan', sans-serif;
     padding: 3px;
-
+    /* background-color:red */
 }
 
 .product-form-select {
@@ -90,4 +90,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 17px;
+}
+
+.product-form-b-div {
+    margin-left: 10px;
 }

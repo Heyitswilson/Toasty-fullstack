@@ -26,6 +26,9 @@ ul.categories-bar li {
 }
 
 .category-jewelry:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     width: 10.45%;
 } 
 
@@ -45,6 +48,9 @@ ul.categories-bar li {
 }
 
 .category-clothing:hover  ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 14.6%;
     width: 8.23%;
 }
@@ -65,6 +71,9 @@ ul.categories-bar li {
 
 
 .category-home:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 26.5%;
     width: 7.4%;
     cursor: pointer
@@ -86,6 +95,9 @@ ul.categories-bar li {
 }
 
 .category-wedding:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 37.5%;
     width: 8.1%;
 }
@@ -106,6 +118,9 @@ ul.categories-bar li {
 
 
 .category-toys:hover  ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 49.5%;
     width: 10.5%;
 }
@@ -126,6 +141,9 @@ ul.categories-bar li {
 
 
 .category-art:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 64.25%;
     width: 8.45%;
 }
@@ -146,6 +164,9 @@ ul.categories-bar li {
 }
 
 .category-crafting:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 76.8%;
     width: 6.7%;
 }
@@ -166,6 +187,9 @@ ul.categories-bar li {
 }
 
 .category-vintage:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 87.3%;
     width: 3.6%;
 }
@@ -191,8 +215,8 @@ ul.categories-bar li {
     padding-left: 2.5%;
     padding-right: 1.5%;
     grid-area: gifts;
-    text-decoration: none
-
+    text-decoration: none;
+    /* z-index:3 */
 }
 
 .gifts-div:hover {
@@ -200,16 +224,21 @@ ul.categories-bar li {
 }
 
 .gifts-div:hover ~ hr {
+    z-index: 3;
+    position:relative;
+    top: 1px;
     margin-left: 94.2%;
     width: 3.35%;
 }
 
 .categories-horizontal {
     width: 100%;
-    height: 1px;
-    border: .2px solid rgb(191, 191, 191);
+    /* height: 1px; */
+    border: .5px solid rgb(212, 218, 221);
     margin-bottom: 10px;
     margin-top: 10px;
+    /* position: relative;
+    top: 1px; */
 }
 
 .category-animation {

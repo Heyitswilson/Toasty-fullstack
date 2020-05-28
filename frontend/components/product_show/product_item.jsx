@@ -90,7 +90,7 @@ class ProductItem extends React.Component {
       >
         {this.state.inProp && this.props.sessionId ? (
           <div key={1} className="added-cart">
-            +1
+            Added to cart!
           </div>
         ) : null}
       </ReactCSSTransitionGroup>

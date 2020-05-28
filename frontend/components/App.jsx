@@ -23,16 +23,17 @@ class App extends React.Component {
     }
 
     render () {
-        window.onunload = () => this.props.logout()
-
+        
         return (
             <div>
+                {window.beforeunload = () => this.props.logout()}
                 <NavBarContainer />
                 <Modal />
                 <div className="container">
                 <Switch >
                     <ProtectedRoute path="/cart_items" component={CartItemContainer} />
                     <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
+                    <ProtectedRoute path="/orders" component={OrderItemContainer}/>
                     <Route exact path="/products/:productId" component={ProductItemContainer}/>
                     <AuthRoute path="/products/:productId/edit" component={UpdateProductForm}/>
                     <ProtectedRoute path="/products" component={ProductIndexContainer}/>
@@ -46,7 +47,6 @@ class App extends React.Component {
                     <Route path="/craft-supplies" component={ProductIndexContainer}/>
                     <Route path="/vintage" component={ProductIndexContainer}/>
                     <Route path="/gifts" component={ProductIndexContainer}/>
-                    <Route path="/orders" component={OrderItemContainer}/>
                     <Route exact path="/" component={GreetingContainer}/>
                 </Switch>
                 </div>

@@ -43,7 +43,8 @@
     font-size: 20px;
     color: rgb(126, 145, 154);
     padding-left: 18px;
-    transition: background-color 1s
+    transition: background-color 1s;
+    border: 1px solid rgb(179, 179, 179)
 }
 
 .search-bar:focus {

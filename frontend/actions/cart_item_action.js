@@ -4,12 +4,6 @@ export const RECEIVE_CART_ITEM = 'RECEIVE_CART_ITEM'
 export const RECEIVE_CART_ITEMS = 'RECEIVE_CART_ITEMS'
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
 export const REMOVE_ALL_CART_ITEMS = "REMOVE_ALL_CART_ITEMS"
-export const UPDATE_CART = "UPDATE_CART"
-
-export const updateCate = (update) => ({
-    type: UPDATE_CART,
-    update
-})
 
 export const removeAllItems = () => ({
     type: REMOVE_ALL_CART_ITEMS
@@ -30,11 +24,6 @@ export const removeCartItem = (cartItemId, allCartItems) => ({
     cartItemId,
     allCartItems
 })
-
-// export const deletedCartItem = (id) => ({
-//     type: DELETED_CART_ITEM,
-//     id
-// })
 
 export const getAllCartItems = () =>  dispatch => {
    return  (CartItemAPIUtil.getAllCartItems() 
@@ -59,7 +48,5 @@ export const deleteCartItem = cartItemId => dispatch => (
 
 export const updateCartItem = (data, id) => dispatch => (
     CartItemAPIUtil.updateCartItem(data, id) 
-        // .then(() => CartItemAPIUtil.getAllCartItems())
-        // .then(cartItems => dispatch(receiveCartItems(cartItems)))
         .then((cartItem) => dispatch(receiveCartItem(cartItem)))
 )

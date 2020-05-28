@@ -85,6 +85,7 @@
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     color:rgb(115, 115, 115);
+    background-color: transparent
 }
 
 .product-delete:hover {

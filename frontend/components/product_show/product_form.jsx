@@ -154,13 +154,16 @@ class ProductForm extends React.Component {
                                         </select>
                                     </div>
                                     <br />
-                                    <input 
-                                        className="product-form-button"
-                                        type="file"
-                                        onChange={this.imageFile}
-                                    />
-                                    <br />
-                                <button className="product-form-button" type="submit">{this.props.formType}</button>
+                                    <div className="product-form-b-div">
+                                        <input 
+                                            className="product-form-button"
+                                            type="file"
+                                            onChange={this.imageFile}
+                                        />
+                                        <br />
+                                        <br />
+                                        <button className="product-form-button" type="submit">{this.props.formType}</button>
+                                    </div>
                                 </div>
                                 <div className="image-preview">
                                     <h3 className="product-form-labels">Preview</h3>
