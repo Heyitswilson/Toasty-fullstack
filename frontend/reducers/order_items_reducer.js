@@ -2,14 +2,9 @@ import { RECEIVE_ALL_ORDER_ITEMS, RECEIVE_ORDER_ITEM } from '../actions/order_it
 
 const orderItemsReducer = (state = {}, action) => {
     Object.freeze(state)
-    let newState = Object.assign({}, state)
-    // debugger
     switch(action.type) {
         case RECEIVE_ALL_ORDER_ITEMS:
             return action.items
-        // case RECEIVE_ORDER_ITEM:
-        //     newState[action.item.id] = action.item
-        //     return newState
         default: 
             return state
     }

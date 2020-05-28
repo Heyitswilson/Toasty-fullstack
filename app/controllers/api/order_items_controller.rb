@@ -7,13 +7,10 @@ class Api::OrderItemsController < ApplicationController
 
     def create
         @order_item = OrderItem.new(order_items_params)
-        # debugger
         if @order_item.save
             render :show
         else
             render json: @order_item.errors.full_messages, status: 422
-            # render json: "failed"x
-            # puts "failed"
         end
     end
 

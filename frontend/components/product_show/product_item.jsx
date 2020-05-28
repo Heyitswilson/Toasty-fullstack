@@ -26,35 +26,43 @@ class ProductItem extends React.Component {
   }
 
   checkCart(currentItem) {
-    // change to forLoop
-    this.props.userCartItems.forEach(cartItem => {
-      let that = this;
-      // debugger
-      if (cartItem.product.id === currentItem.id) {
-        // UPDATE ITEM]
-        that.state.quantity += 1
-        debugger
-        that.props.updateCartItem({ quantity: that.state.quantity }, cartItem.id)
+    if (this.props.userCartItems.length === 0) {
+      this.props.createCartItem({
+        customer_id: this.props.sessionId,
+        product_id: currentItem.id,
+        quantity: this.state.quantity,
+      });
+    } else {
+      let cartItems = this.props.userCartItems;
+      let productIdMap = cartItems.map(cartItem => 
+        cartItem.product.id
+      )
+      let cartIdMap = cartItems.map(cartItem =>
+        cartItem.id
+      )
+      let quantityMap = cartItems.map(cartItem => 
+        cartItem.quantity)
+      if (productIdMap.includes(currentItem.id)) {
+        let productIndex = productIdMap.indexOf(currentItem.id);
+        this.props.updateCartItem({ quantity: quantityMap[productIndex] + 1 }, cartIdMap[productIndex])
       } else {
-        that.props.createCartItem({
-          customer_id: that.props.sessionId,
+        this.props.createCartItem({
+          customer_id: this.props.sessionId,
           product_id: currentItem.id,
-          quantity: that.state.quantity,
+          quantity: this.state.quantity,
         });
       }
-    })
+    }
   }
 
   addToCart(e) {
     e.preventDefault();
     let { sessionId, product } = this.props;
-    debugger
     if (sessionId === null) {
       this.props.receiveBuy();
       this.props.openModal();
     } else {
       this.setState({ inProp: true });
-
       this.checkCart(product)
     }
     this.toTop()
@@ -82,7 +90,7 @@ class ProductItem extends React.Component {
       >
         {this.state.inProp && this.props.sessionId ? (
           <div key={1} className="added-cart">
-            +{this.state.quantity}
+            +1
           </div>
         ) : null}
       </ReactCSSTransitionGroup>

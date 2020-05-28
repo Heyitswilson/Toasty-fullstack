@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 class CartItems extends React.Component {
     constructor(props) {
@@ -19,7 +20,6 @@ class CartItems extends React.Component {
     }
 
     purchase() {
-      debugger
       this.props.userCartItems.forEach(cartItem => {
         this.props.createOrderItem({
           orderer_id: cartItem.customer_id,
@@ -39,9 +39,15 @@ class CartItems extends React.Component {
     }
 
     deleteItem(cartItem) {
-        let deleteableId = cartItem[1].deleteableId
-
-        this.props.deleteCartItem(deleteableId)
+        let newQuantity = cartItem.quantity - 1
+      
+        if (cartItem.quantity === 1) {
+        
+          this.props.deleteCartItem(cartItem.deleteableId)
+        } else {
+          this.props.updateCartItem({quantity: newQuantity}, cartItem.deleteableId)
+        
+        }
     }
 
     total(cartItem) {
@@ -50,6 +56,7 @@ class CartItems extends React.Component {
 
     uniqueCartItems(){
         let { userCartItems } = this.props
+      
         let newCartItems = {}
         userCartItems.forEach(userCartItem => {
             if (newCartItems[userCartItem.product.id]) {
@@ -135,9 +142,10 @@ class CartItems extends React.Component {
                                     <button
                                       className="delete-item-in-cart"
                                       onClick={() =>
-                                        this.props.deleteCartItem(
-                                          cartItem[1].deleteableId
-                                        )
+                                        // this.props.deleteCartItem(
+                                        //   cartItem[1].deleteableId
+                                        // )
+                                        this.deleteItem(cartItem[1])
                                       }
                                     >
                                       Delete Item

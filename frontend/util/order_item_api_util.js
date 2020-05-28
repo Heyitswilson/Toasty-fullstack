@@ -6,7 +6,6 @@ export const getAllOrderItems = () => (
 )
 
 export const createOrderItem = orderItem => {
-    // debugger
     return (
         $.ajax({
             method: "POST",

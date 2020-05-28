@@ -65,8 +65,6 @@ class OrderItems extends React.Component {
     }
 
     filledOrders(orderItemsObj) {
-        // let allTotal = 0;
-        debugger
         return (
             <div>
                 <h1 className="header">Your Orders</h1>
@@ -74,7 +72,6 @@ class OrderItems extends React.Component {
                 <div className="buy-page">
                     <div className="new-cart-div">
                         {orderItemsObj.map(orderItem => {
-                            // allTotal += this.total(orderItem);
                             return (
                                 <div
                                     key={orderItem.id}
@@ -117,34 +114,18 @@ class OrderItems extends React.Component {
                                             {orderItem.created_at}
                                         </div>
                                     </div>
-
-                                    {/* <button
-                                        className="delete-item-in-cart"
-                                        onClick={() =>
-                                            this.props.deleteCartItem(
-                                                cartItem[1].deleteableId
-                                            )
-                                        }
-                                    >
-                                        Delete Item
-                                    </button> */}
                                 </div>
                             );
                         }
                         )}
                     </div>
                 </div>
-                {/* <div className="checkout-div">
-                    <div id="all-total" className="quantity-word">Item(s) total: ${allTotal} </div>
-                    <button onClick={() => this.purchase()} className="checkout">Purchase</button>
-                </div> */}
             </div>
         )
 
     }
 
     render() {
-        // let orderItemsObj = Object.entries(this.props.userOrderItems);
 
         let orderItemsObj = this.props.userOrderItems
 

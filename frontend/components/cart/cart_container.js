@@ -5,4 +5,4 @@ const mapStateToProps = state => ({
     currentUser: state.session.id
 })
 
-export default connect(mapStateToProps, null)(Cart)
+export default connect(mapStateToProps, null) (Cart)
