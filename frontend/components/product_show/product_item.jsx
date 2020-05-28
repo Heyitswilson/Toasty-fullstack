@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactCSSTransitionGroup  from "react-addons-css-transition-group";
 
-
 class ProductItem extends React.Component {
   constructor(props) {
     super(props);

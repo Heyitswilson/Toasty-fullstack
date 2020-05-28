@@ -1020,7 +1020,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
         className: "empty-cart-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
-      }, "There's nothing in your cart!"))));
+      }, "Thanks for checking out Toasty!"))));
     }
   }, {
     key: "filledCart",

@@ -87,7 +87,7 @@ class CartItems extends React.Component {
                 <h1 className="header">Your Cart</h1>
                 <div className="buy-page">
                     <div className="empty-cart-div">
-                        <div className="header">There's nothing in your cart!</div>
+                        <div className="header">Thanks for checking out Toasty!</div>
                     </div>
                 </div>
             </div>
