@@ -23,7 +23,6 @@ export const getAllOrderItems = () => dispatch => {
 export const createOrderItem = (orderItem) => dispatch => {
     return (
         OrderItemAPIUtil.createOrderItem(orderItem)
-        // .then(console.log(orderItem))
         .then(orderItem => dispatch(receiveOrderItem(orderItem)))
     )
 }

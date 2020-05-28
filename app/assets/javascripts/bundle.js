@@ -325,8 +325,7 @@ var getAllOrderItems = function getAllOrderItems() {
 };
 var createOrderItem = function createOrderItem(orderItem) {
   return function (dispatch) {
-    return _util_order_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createOrderItem"](orderItem) // .then(console.log(orderItem))
-    .then(function (orderItem) {
+    return _util_order_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createOrderItem"](orderItem).then(function (orderItem) {
       return dispatch(receiveOrderItem(orderItem));
     });
   };
@@ -4823,7 +4822,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_3___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
