@@ -41,7 +41,7 @@ class CartItems extends React.Component {
     deleteItem(cartItem) {
         let newQuantity = cartItem.quantity - 1
       
-        if (cartItem.quantity === 1) {
+        if (cartItem.quantity <= 1) {
         
           this.props.deleteCartItem(cartItem.deleteableId)
         } else {

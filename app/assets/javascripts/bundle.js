@@ -965,7 +965,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
     value: function deleteItem(cartItem) {
       var newQuantity = cartItem.quantity - 1;
 
-      if (cartItem.quantity === 1) {
+      if (cartItem.quantity <= 1) {
         this.props.deleteCartItem(cartItem.deleteableId);
       } else {
         this.props.updateCartItem({
