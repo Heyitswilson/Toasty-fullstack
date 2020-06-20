@@ -24,6 +24,19 @@ class ProductIndex extends React.Component {
         this.props.otherProducts.forEach(product => this.props.deleteProduct(product.id))
     }
 
+    quickSort(arr) {
+        if (arr.length <= 1) return arr;
+
+        let pivot = array.shift();
+        let left = array.filter(el => el.name < pivot.name);
+        let right = array.filter(el => el.name >= pivot.name);
+
+        let leftSorted = quickSort(left);
+        let rightSorted = quickSort(right);
+
+        return [...leftSorted, pivot, ...rightSorted];
+    }
+
     userProductIndex(){
         if (this.state.displayCreate) {
             return <CreateProductContainer />
@@ -58,6 +71,7 @@ class ProductIndex extends React.Component {
     }
 
     publicProductIndex(){
+        // debugger
         return(
             <div>
                 <h1 className="header">All Products</h1>
