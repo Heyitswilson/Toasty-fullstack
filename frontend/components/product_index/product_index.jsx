@@ -71,7 +71,6 @@ class ProductIndex extends React.Component {
     }
 
     publicProductIndex(){
-        // debugger
         return(
             <div>
                 <h1 className="header">All Products</h1>

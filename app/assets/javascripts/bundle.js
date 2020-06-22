@@ -2203,7 +2203,6 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "publicProductIndex",
     value: function publicProductIndex() {
-      // debugger
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header"
       }, "All Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2270,14 +2269,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _product_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_index */ "./frontend/components/product_index/product_index.jsx");
 /* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/category_actions */ "./frontend/actions/category_actions.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
 
+
+
+function quickSort(array) {
+  if (array.length <= 1) return array;
+  var pivot = array.shift();
+  var left = array.filter(function (el) {
+    return el.name < pivot.name;
+  });
+  var right = array.filter(function (el) {
+    return el.name >= pivot.name;
+  });
+  var leftSorted = quickSort(left);
+  var rightSorted = quickSort(right);
+  return [].concat(_toConsumableArray(leftSorted), [pivot], _toConsumableArray(rightSorted));
+}
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    allProducts: Object.values(state.entities.products),
+    allProducts: quickSort(Object.values(state.entities.products)),
     currentUserId: state.session.id,
     category: state.entities.category
   };
@@ -2444,20 +2469,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _product_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_index */ "./frontend/components/product_index/product_index.jsx");
 /* harmony import */ var _actions_category_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/category_actions */ "./frontend/actions/category_actions.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
 
+
+
+function quickSort(array) {
+  if (array.length <= 1) return array;
+  var pivot = array.shift();
+  var left = array.filter(function (el) {
+    return el.name < pivot.name;
+  });
+  var right = array.filter(function (el) {
+    return el.name >= pivot.name;
+  });
+  var leftSorted = quickSort(left);
+  var rightSorted = quickSort(right);
+  return [].concat(_toConsumableArray(leftSorted), [pivot], _toConsumableArray(rightSorted));
+}
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    userProducts: Object.values(state.entities.products).filter(function (product) {
+    userProducts: quickSort(Object.values(state.entities.products).filter(function (product) {
       return product.artist_id === state.session.id;
-    }),
+    })),
     indexType: "User",
-    otherProducts: Object.values(state.entities.products).filter(function (product) {
+    otherProducts: quickSort(Object.values(state.entities.products).filter(function (product) {
       return !product.keep;
-    }),
+    })),
     userID: state.session.id,
     category: state.entities.category
   };
@@ -3717,9 +3768,9 @@ var SearchBar = function SearchBar(props) {
   var products = props.products,
       receiveSearch = props.receiveSearch,
       receiveInput = props.receiveInput;
-  var productsArray = Object.keys(products).map(function (num) {
+  var productsArray = quickSort(Object.keys(products).map(function (num) {
     return products[num];
-  });
+  }));
   var initialList = [];
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
@@ -3754,6 +3805,20 @@ var SearchBar = function SearchBar(props) {
     }
   };
 
+  function quickSort(array) {
+    if (array.length <= 1) return array;
+    var pivot = array.shift();
+    var left = array.filter(function (el) {
+      return el.name < pivot.name;
+    });
+    var right = array.filter(function (el) {
+      return el.name >= pivot.name;
+    });
+    var leftSorted = quickSort(left);
+    var rightSorted = quickSort(right);
+    return [].concat(_toConsumableArray(leftSorted), [pivot], _toConsumableArray(rightSorted));
+  }
+
   var updateSearchProducts = function updateSearchProducts(product) {
     updateListProducts(function (searchListProducts) {
       return [].concat(_toConsumableArray(searchListProducts), [product]);
@@ -3772,6 +3837,24 @@ var SearchBar = function SearchBar(props) {
       }, showLess(product.name))]);
     });
   };
+
+  function binarySearch(array, target) {
+    if (array.length === 0) {
+      return false;
+    }
+
+    var midIdx = Math.floor(array.length / 2);
+    var leftHalf = array.slice(0, midIdx);
+    var rightHalf = array.slice(midIdx + 1);
+
+    if (target < array[midIdx]) {
+      return binarySearch(leftHalf, target);
+    } else if (target > array[midIdx]) {
+      return binarySearch(rightHalf, target);
+    } else {
+      return true;
+    }
+  }
 
   var searchProducts = function searchProducts(input) {
     if (input === '') {
@@ -4907,6 +4990,7 @@ document.addEventListener("DOMContentLoaded", function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.getState = store.getState;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);

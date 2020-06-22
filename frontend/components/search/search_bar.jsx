@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 const SearchBar = (props) => {
     const { products, receiveSearch, receiveInput } = props;
     
-    let productsArray = Object.keys(products).map(num => products[num]);
+    let productsArray = quickSort(Object.keys(products).map(num => products[num]));
     
     const initialList = [];
     const [searchListProducts, updateListProducts] = useState([])
@@ -32,6 +32,19 @@ const SearchBar = (props) => {
         }
         
     }
+
+    function quickSort(array) {
+        if (array.length <= 1) return array;
+
+        let pivot = array.shift();
+        let left = array.filter(el => el.name < pivot.name);
+        let right = array.filter(el => el.name >= pivot.name);
+
+        let leftSorted = quickSort(left);
+        let rightSorted = quickSort(right);
+
+        return [...leftSorted, pivot, ...rightSorted];
+    }
     
     const updateSearchProducts = (product) => {
         updateListProducts(searchListProducts => [...searchListProducts,
@@ -43,6 +56,24 @@ const SearchBar = (props) => {
         updateSearch(searchList => [...searchList, 
             <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
         ])
+    }
+
+    function binarySearch(array, target) {
+        if (array.length === 0) {
+            return false;
+        }
+
+        let midIdx = Math.floor(array.length / 2);
+        let leftHalf = array.slice(0, midIdx);
+        let rightHalf = array.slice(midIdx + 1);
+
+        if (target < array[midIdx]) {
+            return binarySearch(leftHalf, target);
+        } else if (target > array[midIdx]) {
+            return binarySearch(rightHalf, target);
+        } else {
+            return true;
+        }
     }
 
     const searchProducts = (input) => {
