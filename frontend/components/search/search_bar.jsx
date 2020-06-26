@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
+import _, { debounce } from "lodash";
 
 const SearchBar = (props) => {
     const { receiveInput } = props;
@@ -11,12 +12,15 @@ const SearchBar = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        props.searchProducts(searchTerm.toLowerCase())
-        console.log(searchTerm)
+        if (searchTerm != "") {
+            props.searchProducts(searchTerm.toLowerCase()).then(
+                res => updateSearchList(res)
+            )
+        } else {
+            updateSearchDisplay(initialList)
+        }
         // debugger
-        updateSearchList();
-        // clearTimeout(timer);
-    }, [searchTerm]);
+    }, [searchTerm])
     
     const handleSubmit = (e) => {
         event.preventDefault();
@@ -27,8 +31,10 @@ const SearchBar = (props) => {
             receiveInput("")
         }
 
-        props.searchProducts(searchTerm.toLowerCase())
+        props.searchProducts(searchTerm.toLowerCase());
+        // debugger
         props.history.push('/search');
+        // debugger
     }
 
     const toTop = () => {
@@ -38,46 +44,34 @@ const SearchBar = (props) => {
     const clearSearch = (product=null) => {
         toTop()
         updateSearchDisplay(initialList);
+        setSearchTerm("")
         $('input.search-bar').val('');
         if (product) {
             props.getProduct(product.id);
         }
         
     }
-    
-    const _updateSearchDisplay = (product) => {
-        updateSearchDisplay(searchList => [...searchList, 
-            <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
-        ])
-    }
 
-
-    let timer;
     const searchProducts = (input) => {
-        // timer = setTimeout(function() {
-        // }, 1000)
         if (input === '') {
+            updateSearchDisplay(initialList);
             setSearchTerm(input)
             receiveInput(input);
-            updateSearchDisplay(initialList);
-        } else {
+            return updateSearchDisplay(initialList)
+        }
             receiveInput(input)
             setSearchTerm(input)
             updateSearchDisplay(initialList)
-                // props.searchProducts(input.toLowerCase())
-        }
     }
 
-    const updateSearchList = () => {
-        let productsArray = Object.keys(props.search).map(num => props.search[num]);
-        for (let i = 0; i < productsArray.length; i += 1) {
-            let product = productsArray[i];
-            console.log(product)
+    const updateSearchList = (obj) => {
+        let arr = Object.values(obj)
+        for (let i = 0; i < arr.length; i += 1) {
+            let product = arr[i];
             searchListArray.push(
                 <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
             )
         }
-
         updateSearchDisplay(searchListArray)
     } 
     
@@ -107,16 +101,19 @@ const SearchBar = (props) => {
             )
         }
     }
+    
+    const delayedQuery = useCallback(debounce(q => searchProducts(q), 500), []);
 
     const givenInput = e => {
-        searchProducts(e.currentTarget.value);
+        delayedQuery(e.currentTarget.value)
     }
 
     return (
         <div >
             <form className="search-form" onSubmit={(e) => handleSubmit(e)}>
                 <input 
-                    className="search-bar" 
+                    className="search-bar"
+                    id="search-bar" 
                     type="text" 
                     name="product"
                     placeholder="Search for products"
