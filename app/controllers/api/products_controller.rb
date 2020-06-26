@@ -41,11 +41,15 @@ class Api::ProductsController < ApplicationController
         end
     end
 
+    def search 
+        @products = Product.search(params[:search])
+        render :index
+    end
+
     private
 
     def product_params
-        params.require(:product).permit(:name, :description, :price, :artist_id, :photo, :photoUrl, :category)
-        # params.require(:product).permit(:name, :description, :price, :artist_id)
+        params.require(:product).permit(:name, :description, :price, :artist_id, :photo, :photoUrl, :category, :search)
     end
 
 end

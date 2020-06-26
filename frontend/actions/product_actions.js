@@ -6,6 +6,12 @@ export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_INDEX = "RECEIVE_INDEX";
 export const UNMOUNT_PRODUCT = "UNMOUNT_PRODUCT";
+export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
+
+export const receiveSearch = search => ({
+    type: RECEIVE_SEARCH,
+    search
+})
 
 export const receiveIndex = type => ({
     type: RECEIVE_INDEX,
@@ -39,8 +45,15 @@ export const unmountProduct = () => {
     })
 }
 
+export const searchProducts = (search) => dispatch => {
+    ProductAPIUtil.searchProducts(search)
+        // .then(console.log(products))
+        .then(products => dispatch(receiveSearch(products)))
+        // .then(products => console.log(products))
+} 
+
 export const getAllProducts = () => dispatch => {
-    ProductAPIUtil.getAllProducts()
+    ProductAPIUtil.getAllProducts() 
         .then(products => dispatch(receiveProducts(products)),
             err => dispatch(receiveErrors(err.responseJSON))
         )

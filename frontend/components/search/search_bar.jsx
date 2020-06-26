@@ -1,99 +1,86 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 
 const SearchBar = (props) => {
-    const { products, receiveSearch, receiveInput } = props;
-    
-    let productsArray = quickSort(Object.keys(products).map(num => products[num]));
-    
+    const { receiveInput } = props;
     const initialList = [];
-    const [searchListProducts, updateListProducts] = useState([])
-    const [searchList, updateSearch] = useState(initialList);
+    const [searchList, updateSearchDisplay] = useState(initialList);
+    let searchListArray = [];
+    const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(() => {
+        props.searchProducts(searchTerm.toLowerCase())
+        console.log(searchTerm)
+        // debugger
+        updateSearchList();
+        // clearTimeout(timer);
+    }, [searchTerm]);
+    
+    const handleSubmit = (e) => {
+        event.preventDefault();
+        clearSearch();
+        setSearchTerm("")
+
+        if (e === "") {
+            receiveInput("")
+        }
+
+        props.searchProducts(searchTerm.toLowerCase())
+        props.history.push('/search');
+    }
 
     const toTop = () => {
         $('html,body').scrollTop(0);
     }
 
-    const handleSubmit = (e) => {
-        event.preventDefault();
-        receiveSearch(searchListProducts);
-        clearSearch();
-        props.history.push('/search');
-    }
-
     const clearSearch = (product=null) => {
         toTop()
-        updateSearch(initialList);
+        updateSearchDisplay(initialList);
         $('input.search-bar').val('');
         if (product) {
             props.getProduct(product.id);
         }
         
     }
-
-    function quickSort(array) {
-        if (array.length <= 1) return array;
-
-        let pivot = array.shift();
-        let left = array.filter(el => el.name < pivot.name);
-        let right = array.filter(el => el.name >= pivot.name);
-
-        let leftSorted = quickSort(left);
-        let rightSorted = quickSort(right);
-
-        return [...leftSorted, pivot, ...rightSorted];
-    }
     
-    const updateSearchProducts = (product) => {
-        updateListProducts(searchListProducts => [...searchListProducts,
-            product
-        ])
-    }
-    
-    const updateSearchList = (product) => {
-        updateSearch(searchList => [...searchList, 
+    const _updateSearchDisplay = (product) => {
+        updateSearchDisplay(searchList => [...searchList, 
             <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
         ])
     }
 
-    function binarySearch(array, target) {
-        if (array.length === 0) {
-            return false;
-        }
 
-        let midIdx = Math.floor(array.length / 2);
-        let leftHalf = array.slice(0, midIdx);
-        let rightHalf = array.slice(midIdx + 1);
-
-        if (target < array[midIdx]) {
-            return binarySearch(leftHalf, target);
-        } else if (target > array[midIdx]) {
-            return binarySearch(rightHalf, target);
-        } else {
-            return true;
-        }
-    }
-
+    let timer;
     const searchProducts = (input) => {
+        // timer = setTimeout(function() {
+        // }, 1000)
         if (input === '') {
-            updateListProducts(initialList);
+            setSearchTerm(input)
             receiveInput(input);
-            return updateSearch(initialList);
-        }
-        updateListProducts(initialList);
-        updateSearch(initialList);
-        receiveInput(input);
-        for(let i = 0; i < productsArray.length; i += 1) {
-            let product = productsArray[i];
-            if (product.name.toLowerCase().includes(input.toLowerCase())) {
-                updateSearchList(product);
-                updateSearchProducts(product);
-            }
+            updateSearchDisplay(initialList);
+        } else {
+            receiveInput(input)
+            setSearchTerm(input)
+            updateSearchDisplay(initialList)
+                // props.searchProducts(input.toLowerCase())
         }
     }
 
+    const updateSearchList = () => {
+        let productsArray = Object.keys(props.search).map(num => props.search[num]);
+        for (let i = 0; i < productsArray.length; i += 1) {
+            let product = productsArray[i];
+            console.log(product)
+            searchListArray.push(
+                <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
+            )
+        }
+
+        updateSearchDisplay(searchListArray)
+    } 
+    
     const displaySearch = () => {
         if (searchList.length != 0) {
             return (
@@ -127,7 +114,7 @@ const SearchBar = (props) => {
 
     return (
         <div >
-            <form className="search-form" onSubmit={handleSubmit}>
+            <form className="search-form" onSubmit={(e) => handleSubmit(e)}>
                 <input 
                     className="search-bar" 
                     type="text" 

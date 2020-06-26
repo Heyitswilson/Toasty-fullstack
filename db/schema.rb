@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_212012) do
+ActiveRecord::Schema.define(version: 2020_06_23_202023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_212012) do
     t.string "photoUrl"
     t.boolean "keep", default: false
     t.string "category"
+    t.string "search"
     t.index ["category"], name: "index_products_on_category"
     t.index ["name", "artist_id"], name: "index_products_on_name_and_artist_id"
   end

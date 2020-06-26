@@ -22,4 +22,13 @@ class Product < ApplicationRecord
     source: :orderer
 
     has_one_attached :photo
+
+    def self.search(input)
+        searched = self.where("search like ?", "%" + input + "%")
+        if searched != []
+            searched
+        else
+            Product.all
+        end
+    end
 end

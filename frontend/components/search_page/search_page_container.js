@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SearchPage from './search_page';
 
 const mSTP = state => ({
-    search: state.entities.search,
+    search: Object.values(state.entities.search),
     input: state.entities.input
 })
 

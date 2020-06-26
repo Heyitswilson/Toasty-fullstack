@@ -24,6 +24,16 @@ export const createProduct = (formData) => (
     })
 )
 
+export const searchProducts = (search) => {
+    return (
+        $.ajax({
+            url: "/api/products/search",
+            method: "GET",
+            data: { search }
+        })
+    )
+}
+
 export const updateProduct = (formData, id) => (
     $.ajax({
         method: "PATCH",
