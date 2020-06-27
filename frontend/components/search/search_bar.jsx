@@ -5,11 +5,12 @@ import { withRouter } from 'react-router-dom';
 import _, { debounce } from "lodash";
 
 const SearchBar = (props) => {
-    const { receiveInput } = props;
+    const { receiveInput, receiveSearch } = props;
     const initialList = [];
     const [searchList, updateSearchDisplay] = useState(initialList);
     let searchListArray = [];
     const [searchTerm, setSearchTerm] = useState("");
+    const [searchListProducts, updateListProducts] = useState([]);
 
     useEffect(() => {
         if (searchTerm != "") {
@@ -18,23 +19,21 @@ const SearchBar = (props) => {
             )
         } else {
             updateSearchDisplay(initialList)
+
         }
-        // debugger
     }, [searchTerm])
     
     const handleSubmit = (e) => {
         event.preventDefault();
-        clearSearch();
-        setSearchTerm("")
-
+        
         if (e === "") {
             receiveInput("")
+            clearSearch();
+            setSearchTerm("")
         }
-
-        props.searchProducts(searchTerm.toLowerCase());
-        // debugger
+        receiveSearch(searchListProducts);
         props.history.push('/search');
-        // debugger
+        clearSearch();
     }
 
     const toTop = () => {
@@ -65,7 +64,8 @@ const SearchBar = (props) => {
     }
 
     const updateSearchList = (obj) => {
-        let arr = Object.values(obj)
+        let arr = Object.values(obj);
+        updateListProducts(arr);
         for (let i = 0; i < arr.length; i += 1) {
             let product = arr[i];
             searchListArray.push(

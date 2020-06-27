@@ -3,7 +3,6 @@ import React from 'react'
 
 const SearchPage = (props) => {
     const { search, input } = props;
-    
     return (
         <div>
             <h1 className="header">Searched for "{input}"</h1>

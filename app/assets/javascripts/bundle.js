@@ -337,7 +337,7 @@ var createOrderItem = function createOrderItem(orderItem) {
 /*!*********************************************!*\
   !*** ./frontend/actions/product_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_PRODUCT, RECEIVE_PRODUCTS, REMOVE_PRODUCT, RECEIVE_PRODUCT_ERRORS, RECEIVE_INDEX, UNMOUNT_PRODUCT, receiveIndex, unmountProduct, getAllProducts, getProduct, createProduct, updateProduct, deleteProduct */
+/*! exports provided: RECEIVE_PRODUCT, RECEIVE_PRODUCTS, REMOVE_PRODUCT, RECEIVE_PRODUCT_ERRORS, RECEIVE_INDEX, UNMOUNT_PRODUCT, RECEIVE_SEARCH, receiveSearch, receiveIndex, unmountProduct, searchProducts, getAllProducts, getProduct, createProduct, updateProduct, deleteProduct */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -348,8 +348,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PRODUCT_ERRORS", function() { return RECEIVE_PRODUCT_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_INDEX", function() { return RECEIVE_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNMOUNT_PRODUCT", function() { return UNMOUNT_PRODUCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCH", function() { return RECEIVE_SEARCH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearch", function() { return receiveSearch; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveIndex", function() { return receiveIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unmountProduct", function() { return unmountProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProducts", function() { return searchProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllProducts", function() { return getAllProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProduct", function() { return getProduct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProduct", function() { return createProduct; });
@@ -365,6 +368,13 @@ var REMOVE_PRODUCT = "REMOVE_PRODUCT";
 var RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 var RECEIVE_INDEX = "RECEIVE_INDEX";
 var UNMOUNT_PRODUCT = "UNMOUNT_PRODUCT";
+var RECEIVE_SEARCH = "RECEIVE_SEARCH";
+var receiveSearch = function receiveSearch(search) {
+  return {
+    type: RECEIVE_SEARCH,
+    search: search
+  };
+};
 var receiveIndex = function receiveIndex(type) {
   return _defineProperty({
     type: RECEIVE_INDEX
@@ -403,6 +413,13 @@ var receiveErrors = function receiveErrors(errors) {
 var unmountProduct = function unmountProduct() {
   return {
     type: UNMOUNT_PRODUCT
+  };
+};
+var searchProducts = function searchProducts(search) {
+  return function (dispatch) {
+    _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__["searchProducts"](search).then(function (products) {
+      return dispatch(receiveSearch(products));
+    });
   };
 };
 var getAllProducts = function getAllProducts() {
@@ -3760,7 +3777,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var SearchBar = function SearchBar(props) {
-  var receiveInput = props.receiveInput;
+  var receiveInput = props.receiveInput,
+      receiveSearch = props.receiveSearch;
   var initialList = [];
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initialList),
@@ -3775,6 +3793,11 @@ var SearchBar = function SearchBar(props) {
       searchTerm = _useState4[0],
       setSearchTerm = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      searchListProducts = _useState6[0],
+      updateListProducts = _useState6[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (searchTerm != "") {
       props.searchProducts(searchTerm.toLowerCase()).then(function (res) {
@@ -3782,22 +3805,21 @@ var SearchBar = function SearchBar(props) {
       });
     } else {
       updateSearchDisplay(initialList);
-    } // debugger
-
+    }
   }, [searchTerm]);
 
   var handleSubmit = function handleSubmit(e) {
     event.preventDefault();
-    clearSearch();
-    setSearchTerm("");
 
     if (e === "") {
       receiveInput("");
+      clearSearch();
+      setSearchTerm("");
     }
 
-    props.searchProducts(searchTerm.toLowerCase()); // debugger
-
-    props.history.push('/search'); // debugger
+    receiveSearch(searchListProducts);
+    props.history.push('/search');
+    clearSearch();
   };
 
   var toTop = function toTop() {
@@ -3831,6 +3853,7 @@ var SearchBar = function SearchBar(props) {
 
   var updateSearchList = function updateSearchList(obj) {
     var arr = Object.values(obj);
+    updateListProducts(arr);
 
     var _loop = function _loop(i) {
       var product = arr[i];
@@ -3921,7 +3944,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_product_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/product_api_util */ "./frontend/util/product_api_util.js");
 
 
- // import { receiveSearch, unmountSearch } from '../../actions/search_actions'; 
+
 
 
 
@@ -3939,6 +3962,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     getProduct: function getProduct(productId) {
       return dispatch(Object(_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__["getProduct"])(productId));
+    },
+    receiveSearch: function receiveSearch(search) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["receiveSearch"])(search));
     },
     unmountSearch: function unmountSearch() {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["unmountSearch"])());
@@ -4008,7 +4034,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    search: Object.values(state.entities.search),
+    search: state.entities.search,
     input: state.entities.input
   };
 };
@@ -4964,14 +4990,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/product_actions */ "./frontend/actions/product_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-
- // import { searchProducts, getAllProducts, getProduct } from './util/product_api_util'
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
@@ -4990,13 +5013,8 @@ document.addEventListener("DOMContentLoaded", function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  } // window.getAllProducts = store.dispatch(getAllProducts())
+  }
 
-
-  window.getProduct = _actions_product_actions__WEBPACK_IMPORTED_MODULE_4__["getProduct"]; // window.getAllProducts = getAllProducts
-  // window.searchProducts = store.dispatch(searchProducts("egg"))
-
-  window.getState = store.getState;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
