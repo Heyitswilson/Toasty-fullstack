@@ -13,8 +13,11 @@ class Api::ProductsController < ApplicationController
     end
 
     def create
+        puts("before")
+        
         @product = Product.new(product_params)
-
+        puts("hello")
+        puts(@product)
         if @product.save
             render :show
         else

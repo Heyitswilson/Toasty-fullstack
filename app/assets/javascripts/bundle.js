@@ -2871,6 +2871,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       formData.append('product[price]', this.state.price);
       formData.append('product[artist_id]', this.state.artist_id);
       formData.append('product[category]', this.state.category);
+      formData.append('product[search]', this.state.name.toLowerCase());
 
       if (this.state.photoFile) {
         formData.append('product[photo]', this.state.photoFile);
