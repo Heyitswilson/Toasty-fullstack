@@ -1,68 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
+import _, { debounce } from "lodash";
 
 const SearchBar = (props) => {
-    const { products, receiveSearch, receiveInput } = props;
-    
-    let productsArray = Object.keys(products).map(num => products[num]);
-    
+    const { receiveInput, receiveSearch } = props;
     const initialList = [];
-    const [searchListProducts, updateListProducts] = useState([])
-    const [searchList, updateSearch] = useState(initialList);
+    const [searchList, updateSearchDisplay] = useState(initialList);
+    let searchListArray = [];
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchListProducts, updateListProducts] = useState([]);
+
+    useEffect(() => {
+        if (searchTerm != "") {
+            props.searchProducts(searchTerm.toLowerCase()).then(
+                res => updateSearchList(res)
+            )
+        } else {
+            updateSearchDisplay(initialList)
+
+        }
+    }, [searchTerm])
+    
+    const handleSubmit = (e) => {
+        event.preventDefault();
+        
+        if (e === "") {
+            receiveInput("")
+            clearSearch();
+            setSearchTerm("")
+        }
+        receiveSearch(searchListProducts);
+        props.history.push('/search');
+        clearSearch();
+    }
 
     const toTop = () => {
         $('html,body').scrollTop(0);
     }
 
-    const handleSubmit = (e) => {
-        event.preventDefault();
-        receiveSearch(searchListProducts);
-        clearSearch();
-        props.history.push('/search');
-    }
-
     const clearSearch = (product=null) => {
         toTop()
-        updateSearch(initialList);
+        updateSearchDisplay(initialList);
+        setSearchTerm("")
         $('input.search-bar').val('');
         if (product) {
             props.getProduct(product.id);
         }
         
     }
-    
-    const updateSearchProducts = (product) => {
-        updateListProducts(searchListProducts => [...searchListProducts,
-            product
-        ])
-    }
-    
-    const updateSearchList = (product) => {
-        updateSearch(searchList => [...searchList, 
-            <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
-        ])
-    }
 
     const searchProducts = (input) => {
         if (input === '') {
-            updateListProducts(initialList);
+            updateSearchDisplay(initialList);
+            setSearchTerm(input)
             receiveInput(input);
-            return updateSearch(initialList);
+            return updateSearchDisplay(initialList)
         }
-        updateListProducts(initialList);
-        updateSearch(initialList);
-        receiveInput(input);
-        for(let i = 0; i < productsArray.length; i += 1) {
-            let product = productsArray[i];
-            if (product.name.toLowerCase().includes(input.toLowerCase())) {
-                updateSearchList(product);
-                updateSearchProducts(product);
-            }
-        }
+            receiveInput(input)
+            setSearchTerm(input)
+            updateSearchDisplay(initialList)
     }
 
+    const updateSearchList = (obj) => {
+        let arr = Object.values(obj);
+        updateListProducts(arr);
+        for (let i = 0; i < arr.length; i += 1) {
+            let product = arr[i];
+            searchListArray.push(
+                <Link onClick={() => clearSearch(product)} key={product.id} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
+            )
+        }
+        updateSearchDisplay(searchListArray)
+    } 
+    
     const displaySearch = () => {
         if (searchList.length != 0) {
             return (
@@ -89,16 +101,19 @@ const SearchBar = (props) => {
             )
         }
     }
+    
+    const delayedQuery = useCallback(debounce(q => searchProducts(q), 500), []);
 
     const givenInput = e => {
-        searchProducts(e.currentTarget.value);
+        delayedQuery(e.currentTarget.value)
     }
 
     return (
         <div >
-            <form className="search-form" onSubmit={handleSubmit}>
+            <form className="search-form" onSubmit={(e) => handleSubmit(e)}>
                 <input 
-                    className="search-bar" 
+                    className="search-bar"
+                    id="search-bar" 
                     type="text" 
                     name="product"
                     placeholder="Search for products"
