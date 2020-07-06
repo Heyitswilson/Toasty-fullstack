@@ -22,29 +22,27 @@ Toasty is an e-commerce application for arts and crafts and prioritizes a minima
 ## Code
 
 #### Search Function
-This is a simple search function that compares a user's text input to a list of products and updates the state to include only products where their names includes the user's search string.
+The Toasty search function utilizes ActiveRecord queries and the Rails MVC framework to perform server-side product searches and preserve client-side efficiency. It involves defining a search route in the Rails Router so that the search request can be directed to the correct controller. The results of the API call are immediately displayed in a dropdown. Toasty's search function is debounced and will not run on every user input in order to preserve server-side efficiency. 
 
 ![search](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/search4.gif)
 
 ```javascript
-    const updateSearchList = (product) => {
-        searching(searchList => [...searchList, 
-            <div className="link-div">
-                <Link onClick={() => clearSearch()} className="search-link" to={`/products/${product.id}`}>{showLess(product.name)}</Link>
-            </div>
-        ])
+    const givenInput = e => {
+        delayedQuery(e.currentTarget.value)
     }
 
+    const delayedQuery = useCallback(debounce(q => searchProducts(q), 500), []);
+    
     const searchProducts = (input) => {
-        if (input === '') {
-            return searching(initialList)
-        }
-        searching(initialList)
-        for(let i = 0; i < products.length; i += 1) {
-            if (products.name.toLowerCase().includes(input.toLowerCase())) {
-                updateSearchList(product)
-            }
-        }
+    if (input === '') {
+        updateSearchDisplay(initialList);
+        setSearchTerm(input)
+        receiveInput(input);
+        return updateSearchDisplay(initialList)
+    }
+        receiveInput(input)
+        setSearchTerm(input)
+        updateSearchDisplay(initialList)
     }
 ```
 
