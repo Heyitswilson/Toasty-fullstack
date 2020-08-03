@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
 
 class CartItems extends React.Component {
     constructor(props) {
@@ -142,9 +141,6 @@ class CartItems extends React.Component {
                                     <button
                                       className="delete-item-in-cart"
                                       onClick={() =>
-                                        // this.props.deleteCartItem(
-                                        //   cartItem[1].deleteableId
-                                        // )
                                         this.deleteItem(cartItem[1])
                                       }
                                     >

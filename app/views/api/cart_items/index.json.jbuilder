@@ -1,9 +1,3 @@
-# current_user.cart_items.each do |cart_item|
-#     json.set! cart_item.id do 
-#         json.extract! :customer_id
-#     end
-# end
-
 @cart_items.each do |cart_item| 
     json.set! cart_item.id do 
         json.extract! cart_item, :id, :customer_id, :quantity
