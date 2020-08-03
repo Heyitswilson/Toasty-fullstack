@@ -12,24 +12,12 @@ class OrderItems extends React.Component {
         this.emptyOrders = this.emptyOrders.bind(this);
         this.filledOrders = this.filledOrders.bind(this);
         this.toTop = this.toTop.bind(this);
-        // this.purchase = this.purchase.bind(this);
         this.total = this.total.bind(this);
     }
 
     total(orderItem) {
         return orderItem.price * orderItem.quantity
     }
-
-    // purchase() {
-    //     this.props.userCartItems.forEach(cartItem => {
-    //         this.props.createOrderItem({
-    //             orderer_id: cartItem.customer_id,
-    //             order_item_id: cartItem.product.id,
-    //             quantity: cartItem.quantity
-    //         })
-    //         this.props.deleteCartItem(cartItem.id)
-    //     })
-    // }
 
     toTop() {
         $('html,body').scrollTop(0);

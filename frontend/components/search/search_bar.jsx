@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 import _, { debounce } from "lodash";
 

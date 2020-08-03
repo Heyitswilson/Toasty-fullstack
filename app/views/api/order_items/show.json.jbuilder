@@ -1,5 +1,3 @@
-# json.extract! @order_item, :id, :orderer_id, :order_item_id, :quantity, :created_at
-
 json.set! @order_item.id do
     json.partial! "api/products/product", product: @order_item.product
     json.extract! @order_item, :orderer_id, :order_item_id, :quantity, :id
