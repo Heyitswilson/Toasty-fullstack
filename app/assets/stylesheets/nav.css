@@ -67,12 +67,14 @@
     font-family: 'Crimson Text', serif;
     font-size: 20px;
     color: rgb(128, 128, 128);
-    background-color: transparent
+    background-color: transparent;
+    transition: color .5s ease-in-out
 }
 
 .test:hover {
     cursor: pointer;
     color: black;
+    transition: color .5s ease-in-out
 }
 
 .title-search {
@@ -88,9 +90,12 @@
     font-size: 20px;
     color: rgb(128, 128, 128);
     background-color: white;
+    transition: color .5s ease-in-out
 }
 
 .sign-in-test:hover {
     cursor: pointer;
     color: black;
+    transition: color .5s ease-in-out
+
 }

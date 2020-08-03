@@ -112,11 +112,13 @@
     font-family: 'Spartan', sans-serif;
     font-size: 19px;
     color: white;
+    transition: background-color .5s ease-in-out
 }
 
 .checkout:hover {
     cursor: pointer;
-    background-color: rgb(102, 102, 102)
+    background-color: rgb(102, 102, 102);
+    transition: background-color .5s ease-in-out
 }
 
 .checkout-div {
