@@ -1078,11 +1078,7 @@ var CartItems = /*#__PURE__*/function (_React$Component) {
         }, "$", _this3.total(cartItem))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "delete-item-in-cart",
           onClick: function onClick() {
-            return (// this.props.deleteCartItem(
-              //   cartItem[1].deleteableId
-              // )
-              _this3.deleteItem(cartItem[1])
-            );
+            return _this3.deleteItem(cartItem[1]);
           }
         }, "Delete Item"));
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1133,8 +1129,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     userCartItems: Object.values(state.entities.cartItems),
-    currentUserId: state.session.id // update: state.ui.updateCart
-
+    currentUserId: state.session.id
   };
 };
 
@@ -1152,11 +1147,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     createOrderItem: function createOrderItem(orderItem) {
       return dispatch(Object(_actions_order_items_actions__WEBPACK_IMPORTED_MODULE_3__["createOrderItem"])(orderItem));
     },
-    // getAllOrderItems: () => dispatch(getAllOrderItems())
     updateCartItem: function updateCartItem(data, id) {
       return dispatch(Object(_actions_cart_item_action__WEBPACK_IMPORTED_MODULE_1__["updateCartItem"])(data, id));
-    } // updateCart: (update) => dispatch(updateCart(update))
-
+    }
   };
 };
 
@@ -1919,10 +1912,8 @@ var OrderItems = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/cart_item_action */ "./frontend/actions/cart_item_action.js");
-/* harmony import */ var _order_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./order_items */ "./frontend/components/order_items/order_items.js");
-/* harmony import */ var _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/order_items_actions */ "./frontend/actions/order_items_actions.js");
-
+/* harmony import */ var _order_items__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./order_items */ "./frontend/components/order_items/order_items.js");
+/* harmony import */ var _actions_order_items_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/order_items_actions */ "./frontend/actions/order_items_actions.js");
 
 
 
@@ -1936,17 +1927,13 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    // getAllCartItems: () => dispatch(getAllCartItems()),
-    // createCartItem: cartItem => dispatch(createCartItem(cartItem)),
-    // deleteCartItem: cartItemId => dispatch(deleteCartItem(cartItemId)),
-    // createOrderItem: (orderItem) => dispatch(createOrderItem(orderItem)),
     getAllOrderItems: function getAllOrderItems() {
-      return dispatch(Object(_actions_order_items_actions__WEBPACK_IMPORTED_MODULE_3__["getAllOrderItems"])());
+      return dispatch(Object(_actions_order_items_actions__WEBPACK_IMPORTED_MODULE_2__["getAllOrderItems"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_order_items__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_order_items__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -4379,9 +4366,6 @@ var cartItemsReducer = function cartItemsReducer() {
     case _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CART_ITEM"]:
       delete newState[action.id];
       return action.allCartItems;
-    // case DELETED_CART_ITEM:
-    //     newState[action.id].deleted = true
-    //     return newState
 
     case _actions_cart_item_action__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ALL_CART_ITEMS"]:
       return {};
@@ -4769,18 +4753,6 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
-// import { RECEIVE_SEARCH, UNMOUNT_SEARCH } from '../actions/search_actions'
-// const searchReducer = (state = "", action) => {
-//     Object.freeze(state)
-//     switch (action.type) {
-//         case RECEIVE_SEARCH:
-//             return action.search
-//         case UNMOUNT_SEARCH:
-//             return ""
-//         default:
-//             return state
-//     }
-// }
 
 
 
@@ -4911,12 +4883,10 @@ __webpack_require__.r(__webpack_exports__);
 var usersReducer = function usersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // let newState = Object.assign({}, state)
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USERS"]:
-      // newState[action.currentUser.id] = action.currentUser
-      // return newState
       return action.users;
 
     default:
