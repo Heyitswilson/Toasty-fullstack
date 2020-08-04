@@ -60,7 +60,7 @@
   font-family: 'Spartan', sans-serif;
   font-size: 15px;
   color: white;
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .signup-button {
@@ -83,7 +83,7 @@
 .signin-submit:hover {
   cursor: pointer;
   background-color: rgb(102, 102, 102);
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .signup-submit {
@@ -96,13 +96,13 @@
   background-color: white;
   border: black 1px solid;
   font-family: 'Spartan', sans-serif;
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .signup-submit:hover {
   cursor: pointer;
   background-color: rgb(179, 179, 179);
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .header-form{ 
@@ -153,13 +153,13 @@
   font-size: 15px;
   color: black;
   border: black 1px solid;
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .demo-submit:hover {
   cursor: pointer;
   background-color: rgb(179, 179, 179);
-  transition: background-color .5s ease-in-out
+  transition: background-color .3s ease-in-out
 }
 
 .session-form {
