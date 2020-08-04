@@ -73,11 +73,13 @@
   font-family: 'Spartan', sans-serif;
   font-size: 15px;
   color: white;
+  transition: background-color .3s ease-in-out
 }
 
 .signup-button:hover {
   cursor: pointer;
-  background-color: rgb(102, 102, 102)
+  background-color: rgb(102, 102, 102);
+  transition: background-color .3s ease-in-out
 }
 
 .signin-submit:hover {
