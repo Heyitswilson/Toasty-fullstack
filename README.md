@@ -1,5 +1,5 @@
 # Toasty
-[Live Site](http://toasty-fullstack.herokuapp.com/#/)
+[Live Site](https://toasty-sf.herokuapp.com/#/)
 
 Toasty is an e-commerce application for arts and crafts and prioritizes a minimalist design to provide a clean, aesthetic user interface.
 
