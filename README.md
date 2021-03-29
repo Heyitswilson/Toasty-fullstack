@@ -88,3 +88,8 @@ uniqueCartItems(){
 ## To-do
 * Add Stripe and Paypal checkout
 * Add order history
+
+## Set up
+* rails db:setup (if you need to set up the database)
+* rails s
+* npm start
