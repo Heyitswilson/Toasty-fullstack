@@ -1238,7 +1238,7 @@ var Categories = function Categories(props) {
     className: "gifts-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "gift",
-    src: "https://toasty-dev.s3-us-west-1.amazonaws.com/gift.png"
+    src: "https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/gift.png"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "category-gifts"
   }, "Gifts")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
@@ -1355,13 +1355,13 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
         className: "succulent-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "succulent-pots-image",
-        src: "https://toasty-dev.s3-us-west-1.amazonaws.com/succulent_pottery.jpg",
+        src: "https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/succulent_pottery.jpeg",
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wall-art-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "wall-art-image",
-        src: "https://toasty-dev.s3-us-west-1.amazonaws.com/ideas.jpg",
+        src: "https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/ideas.jpeg",
         alt: ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "statement"
@@ -1448,19 +1448,19 @@ var Info = function Info() {
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "link-icons",
-    src: "https://toasty-dev.s3-us-west-1.amazonaws.com/black_github.png"
+    src: "https://segmed-dev.s3-us-west-1.amazonaws.com/social/black_github.png"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.linkedin.com/in/wilson-ngu/",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "link-icons",
-    src: "https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png"
+    src: "https://segmed-dev.s3-us-west-1.amazonaws.com/social/LinkedInIcon.png"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://angel.co/u/wilson-ngu",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "link-icons",
-    src: "https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png"
+    src: "https://segmed-dev.s3-us-west-1.amazonaws.com/social/angelListIcon.png"
   })));
 };
 

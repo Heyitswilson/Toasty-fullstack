@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?
 
+    skip_before_action :verify_authenticity_token
+
+
     private
     def current_user
         return nil unless session[:session_token]

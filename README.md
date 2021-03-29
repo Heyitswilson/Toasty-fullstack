@@ -3,7 +3,7 @@
 
 Toasty is an e-commerce application for arts and crafts and prioritizes a minimalist design to provide a clean, aesthetic user interface.
 
-![Toasty Homepage](https://toasty-dev.s3-us-west-1.amazonaws.com/toasty.png)
+![Toasty Homepage](https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/toasty.png)
 
 ## Built With 
 * Javascript
@@ -24,7 +24,7 @@ Toasty is an e-commerce application for arts and crafts and prioritizes a minima
 #### Search Function
 The Toasty search function utilizes ActiveRecord queries and the Rails MVC framework to perform server-side product searches and preserve client-side efficiency. It involves defining a search route in the Rails Router so that the search request can be directed to the correct controller. The results of the API call are immediately displayed in a dropdown. Toasty's search function is debounced and will not run on every user input in order to preserve server-side efficiency. 
 
-![search](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/search4.gif)
+![search](https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/search4.gif)
 
 ```javascript
     const givenInput = e => {
@@ -49,7 +49,7 @@ The Toasty search function utilizes ActiveRecord queries and the Rails MVC frame
 #### Modal Interface
 The modal renders different components based on the string it receives.
 
-![modal](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/modal.gif)
+![modal](https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/modal.gif)
 
 ```javascript
     switch(modal){
@@ -67,7 +67,7 @@ The modal renders different components based on the string it receives.
 #### Shopping Cart
 When a user adds a product to the shopping cart, that product is compared to the cart items currently in the cart. If the product matches a cart item, the item's quantity is increased by one and the state is updated to reflect the change. Otherwise, a new cart item is created with a quantity value of one and the state is updated.
 
-![cart](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/cart.gif)
+![cart](https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/cart.gif)
 
 ```javascript
 uniqueCartItems(){

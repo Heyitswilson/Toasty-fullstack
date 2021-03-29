@@ -19,7 +19,7 @@ class Greeting extends React.Component {
           <div className="succulent-2">
             <img
               className="succulent-pots-image"
-              src="https://toasty-dev.s3-us-west-1.amazonaws.com/succulent_pottery.jpg"
+              src="https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/succulent_pottery.jpeg"
               alt=""
             />
           </div>
@@ -27,7 +27,7 @@ class Greeting extends React.Component {
           <div className="wall-art-2">
             <img
               className="wall-art-image"
-              src="https://toasty-dev.s3-us-west-1.amazonaws.com/ideas.jpg"
+              src="https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/ideas.jpeg"
               alt=""
             />
             <div className="statement">Ideas to make your home feel fresh.</div>

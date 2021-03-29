@@ -24,7 +24,7 @@ class Product < ApplicationRecord
     has_one_attached :photo
 
     def self.search(input)
-        searched = self.where("search like ?", "%" + input + "%")
+        searched = self.where("search LIKE ?", "%" + input + "%")
         if searched != []
             searched
         else

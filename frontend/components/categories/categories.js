@@ -24,7 +24,7 @@ const Categories = (props) => {
           <Link onClick={() => setCategory("Gifts")} to="/gifts" className="gifts-div">
           <img
             className="gift"
-            src="https://toasty-dev.s3-us-west-1.amazonaws.com/gift.png"
+            src="https://segmed-dev.s3-us-west-1.amazonaws.com/toasty/gift.png"
           />
           <div className="category-gifts">Gifts</div>
         </Link>
